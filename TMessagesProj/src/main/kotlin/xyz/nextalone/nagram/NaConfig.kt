@@ -181,7 +181,7 @@ object NaConfig {
         addConfig(
             "CustomTitle",
             ConfigItem.configTypeString,
-            "DuckDuckGram"
+            "mvs."
         )
     val dateOfForwardedMsg =
         addConfig(

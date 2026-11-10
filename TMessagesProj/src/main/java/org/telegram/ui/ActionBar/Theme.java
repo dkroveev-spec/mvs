@@ -7962,9 +7962,9 @@ public class Theme {
             dialogs_messagePrintingPaint = new TextPaint[2];
             for (int a = 0; a < 2; a++) {
                 dialogs_namePaint[a] = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-                dialogs_namePaint[a].setTypeface(AndroidUtilities.bold());
+                dialogs_namePaint[a].setTypeface(AndroidUtilities.serif());
                 dialogs_nameEncryptedPaint[a] = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-                dialogs_nameEncryptedPaint[a].setTypeface(AndroidUtilities.bold());
+                dialogs_nameEncryptedPaint[a].setTypeface(AndroidUtilities.serif());
                 dialogs_messagePaint[a] = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
                 dialogs_messagePrintingPaint[a] = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
                 // DuckDuckGram: превью последнего сообщения в списке чатов тоже
@@ -7973,9 +7973,9 @@ public class Theme {
                 dialogs_messagePrintingPaint[a].setTypeface(AndroidUtilities.regular());
             }
             dialogs_searchNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            dialogs_searchNamePaint.setTypeface(AndroidUtilities.bold());
+            dialogs_searchNamePaint.setTypeface(AndroidUtilities.serif());
             dialogs_searchNameEncryptedPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-            dialogs_searchNameEncryptedPaint.setTypeface(AndroidUtilities.bold());
+            dialogs_searchNameEncryptedPaint.setTypeface(AndroidUtilities.serif());
             dialogs_messageNamePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             dialogs_messageNamePaint.setTypeface(AndroidUtilities.bold());
             dialogs_timePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);

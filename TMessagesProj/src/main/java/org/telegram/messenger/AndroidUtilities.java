@@ -254,14 +254,20 @@ public class AndroidUtilities {
     public final static int REPLACING_TAG_TYPE_LINK_NBSP = 3;
     public final static int REPLACING_TAG_TYPE_UNDERLINE = 4;
 
-    public final static String TYPEFACE_ROBOTO_MEDIUM = "fonts/rmedium.ttf";
-    public final static String TYPEFACE_ROBOTO_EXTRA_BOLD = "fonts/rextrabold.ttf";
+    // mvs Ink: Inter для интерфейса, Lora для заголовков. Оба файла лежат в assets
+    // и содержат кириллицу. Псевдопути с #wght не читаются с диска: getTypeface
+    // распознаёт их и собирает нужное начертание из вариативного Inter.
+    public final static String TYPEFACE_INTER = "fonts/inter.ttf";
+    public final static String TYPEFACE_INTER_ITALIC = "fonts/inter_italic.ttf";
+    public final static String TYPEFACE_SERIF = "fonts/lora.ttf";
+    public final static String TYPEFACE_ROBOTO_MEDIUM = TYPEFACE_INTER + "#600";
+    public final static String TYPEFACE_ROBOTO_EXTRA_BOLD = TYPEFACE_INTER + "#800";
     public final static String TYPEFACE_ROBOTO_MEDIUM_ITALIC = "fonts/rmediumitalic.ttf";
     public final static String TYPEFACE_ROBOTO_MONO = "fonts/rmono.ttf";
     public final static String TYPEFACE_MERRIWEATHER_BOLD = "fonts/mw_bold.ttf";
-    public static final String TYPEFACE_RITALIC = "fonts/ritalic.ttf";
+    public static final String TYPEFACE_RITALIC = TYPEFACE_INTER_ITALIC;
     public static final String TYPEFACE_RCONDENSED_BOLD = "fonts/rcondensedbold.ttf";
-    public static final String TYPEFACE_ROBOTO_REGULAR = "fonts/rregular.ttf";
+    public static final String TYPEFACE_ROBOTO_REGULAR = TYPEFACE_INTER;
     public static final String TYPEFACE_ROBOTO_ITALIC = TYPEFACE_RITALIC;
     public static final String TYPEFACE_ROBOTO_CONDENSED_BOLD = TYPEFACE_RCONDENSED_BOLD;
     // Инициалы на аватарках. Перенос из exteraGram 12.9.0, AndroidUtilities.java:247.
@@ -273,6 +279,58 @@ public class AndroidUtilities {
 
     public static Typeface regular() {
         return getTypeface(TYPEFACE_ROBOTO_REGULAR);
+    }
+
+    private static final Hashtable<String, Typeface> inkTypefaceCache = new Hashtable<>();
+    private static Typeface serifTypeface;
+
+    /**
+     * mvs Ink: начертание Inter из вариативного файла. API 26+ выбирает вес через
+     * ось wght; на более старых системах остаётся синтетическое утолщение.
+     */
+    public static Typeface inter(int weight, boolean italic) {
+        final String key = (italic ? "i" : "r") + weight;
+        Typeface cached = inkTypefaceCache.get(key);
+        if (cached != null) {
+            return cached;
+        }
+        Typeface typeface = null;
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Typeface.Builder builder = new Typeface.Builder(ApplicationLoader.applicationContext.getAssets(),
+                        italic ? TYPEFACE_INTER_ITALIC : TYPEFACE_INTER);
+                builder.setFontVariationSettings("'wght' " + weight);
+                typeface = builder.build();
+            }
+        } catch (Throwable e) {
+            FileLog.e(e);
+        }
+        if (typeface == null) {
+            try {
+                Typeface base = Typeface.createFromAsset(ApplicationLoader.applicationContext.getAssets(),
+                        italic ? TYPEFACE_INTER_ITALIC : TYPEFACE_INTER);
+                int style = (weight >= 600 ? Typeface.BOLD : Typeface.NORMAL) | (italic ? Typeface.ITALIC : 0);
+                typeface = Typeface.create(base, style);
+            } catch (Throwable e) {
+                FileLog.e(e);
+                typeface = Typeface.SANS_SERIF;
+            }
+        }
+        inkTypefaceCache.put(key, typeface);
+        return typeface;
+    }
+
+    /** mvs Ink: серифный голос заголовков, имён и словесного знака. */
+    public static Typeface serif() {
+        if (serifTypeface == null) {
+            try {
+                serifTypeface = Typeface.createFromAsset(ApplicationLoader.applicationContext.getAssets(), TYPEFACE_SERIF);
+            } catch (Throwable e) {
+                FileLog.e(e);
+                serifTypeface = Typeface.SERIF;
+            }
+        }
+        return serifTypeface;
     }
 
     private static volatile Typeface monoTypeface;
@@ -317,6 +375,8 @@ public class AndroidUtilities {
 
     public static void clearTypefaceCache() {
         typefaceCache.clear();
+        inkTypefaceCache.clear();
+        serifTypeface = null;
         mediumTypeface = null;
     }
 
@@ -2452,6 +2512,22 @@ public class AndroidUtilities {
     public static Typeface getTypeface(String assetPath) {
         return typefaceCache.computeIfAbsent(assetPath, path -> {
             try {
+                // mvs Ink: брендовые начертания важнее темы, но не важнее файла
+                // шрифта, который человек выбрал сам.
+                if (!NekoConfig.typeface.Bool() && !TypefaceHelper.hasCustomTypeface()) {
+                    if (TYPEFACE_ROBOTO_REGULAR.equals(path)) {
+                        return inter(400, false);
+                    }
+                    if (TYPEFACE_ROBOTO_MEDIUM.equals(path)) {
+                        return inter(600, false);
+                    }
+                    if (TYPEFACE_ROBOTO_EXTRA_BOLD.equals(path)) {
+                        return inter(800, false);
+                    }
+                    if (TYPEFACE_RITALIC.equals(path)) {
+                        return inter(400, true);
+                    }
+                }
                 // DuckDuckGram: свой файл шрифта важнее переключателя «системный шрифт».
                 // Иначе при выключенном переключателе обычный текст брался из ассетов
                 // (createTypefaceFromAsset), а жирный — через bold()/createTypeface(int) —

@@ -4,6 +4,7 @@ import static org.telegram.ui.ActionBar.Theme.*;
 
 import android.graphics.Color;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 
 import androidx.core.graphics.ColorUtils;
 
@@ -2058,6 +2059,11 @@ public class ThemeColors {
         tint(colors, roseText, key_avatar_nameInMessagePink);
 
         tint(colors, sageText, key_stories_circle_closeFriends2);
+
+        // mvs: акценты, которые тема хранит отдельно от обычной палитры.
+        tint(colors, ink, key_telegram_color_dialogsLogo);
+        tint(colors, accent, key_telegram_color);
+        tint(colors, accentInk, key_telegram_color_text);
     }
 
     private static void tint(SparseIntArray colors, int color, int... keys) {
