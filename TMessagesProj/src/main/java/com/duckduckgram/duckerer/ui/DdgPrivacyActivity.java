@@ -74,6 +74,11 @@ public class DdgPrivacyActivity extends DdgCategoryActivity {
         // первое — пункт «Streamer mode» в боковом меню. Состояние одно (DdgConfig),
         // поэтому они не могут разойтись.
         rows.add(Row.toggle(R.string.DDGStreamerMode, R.string.DDGStreamerModeInfo, DdgConfig.streamerMode));
+
+        // mvs: тихая печать. Выключено по умолчанию — это обман ожиданий
+        // собеседника, включать должен сам человек.
+        rows.add(Row.header(R.string.DDGQuietHeader));
+        rows.add(Row.toggle(R.string.DDGTypingGhost, R.string.DDGTypingGhostInfo, DdgConfig.typingGhost));
         rows.add(Row.toggle(R.string.DDGHideStickerInfoOnPhotos, DdgConfig.hideStickerInfoOnPhotos));
         rows.add(Row.toggle(R.string.DDGMutualContacts, R.string.DDGMutualContactsInfo, DdgConfig.mutualContacts));
 

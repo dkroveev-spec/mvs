@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.R;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Cells.TextCell;
@@ -250,6 +251,22 @@ public abstract class DdgCategoryActivity extends BaseNekoSettingsActivity {
     /** Текст значения для строки VALUE. */
     public interface ValueProvider {
         String get();
+    }
+
+    /**
+     * mvs Ink: экран приходит снизу на 12 dp и проявляется за 240 мс. Это «rise»
+     * из спеки, но без задержек между строками: список прокручивается, и
+     * ступенчатое появление читалось бы как тормоз.
+     */
+    @Override
+    public View createView(Context context) {
+        View view = super.createView(context);
+        if (listView != null) {
+            listView.setAlpha(0f);
+            listView.setTranslationY(AndroidUtilities.dp(12));
+            listView.animate().alpha(1f).translationY(0f).setDuration(240).start();
+        }
+        return view;
     }
 
     private final List<Row> rows = new ArrayList<>();

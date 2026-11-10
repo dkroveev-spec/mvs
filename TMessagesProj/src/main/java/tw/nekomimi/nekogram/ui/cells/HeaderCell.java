@@ -176,6 +176,10 @@ public class HeaderCell extends LinearLayout {
             animatedTextView.setText(text, animate);
         } else {
             textView.setGravity((LocaleController.isRTL ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
+            // mvs Ink: заголовки секций — мелкие капсы с разрядкой, как рубрики
+            // в бумажном журнале, а не подписи Material.
+            textView.setAllCaps(true);
+            textView.setLetterSpacing(0.07f);
             textView.setText(text);
         }
     }

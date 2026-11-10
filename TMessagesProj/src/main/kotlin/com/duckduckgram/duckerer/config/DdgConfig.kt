@@ -446,6 +446,10 @@ object DdgConfig {
     @JvmField
     val viewOnceUnlimited = addConfig("DDGViewOnceUnlimited", ConfigItem.configTypeBool, false)
 
+    /** Не отправлять серверу «печатает…»: индикатор не появится у собеседника. */
+    @JvmField
+    val typingGhost = addConfig("DDGTypingGhost", ConfigItem.configTypeBool, false)
+
     // ---- Monet ----
 
     /** Свой акцентный цвет Monet, ARGB. */

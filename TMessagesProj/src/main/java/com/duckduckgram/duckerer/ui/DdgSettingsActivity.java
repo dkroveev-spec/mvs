@@ -132,6 +132,11 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
     @Override
     public View createView(Context context) {
         View view = super.createView(context);
+        if (listView != null) {
+            listView.setAlpha(0f);
+            listView.setTranslationY(AndroidUtilities.dp(12));
+            listView.animate().alpha(1f).translationY(0f).setDuration(240).start();
+        }
         if (actionBar != null && fragmentView instanceof FrameLayout) {
             actionBar.setBackground(null);
             actionBar.setCastShadows(false);

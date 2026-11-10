@@ -213,7 +213,7 @@
     <string name="DDGBadgePrice">Price</string>
     <string name="DDGBadgeOwned">Already purchased</string>
     <string name="DDGBadgeOpenBot">Open @DDG_Badgesbot</string>
-    <string name="DDGSupporterBadgeBulletin">This person supported DuckDuckGram</string>
+    <string name="DDGSupporterBadgeBulletin">Этот человек поддерживает mvs</string>
 
     <string name="DDGCopyLogsHeader">Logs</string>
     <string name="DDGCopyLogs">Copy logs</string>
@@ -234,7 +234,7 @@
     <string name="DDGSourceCode">Source code</string>
     <string name="DDGChannel">Channel</string>
     <string name="DDGDonateBot">Donate bot</string>
-    <string name="DDGCredits">Built on DuckDuckGram, NagramX and Telegram Android</string>
+    <string name="DDGCredits">mvs · GPLv3 · открытый исходный код</string>
     <string name="DDGBotTokenHint">Get the token from @BotFather and paste it here. After a successful login, restart the app so the new session is picked up.</string>
     <string name="DDGLoginError">Login failed</string>
     <string name="DDGBotLoginSuccess">Logged in as a bot. Restart the app to pick up the new account.</string>
@@ -251,7 +251,7 @@
     <string name="ShowTextQuote">Quote</string>
     <string name="ShowTextSpoiler">Spoiler</string>
     <string name="DDGChatExportTitle">Chat export</string>
-    <string name="DDGChatExportInfo">Pick a chat and DuckDuckGram writes its local history as Markdown: message text with formatting, authors, timestamps, and a table of attachments with names, sizes and whether the file is already on the device. Media files themselves are not copied, so the export never duplicates gigabytes out of the Telegram cache. The file goes to the ddg_export folder inside the app external files directory and is offered to share straight away. Only recent chats are listed</string>
+    <string name="DDGChatExportInfo">Pick a chat and mvs writes its local history as Markdown: message text with formatting, authors, timestamps, and a table of attachments with names, sizes and whether the file is already on the device. Media files themselves are not copied, so the export never duplicates gigabytes out of the Telegram cache. The file goes to the ddg_export folder inside the app external files directory and is offered to share straight away. Only recent chats are listed</string>
     <string name="DDGChatExportHeader">Recent chats</string>
     <string name="DDGChatExportNoChats">No chats found</string>
     <string name="DDGChatExportBusy">An export is already running</string>
@@ -331,10 +331,16 @@
     <string name="DeletedMarkCross">Cross</string>
     <string name="DeletedMarkEyeCrossed">Eye Crossed</string>
     <string name="DisableAds">Disable Ads</string>
+    <!-- Quiet -->
+    <string name="DDGQuietHeader">Тишина</string>
+    <string name="DDGTypingGhost">Скрыть «печатает…»</string>
+    <string name="DDGTypingGhostInfo">Клиент не сообщает серверу, что вы набираете текст. Собеседник не увидит индикатор, сообщение отправится как обычно.</string>
+
     <!-- mvs settings plate -->
     <string name="DDGGroupMvs">Новое в mvs</string>
     <string name="DDGGroupOther">Остальные настройки</string>
     <string name="DDGInkEdition" translatable="false">INK</string>
+    <string name="DDGPlateAbout">Ink · GPLv3 · без телеметрии\nДолгое нажатие на плашку меняет форму иконки.</string>
 
     <!-- Security (v1 read-only) -->
     <string name="DDGSecurityTitle">Защита</string>
@@ -344,6 +350,8 @@
     <string name="DDGSecurityPluginSignatures">Подписи плагинов</string>
     <string name="DDGSecurityAllowlist">Сетевой allowlist</string>
     <string name="DDGSecurityPlanned">в v1.1</string>
+    <string name="DDGSecurityManual">вручную</string>
+    <string name="DDGSecurityCopied">Подпись скопирована</string>
     <string name="DDGSecurityStateInfo">mvs v1 показывает состояние, но ничего не меняет. Подпись, проверка обновлений и allowlist появятся в v1.1.</string>
     <string name="DDGSecurityPluginsHeader">Плагины</string>
     <string name="DDGSecurityPlugins">Плагины и разрешения</string>
