@@ -34,7 +34,7 @@ import app.exteraless.icons.IconShapeHelper;
 public class DdgHeaderCell extends LinearLayout {
 
     /** Цвет подложки логотипа, как R.color.ic_background в exteraGram. */
-    private static final int LOGO_BACKGROUND = 0xFF0048FF;
+    private static final int LOGO_BACKGROUND = 0xFF151412;
 
     private Path shapePath;
 
@@ -76,7 +76,7 @@ public class DdgHeaderCell extends LinearLayout {
 
         TextView title = new TextView(context);
         title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
-        title.setTypeface(AndroidUtilities.bold());
+        title.setTypeface(AndroidUtilities.serif());
         title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         title.setGravity(Gravity.CENTER);
         title.setSingleLine(true);

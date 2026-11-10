@@ -72,24 +72,10 @@ public class NekoXConfig {
     }
 
     public static int getNotificationColor() {
-        int color = 0;
         Configuration configuration = ApplicationLoader.applicationContext.getResources().getConfiguration();
         boolean isDark = (configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
-        if (isDark) {
-            color = 0xffffffff;
-        } else {
-            if (Theme.getActiveTheme().hasAccentColors()) {
-                color = Theme.getActiveTheme().getAccentColor(Theme.getActiveTheme().currentAccentId);
-            }
-            if (Theme.getActiveTheme().isDark() || color == 0) {
-                color = Theme.getColor(Theme.key_actionBarDefault);
-            }
-            // too bright
-            if (AndroidUtilities.computePerceivedBrightness(color) >= 0.721f) {
-                color = Theme.getColor(Theme.key_windowBackgroundWhiteBlueHeader) | 0xff000000;
-            }
-        }
-        return color;
+        // mvs Ink: один тёплый акцент и в уведомлениях, а не синий цвет темы.
+        return isDark ? 0xFFFF7450 : 0xFFD9552F;
     }
 
     public static void showCustomApiBottomSheet(BaseFragment fragment) {

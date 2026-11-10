@@ -2512,21 +2512,20 @@ public class AndroidUtilities {
     public static Typeface getTypeface(String assetPath) {
         return typefaceCache.computeIfAbsent(assetPath, path -> {
             try {
-                // mvs Ink: брендовые начертания важнее темы, но не важнее файла
-                // шрифта, который человек выбрал сам.
-                if (!NekoConfig.typeface.Bool() && !TypefaceHelper.hasCustomTypeface()) {
-                    if (TYPEFACE_ROBOTO_REGULAR.equals(path)) {
-                        return inter(400, false);
-                    }
-                    if (TYPEFACE_ROBOTO_MEDIUM.equals(path)) {
-                        return inter(600, false);
-                    }
-                    if (TYPEFACE_ROBOTO_EXTRA_BOLD.equals(path)) {
-                        return inter(800, false);
-                    }
-                    if (TYPEFACE_RITALIC.equals(path)) {
-                        return inter(400, true);
-                    }
+                // mvs Ink: брендовые начертания, но выбор человека важнее.
+                // Если включён системный или свой файл шрифта, строим тот же вес из него.
+                final boolean customFont = NekoConfig.typeface.Bool() || TypefaceHelper.hasCustomTypeface();
+                if (TYPEFACE_ROBOTO_REGULAR.equals(path)) {
+                    return customFont ? TypefaceHelper.createTypeface(400, false) : inter(400, false);
+                }
+                if (TYPEFACE_ROBOTO_MEDIUM.equals(path)) {
+                    return customFont ? TypefaceHelper.createTypeface(600, false) : inter(600, false);
+                }
+                if (TYPEFACE_ROBOTO_EXTRA_BOLD.equals(path)) {
+                    return customFont ? TypefaceHelper.createTypeface(800, false) : inter(800, false);
+                }
+                if (TYPEFACE_RITALIC.equals(path)) {
+                    return customFont ? TypefaceHelper.createTypeface(400, true) : inter(400, true);
                 }
                 // DuckDuckGram: свой файл шрифта важнее переключателя «системный шрифт».
                 // Иначе при выключенном переключателе обычный текст брался из ассетов

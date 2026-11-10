@@ -63,6 +63,7 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
         list.add(new Category(R.string.DDGCategoryInterface, R.drawable.msg_theme, DdgInterfaceActivity::new));
         list.add(new Category(R.string.DDGCategoryAppearance, R.drawable.msg_text_outlined, DdgAppearanceActivity::new));
         list.add(new Category(R.string.DDGCategoryPrivacy, R.drawable.msg_stealth_locked, DdgPrivacyActivity::new));
+        list.add(new Category(R.string.DDGSecurityTitle, R.drawable.msg_stealth_locked, DdgSecurityActivity::new));
         // Java-плагины — отдельный движок и отдельный список; тот же экран, что
         // у Python, но с java-контроллером.
         list.add(new Category(R.string.DDGCategoryJavaPlugins, R.drawable.msg_plugins,

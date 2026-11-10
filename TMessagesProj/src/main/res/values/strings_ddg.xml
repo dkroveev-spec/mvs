@@ -2,7 +2,7 @@
 <!-- mvs: собственные строки клиента. Ключи с префиксом DDG. -->
 <resources>
     <string name="DuckDuckGram" translatable="false">mvs</string>
-    <string name="DuckDuckGramPreferences">mvs</string>
+    <string name="DuckDuckGramPreferences">mvs.</string>
     <string name="DuckDuckGramPreferencesInfo">Тихий мессенджер с характером</string>
 
     <string name="DDGCategoryChats">Chats</string>
@@ -331,4 +331,16 @@
     <string name="DeletedMarkCross">Cross</string>
     <string name="DeletedMarkEyeCrossed">Eye Crossed</string>
     <string name="DisableAds">Disable Ads</string>
+    <!-- Security (v1 read-only) -->
+    <string name="DDGSecurityTitle">Security</string>
+    <string name="DDGSecurityState">State</string>
+    <string name="DDGSecurityApkSignature">APK signature</string>
+    <string name="DDGSecurityUpdates">Update verification</string>
+    <string name="DDGSecurityPluginSignatures">Plugin signatures</string>
+    <string name="DDGSecurityAllowlist">Network allowlist</string>
+    <string name="DDGSecurityPlanned">in v1.1</string>
+    <string name="DDGSecurityStateInfo">mvs v1 shows the state without changing it. Signing, update checks and the network allowlist arrive in v1.1.</string>
+    <string name="DDGSecurityPluginsHeader">Plugins</string>
+    <string name="DDGSecurityPlugins">Plugins and permissions</string>
+    <string name="DDGSecurityPluginsInfo">The list shows granted permissions, trust level and the audit journal for each plugin.</string>
 </resources>
