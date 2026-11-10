@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- DuckDuckGram: собственные строки клиента. Ключи с префиксом DDG. -->
+<!-- mvs: собственные строки клиента. Ключи с префиксом DDG. -->
 <resources>
-    <string name="DuckDuckGram" translatable="false">DuckDuckGram</string>
-    <string name="DuckDuckGramPreferences">DuckDuckGram Preferences</string>
-    <string name="DuckDuckGramPreferencesInfo">Privacy-first Telegram client</string>
+    <string name="DuckDuckGram" translatable="false">mvs</string>
+    <string name="DuckDuckGramPreferences">mvs</string>
+    <string name="DuckDuckGramPreferencesInfo">Тихий мессенджер с характером</string>
 
     <string name="DDGCategoryChats">Chats</string>
     <string name="DDGCategoryMedia">Media</string>

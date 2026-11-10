@@ -11,9 +11,9 @@ import java.util.HashMap;
 
 public class ThemeColors {
 
-    public static final int TELEGRAM_COLOR = 0xFF229AF0;        // -14509328
-    public static final int TELEGRAM_COLOR_TEXT = 0xFF298ACF;   // -14054705
-    public static final int DEFAULT_BLACK_TEXT = 0xFF1A1D21;   // -15065823
+    public static final int TELEGRAM_COLOR = 0xFFD9552F;        // -14509328
+    public static final int TELEGRAM_COLOR_TEXT = 0xFFB8431F;   // -14054705
+    public static final int DEFAULT_BLACK_TEXT = 0xFF151412;   // -15065823
 
     private static SparseArray<String> colorKeysMap;
     private static HashMap<String, Integer> colorKeysStringMap;
@@ -1751,4 +1751,319 @@ public class ThemeColors {
         }
         return colorKeysMap.get(currentKey);
     }
+
+    /**
+     * mvs Ink palette. Applied after the theme file so every built-in theme reads as Ink.
+     */
+    public static void applyInkPalette(SparseIntArray colors, boolean dark) {
+        if (colors == null) {
+            return;
+        }
+
+        final int paper = dark ? 0xFF131312 : 0xFFF5F1E8;
+        final int surface = dark ? 0xFF1B1B19 : 0xFFFFFDF7;
+        final int surfaceAlt = dark ? 0xFF242320 : 0xFFECE6DA;
+        final int ink = dark ? 0xFFF0EBE1 : 0xFF151412;
+        final int muted = dark ? 0xFFA59F94 : 0xFF5A564E;
+        final int mutedDim = dark ? 0xFF7A7469 : 0xFF8A8478;
+        final int hair = dark ? 0xFF2C2B28 : 0xFFDCD5C7;
+        final int accent = dark ? 0xFFFF7450 : 0xFFD9552F;
+        final int accentSoft = dark ? 0xFF3A2119 : 0xFFF4DACF;
+        final int accentInk = dark ? 0xFFFF9A7A : 0xFFB8431F;
+        final int sage = dark ? 0xFF9DB58A : 0xFF6F7F5C;
+        final int sageText = dark ? 0xFFB9CFA6 : 0xFF4C5E42;
+        final int danger = dark ? 0xFFFF7450 : 0xFFB8431F;
+        final int onAccent = dark ? 0xFF1A0F0B : 0xFF151412;
+        final int onInk = dark ? 0xFF131312 : 0xFFF5F1E8;
+        final int onSage = dark ? 0xFF131312 : 0xFFF5F1E8;
+        final int listSelector = dark ? 0x14F0EBE1 : 0x12151412;
+        final int accentAlpha = dark ? 0x33FF7450 : 0x33D9552F;
+        final int outBubble = dark ? 0xFFF0EBE1 : 0xFF151412;
+        final int outSelected = dark ? 0xFFE4DDD1 : 0xFF24211D;
+        final int outText = dark ? 0xFF131312 : 0xFFF5F1E8;
+        final int outMeta = dark ? 0xFF6E685F : 0xFFB3AB9D;
+        final int outName = dark ? 0xFF4A443B : 0xFFE8DFD0;
+        final int outAccent = dark ? 0xFFB8431F : 0xFFFF9A7A;
+        final int outBg = dark ? 0xFFDCD5C7 : 0xFF2E2A24;
+        final int outCode = dark ? 0xFFE4DDD1 : 0xFF24211D;
+        final int outLine = dark ? 0xFFCFC7B9 : 0xFF3A352D;
+        final int outBar = dark ? 0xFFC4BCAD : 0xFF4A443B;
+        final int outSelection = dark ? 0x33131312 : 0x33F5F1E8;
+        final int actionPressed = dark ? 0xFFDCD5C7 : 0xFF2A2620;
+        final int pinnedOverlay = dark ? 0x0AF0EBE1 : 0x0A151412;
+        final int terraBg = dark ? 0xFF3A2119 : 0xFFF3D7CB;
+        final int terraBg2 = dark ? 0xFF4A2B20 : 0xFFEAC7B8;
+        final int sageBg = dark ? 0xFF26301F : 0xFFDDE4D5;
+        final int sageBg2 = dark ? 0xFF303D28 : 0xFFCFD9C4;
+        final int sandBg = dark ? 0xFF322B1C : 0xFFE8DFC9;
+        final int sandBg2 = dark ? 0xFF403722 : 0xFFDFD3B4;
+        final int slateBg = dark ? 0xFF232C31 : 0xFFD9DEE1;
+        final int slateBg2 = dark ? 0xFF2C383F : 0xFFCBD3D8;
+        final int roseBg = dark ? 0xFF342226 : 0xFFEAD7D9;
+        final int roseBg2 = dark ? 0xFF412B30 : 0xFFE0C6C9;
+        final int terraText = dark ? 0xFFFF9A7A : 0xFFA33A1C;
+        final int sandText = dark ? 0xFFE0C98D : 0xFF6B5A2E;
+        final int slateText = dark ? 0xFFB8CBD6 : 0xFF3E4C55;
+        final int roseText = dark ? 0xFFE8B7BE : 0xFF7A3B44;
+
+        tint(colors, paper,
+                key_windowBackgroundWhite, key_windowBackgroundGray,
+                key_actionBarDefault, key_actionBarDefaultArchived,
+                key_chats_menuTopBackground, key_chats_menuTopBackgroundCats,
+                key_chat_wallpaper, key_chat_wallpaper_gradient_to1, key_chat_wallpaper_gradient_to2, key_chat_wallpaper_gradient_to3,
+                key_player_background, key_voipgroup_actionBar, key_voipgroup_listViewBackground);
+
+        tint(colors, surface,
+                key_dialogBackground, key_dialogTopBackground, key_dialogScrollGlow,
+                key_actionBarDefaultSubmenuBackground, key_chats_menuBackground,
+                key_chat_inBubble, key_chat_messagePanelBackground, key_chat_topPanelBackground,
+                key_chat_emojiPanelBackground, key_chat_botKeyboardButtonBackground,
+                key_chat_stickersHintPanel, key_voipgroup_dialogBackground);
+
+        tint(colors, surfaceAlt,
+                key_dialogBackgroundGray, key_graySection,
+                key_chats_archiveBackground, key_chats_archivePinBackground, key_chats_archivePullDownBackground,
+                key_chat_inBubbleSelected, key_chat_serviceBackground, key_chat_serviceBackgroundSelected,
+                key_chat_inAudioProgress, key_chat_inAudioSelectedProgress,
+                key_chat_inFileProgress, key_chat_inFileProgressSelected,
+                key_chat_inFileBackground, key_chat_inFileBackgroundSelected,
+                key_chat_inLoaderPhoto, key_chat_emojiPanelStickerPackSelector,
+                key_chat_botKeyboardButtonBackgroundPressed, key_chat_messagePanelVoiceLockBackground,
+                key_chat_attachPhotoBackground,
+                key_dialogSearchBackground, key_dialogGiftsBackground, key_dialog_inlineProgressBackground,
+                key_returnToCallMutedBackground, key_voipgroup_searchBackground,
+                key_avatar_backgroundGray, key_avatar_backgroundArchived, key_avatar_backgroundArchivedHidden);
+
+        tint(colors, ink,
+                key_windowBackgroundWhiteBlackText, key_dialogTextBlack, key_dialogIcon,
+                key_actionBarDefaultIcon, key_actionBarDefaultTitle, key_actionBarDefaultSearch,
+                key_actionBarDefaultArchivedIcon, key_actionBarDefaultArchivedTitle, key_actionBarDefaultArchivedSearch,
+                key_actionBarDefaultSubmenuItem,
+                key_chats_name, key_chats_nameArchived, key_chats_secretName,
+                key_chats_nameMessage, key_chats_nameMessageArchived, key_chats_nameMessage_threeLines, key_chats_nameMessageArchived_threeLines,
+                key_chats_menuItemText, key_chats_menuName,
+                key_chat_messageTextIn, key_chat_inAudioTitleText, key_chat_inFileNameText,
+                key_chat_inContactPhoneText, key_chat_inContactPhoneSelectedText,
+                key_chat_topPanelTitle, key_chat_searchPanelText, key_chat_botKeyboardButtonText,
+                key_chat_emojiPanelTrendingTitle, key_chat_recordTime,
+                key_profile_title, key_profile_tabSelectedText,
+                key_avatar_text, key_avatar_actionBarIconBlue,
+                key_player_actionBarTitle, key_player_actionBarItems, key_player_button,
+                key_voipgroup_nameText, key_voipgroup_searchText, key_voipgroup_actionBarItems);
+
+        tint(colors, muted,
+                key_windowBackgroundWhiteGrayText, key_windowBackgroundWhiteGrayText2,
+                key_dialogTextGray, key_dialogTextGray2,
+                key_windowBackgroundWhiteBlueHeader, key_graySectionText, key_actionBarDefaultSubtitle,
+                key_chats_message, key_chats_messageArchived, key_chats_message_threeLines,
+                key_chats_attachMessage, key_chats_actionMessage, key_chats_date, key_chats_date_bold,
+                key_chats_pinnedIcon, key_chats_muteIcon, key_chats_archiveIcon, key_chats_archiveText, key_chats_sentClock,
+                key_chat_inTimeText, key_chat_inTimeSelectedText, key_chat_inViews, key_chat_inViewsSelected,
+                key_chat_inMenu, key_chat_inMenuSelected, key_chat_inAdminText, key_chat_inAdminSelectedText,
+                key_chat_inAudioPerformerText, key_chat_inAudioDurationText, key_chat_inAudioDurationSelectedText,
+                key_chat_inFileInfoText, key_chat_inFileInfoSelectedText, key_chat_inVenueInfoText, key_chat_inVenueInfoSelectedText,
+                key_chat_serviceText, key_chat_serviceIcon, key_chat_topPanelClose, key_chat_topPanelMessage,
+                key_chat_replyPanelIcons, key_chat_replyPanelClose, key_chat_searchPanelIcons,
+                key_chat_attachUnactiveTab, key_chat_attachPermissionImage, key_chat_attachPermissionText, key_chat_attachEmptyImage,
+                key_chat_emojiPanelEmptyText, key_chat_emojiPanelIcon, key_chat_emojiPanelBackspace,
+                key_chat_emojiPanelStickerSetName, key_chat_emojiPanelStickerSetNameIcon, key_chat_emojiPanelTrendingDescription,
+                key_chat_recordVoiceCancel, key_chat_lockIcon, key_chat_messagePanelIcons,
+                key_profile_status, key_profile_tabText, key_avatar_subtitleInProfileBlue,
+                key_player_actionBarSubtitle, key_player_time,
+                key_emptyListPlaceholder, key_dialogEmptyImage, key_dialogEmptyText, key_dialog_inlineProgress,
+                key_dialogGiftsTabText, key_windowBackgroundWhiteGrayIcon, key_dialogSearchIcon,
+                key_voipgroup_lastSeenText);
+
+        tint(colors, mutedDim,
+                key_windowBackgroundWhiteGrayText3, key_windowBackgroundWhiteGrayText4, key_windowBackgroundWhiteGrayText5,
+                key_windowBackgroundWhiteGrayText6, key_windowBackgroundWhiteGrayText7, key_windowBackgroundWhiteGrayText8,
+                key_windowBackgroundWhiteHintText, key_dialogTextGray3, key_dialogTextGray4, key_dialogTextHint,
+                key_actionBarDefaultSearchPlaceholder, key_actionBarDefaultArchivedSearchPlaceholder,
+                key_dialogSearchHint, key_chat_messagePanelHint, key_voipgroup_searchPlaceholder);
+
+        tint(colors, hair,
+                key_divider, key_dialogGrayLine, key_dialogShadowLine, key_dialogLineProgressBackground,
+                key_windowBackgroundWhiteInputField, key_dialogInputField,
+                key_dialogCheckboxSquareUnchecked, key_dialogCheckboxSquareDisabled, key_dialogRadioBackground,
+                key_chats_archivePullDownBackgroundActive, key_chats_tabUnreadUnactiveBackground,
+                key_chat_inAudioSeekbar, key_chat_inAudioSeekbarSelected, key_chat_inAudioCacheSeekbar,
+                key_chat_inVoiceSeekbar, key_chat_inVoiceSeekbarSelected,
+                key_chat_inTableBorder, key_chat_inDivider, key_chat_replyPanelLine, key_chat_topPanelLine,
+                key_chat_emojiPanelShadowLine,
+                key_switchTrack, key_switchTrackBlue, key_switch2Track,
+                key_checkboxSquareUnchecked, key_checkboxSquareDisabled, key_checkboxDisabled, key_radioBackground,
+                key_login_progressOuter, key_player_progressBackground, key_player_progressCachedBackground,
+                key_fastScrollInactive, key_contextProgressInner1, key_contextProgressInner2,
+                key_contextProgressInner3, key_contextProgressInner4);
+
+        tint(colors, accent,
+                key_chats_unreadCounter, key_chats_mentionIcon, key_chats_sentCheck, key_chats_sentReadCheck,
+                key_chats_tabUnreadActiveBackground,
+                key_chat_inReplyLine, key_chat_inPreviewLine, key_chat_inQuote,
+                key_chat_inAudioSeekbarFill, key_chat_inVoiceSeekbarFill,
+                key_chat_inLoader, key_chat_inLoaderSelected,
+                key_chat_messagePanelSend, key_chat_messagePanelCursor,
+                key_chat_messagePanelVoicePressed, key_chat_messagePanelVoiceBackground,
+                key_chat_recordedVoiceBackground, key_chat_emojiPanelIconSelected,
+                key_chat_emojiPanelStickerPackSelectorLine, key_chat_emojiPanelNewTrending,
+                key_chat_inlineResultIcon, key_chat_attachCheckBoxBackground, key_chat_attachActiveTab,
+                key_chat_attachPermissionMark, key_profile_creatorIcon, key_profile_tabSelectedLine,
+                key_switchTrackChecked, key_switchTrackBlueChecked, key_switch2TrackChecked,
+                key_checkboxSquareBackground, key_checkbox, key_dialogCheckboxSquareBackground,
+                key_dialogRoundCheckBox, key_dialogRadioBackgroundChecked, key_dialogLineProgress,
+                key_dialogFloatingButton, key_dialogInputFieldActivated, key_windowBackgroundWhiteInputFieldActivated,
+                key_progressCircle, key_login_progressInner, key_player_buttonActive, key_player_progress,
+                key_fastScrollActive, key_picker_badge, key_voipgroup_connectingProgress,
+                key_stories_circle1, key_stories_circle_dialog1, key_stories_circle_live1,
+                key_contextProgressOuter1, key_contextProgressOuter2, key_contextProgressOuter3, key_contextProgressOuter4);
+
+        tint(colors, accentInk,
+                key_windowBackgroundWhiteValueText, key_windowBackgroundWhiteLinkText,
+                key_windowBackgroundWhiteBlueText, key_windowBackgroundWhiteBlueText2, key_windowBackgroundWhiteBlueText3,
+                key_windowBackgroundWhiteBlueText4, key_windowBackgroundWhiteBlueText5, key_windowBackgroundWhiteBlueText6,
+                key_windowBackgroundWhiteBlueText7, key_windowBackgroundWhiteBlueButton, key_windowBackgroundWhiteBlueIcon,
+                key_dialogTextLink, key_dialogTextBlue, key_dialogTextBlue2, key_dialogTextBlue4, key_dialogButton,
+                key_dialogFloatingButtonPressed, key_chats_draft,
+                key_chat_inInstant, key_chat_inInstantSelected, key_chat_inPreviewInstantText,
+                key_chat_inForwardedNameText, key_chat_inViaBotNameText, key_chat_inPsaNameText,
+                key_chat_inReplyNameText, key_chat_inSiteNameText, key_chat_inContactNameText,
+                key_chat_inContactIcon, key_chat_inLocationIcon,
+                key_chat_inReactionButtonText, key_chat_inReactionButtonTextSelected,
+                key_chat_replyPanelName, key_chat_botButtonText, key_chat_botSwitchToInlineText,
+                key_chat_serviceLink, key_chat_attachIcon, key_chat_attachContactText,
+                key_chat_emojiPanelStickerSetNameHighlight, key_chat_recordedVoiceDarkerBackground,
+                key_share_linkText, key_share_icon);
+
+        tint(colors, accentSoft,
+                key_chat_inLocationBackground, key_chat_inContactBackground, key_chat_inBubbleLocationPlaceholder,
+                key_chat_inReactionButtonBackground, key_chat_attachGalleryBackground, key_chat_attachAudioBackground,
+                key_chat_attachContactBackground, key_chat_attachLocationBackground, key_chat_attachPollBackground,
+                key_avatar_backgroundSaved, key_avatar_background2Saved,
+                key_avatar_backgroundInProfileBlue, key_avatar_backgroundActionBarBlue,
+                key_dialogReactionMentionBackground, key_share_linkBackground);
+
+        tint(colors, sage,
+                key_windowBackgroundWhiteGreenText, key_windowBackgroundWhiteGreenText2,
+                key_chats_secretIcon, key_chats_verifiedBackground, key_chats_onlineCircle,
+                key_chat_inPollCorrectAnswer, key_chat_outPollCorrectAnswer,
+                key_chat_inGreenCall, key_chat_outGreenCall,
+                key_profile_verifiedBackground, key_calls_callReceivedGreenIcon,
+                key_stories_circle_closeFriends1);
+
+        tint(colors, danger,
+                key_windowBackgroundWhiteRedText3, key_windowBackgroundWhiteRedText4,
+                key_dialogTextRed, key_dialogRedIcon, key_dialogSwipeRemove,
+                key_chats_sentError, key_chats_sentErrorIcon,
+                key_chat_inPollWrongAnswer, key_chat_outPollWrongAnswer,
+                key_chat_recordedVoiceDot, key_chat_messagePanelVoiceDelete,
+                key_text_RedRegular, key_text_RedBold, key_calls_callReceivedRedIcon, key_voipgroup_leaveButton);
+
+        tint(colors, listSelector,
+                key_actionBarDefaultSelector, key_actionBarDefaultArchivedSelector, key_dialogButtonSelector,
+                key_listSelector, key_settings_listSelector, key_chats_tabletSelectedOverlay,
+                key_profile_tabSelector, key_avatar_actionBarSelectorBlue, key_chat_serviceBackgroundSelector,
+                key_switchTrackBlueSelector, key_switchTrackBlueSelectorChecked, key_player_actionBarSelector,
+                key_voipgroup_listSelector);
+
+        tint(colors, onAccent,
+                key_chats_unreadCounterText, key_fastScrollText, key_picker_badgeText,
+                key_dialogFloatingIcon, key_dialogCheckboxSquareCheck, key_dialogRoundCheckBoxCheck,
+                key_checkboxSquareCheck, key_checkboxCheck, key_chat_attachCheckBoxCheck,
+                key_chat_messagePanelVoiceDuration, key_chat_recordedVoicePlayPause,
+                key_chat_recordedVoiceProgressInner);
+
+        tint(colors, onInk,
+                key_chats_actionIcon, key_profile_actionIcon, key_featuredStickers_buttonText,
+                key_undo_cancelColor, key_undo_infoColor, key_returnToCallText,
+                key_chat_gifSaveHintText, key_chat_outTextSelectionCursor);
+
+        tint(colors, outBubble,
+                key_chat_outBubble, key_chat_outBubbleGradient1, key_chat_outBubbleGradient2,
+                key_chat_outBubbleGradient3, key_chat_outBubbleGradientAnimated);
+        tint(colors, outSelected, key_chat_outBubbleSelected);
+
+        tint(colors, outText,
+                key_chat_messageTextOut, key_chat_outContactPhoneText, key_chat_outContactPhoneSelectedText,
+                key_chat_outAudioTitleText, key_chat_outFileNameText);
+
+        tint(colors, outMeta,
+                key_chat_outTimeText, key_chat_outTimeSelectedText, key_chat_outSentClock, key_chat_outSentClockSelected,
+                key_chat_outViews, key_chat_outViewsSelected, key_chat_outMenu, key_chat_outMenuSelected,
+                key_chat_outReplyMessageText, key_chat_outReplyMediaMessageText, key_chat_outReplyMediaMessageSelectedText,
+                key_chat_outPreviewInstantText, key_chat_outAudioPerformerText, key_chat_outAudioDurationText,
+                key_chat_outAudioDurationSelectedText, key_chat_outFileInfoText, key_chat_outFileInfoSelectedText,
+                key_chat_outVenueInfoText, key_chat_outVenueInfoSelectedText, key_chat_outAdminText,
+                key_chat_mediaSentClock);
+
+        tint(colors, outName,
+                key_chat_outForwardedNameText, key_chat_outViaBotNameText, key_chat_outPsaNameText,
+                key_chat_outSiteNameText, key_chat_outContactNameText,
+                key_chat_outReactionButtonText, key_chat_outReactionButtonTextSelected);
+
+        tint(colors, outAccent,
+                key_chat_outReplyLine, key_chat_outReplyNameText, key_chat_outPreviewLine, key_chat_outQuote,
+                key_chat_outLoader, key_chat_outLoaderSelected, key_chat_outLocationIcon, key_chat_outContactIcon,
+                key_chat_outSentCheck, key_chat_outSentCheckSelected, key_chat_outSentCheckRead,
+                key_chat_outSentCheckReadSelected, key_chat_outInstant, key_chat_outInstantSelected,
+                key_chat_outAudioSeekbarFill, key_chat_outVoiceSeekbarFill);
+
+        tint(colors, outBg,
+                key_chat_outAudioProgress, key_chat_outAudioSelectedProgress,
+                key_chat_outFileProgress, key_chat_outFileProgressSelected,
+                key_chat_outFileBackground, key_chat_outFileBackgroundSelected,
+                key_chat_outContactBackground, key_chat_outReactionButtonBackground,
+                key_chat_outBubbleLocationPlaceholder, key_chat_outMediaIcon, key_chat_outMediaIconSelected);
+
+        tint(colors, outBar,
+                key_chat_outAudioSeekbar, key_chat_outAudioSeekbarSelected, key_chat_outAudioCacheSeekbar,
+                key_chat_outVoiceSeekbar, key_chat_outVoiceSeekbarSelected);
+
+        tint(colors, outCode, key_chat_outCodeBackground, key_chat_outTableBackground);
+        tint(colors, outLine, key_chat_outTableBorder, key_chat_outDivider);
+        tint(colors, outSelection, key_chat_outTextSelectionHighlight, key_chat_outLinkSelectBackground);
+
+        tint(colors, 0,
+                key_chat_inBubbleShadow, key_chat_outBubbleShadow, key_chat_inBubbleSelectedOverlay,
+                key_chat_outBubbleSelectedOverlay, key_chat_outBubbleGradientSelectedOverlay,
+                key_chat_messagePanelShadow, key_chat_messagePanelVoiceLockShadow,
+                key_chats_menuTopShadow, key_chats_menuTopShadowCats, key_dialogCardShadow);
+
+        tint(colors, paper, key_chat_recordedVoiceProgress, key_switchTrackBlueThumbChecked);
+        tint(colors, surface, key_switchTrackBlueThumb);
+        tint(colors, onSage, key_chats_verifiedCheck, key_profile_verifiedCheck);
+        tint(colors, accent, key_chat_TextSelectionCursor);
+        tint(colors, accentAlpha, key_chat_inTextSelectionHighlight, key_chat_linkSelectBackground, key_chat_textSelectBackground);
+        tint(colors, pinnedOverlay, key_chats_pinnedOverlay);
+
+        tint(colors, terraBg, key_avatar_backgroundRed);
+        tint(colors, terraBg2, key_avatar_background2Red);
+        tint(colors, terraText, key_avatar_nameInMessageRed);
+        tint(colors, sandBg, key_avatar_backgroundOrange);
+        tint(colors, sandBg2, key_avatar_background2Orange);
+        tint(colors, sandText, key_avatar_nameInMessageOrange);
+        tint(colors, roseBg, key_avatar_backgroundViolet);
+        tint(colors, roseBg2, key_avatar_background2Violet);
+        tint(colors, roseText, key_avatar_nameInMessageViolet);
+        tint(colors, sageBg, key_avatar_backgroundGreen);
+        tint(colors, sageBg2, key_avatar_background2Green);
+        tint(colors, sageText, key_avatar_nameInMessageGreen);
+        tint(colors, slateBg, key_avatar_backgroundCyan);
+        tint(colors, slateBg2, key_avatar_background2Cyan);
+        tint(colors, slateText, key_avatar_nameInMessageCyan);
+        tint(colors, slateBg, key_avatar_backgroundBlue);
+        tint(colors, slateBg2, key_avatar_background2Blue);
+        tint(colors, slateText, key_avatar_nameInMessageBlue);
+        tint(colors, roseBg, key_avatar_backgroundPink);
+        tint(colors, roseBg2, key_avatar_background2Pink);
+        tint(colors, roseText, key_avatar_nameInMessagePink);
+
+        tint(colors, sageText, key_stories_circle_closeFriends2);
+    }
+
+    private static void tint(SparseIntArray colors, int color, int... keys) {
+        for (int key : keys) {
+            colors.put(key, color);
+        }
+    }
+
 }

@@ -6211,6 +6211,7 @@ public class Theme {
     }
 
     public static void refreshThemeColors(boolean bg, boolean messages) {
+        ThemeColors.applyInkPalette(currentColorsNoAccent, currentTheme.isDark());
         currentColors = currentColorsNoAccent.clone();
         shouldDrawGradientIcons = true;
         ThemeAccent accent = currentTheme.getAccent(false);
@@ -6219,6 +6220,7 @@ public class Theme {
         }
         applyCalculatedTableColors(currentColorsNoAccent, currentColors, currentTheme.isDark());
         applyCalculatedArticleCodeColors(currentColorsNoAccent, currentColors, currentTheme.isDark());
+        ThemeColors.applyInkPalette(currentColors, currentTheme.isDark());
         if (!messages) {
             boolean async = !(LaunchActivity.getLastFragment() instanceof ChatActivity);
             reloadWallpaper(async);
