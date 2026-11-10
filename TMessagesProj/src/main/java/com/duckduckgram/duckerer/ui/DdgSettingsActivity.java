@@ -57,30 +57,45 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
         }
     }
 
-    private static List<Category> categories() {
+    /** Верхняя группа: то, что mvs добавил поверх форка. */
+    private static List<Category> primaryCategories() {
         List<Category> list = new ArrayList<>();
-        list.add(new Category(R.string.DDGCategoryChats, R.drawable.msg_discussion, DdgChatsActivity::new));
-        list.add(new Category(R.string.DDGCategoryInterface, R.drawable.msg_theme, DdgInterfaceActivity::new));
-        list.add(new Category(R.string.DDGCategoryAppearance, R.drawable.msg_text_outlined, DdgAppearanceActivity::new));
-        list.add(new Category(R.string.DDGCategoryPrivacy, R.drawable.msg_stealth_locked, DdgPrivacyActivity::new));
         list.add(new Category(R.string.DDGSecurityTitle, R.drawable.msg_stealth_locked, DdgSecurityActivity::new));
+        list.add(new Category(R.string.DDGCategoryAppearance, R.drawable.msg_text_outlined, DdgAppearanceActivity::new));
+        list.add(new Category(R.string.DDGCategoryInterface, R.drawable.msg_theme, DdgInterfaceActivity::new));
         // Java-плагины — отдельный движок и отдельный список; тот же экран, что
         // у Python, но с java-контроллером.
         list.add(new Category(R.string.DDGCategoryJavaPlugins, R.drawable.msg_plugins,
                 app.exteraless.plugins.ui.PluginsActivity::javaInstance));
+        return list;
+    }
+
+    /** Нижняя группа: остальные экраны форка. */
+    private static List<Category> secondaryCategories() {
+        List<Category> list = new ArrayList<>();
+        list.add(new Category(R.string.DDGCategoryChats, R.drawable.msg_discussion, DdgChatsActivity::new));
+        list.add(new Category(R.string.DDGCategoryPrivacy, R.drawable.msg_stealth_locked, DdgPrivacyActivity::new));
         list.add(new Category(R.string.DDGCategoryOther, R.drawable.msg_list, DdgOtherActivity::new));
         list.add(new Category(R.string.DDGCategoryAyuMoments, R.drawable.ayu_filter_all,
                 tw.nekomimi.nekogram.settings.NekoAyuMomentsSettingsActivity::new));
         return list;
     }
 
-    private final List<Category> categories = categories();
+    private final List<Category> primary = primaryCategories();
+    private final List<Category> secondary = secondaryCategories();
+    private final List<Category> categories = new ArrayList<>();
+    {
+        categories.addAll(primary);
+        categories.addAll(secondary);
+    }
     /** Смещение строки категории в списке адаптера; -1, если это не категория. */
     private final List<Integer> categoryRowIndexes = new ArrayList<>();
 
     private int aboutRow;
-    private int categoriesHeaderRow;
-    private int categoriesDividerRow;
+    private int primaryHeaderRow;
+    private int primaryDividerRow;
+    private int otherHeaderRow;
+    private int otherDividerRow;
     private int linksHeaderRow;
     private int channelRow;
     private int sourceRow;
@@ -93,13 +108,20 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
 
         aboutRow = addRow("about");
 
-        categoriesHeaderRow = addRow("categoriesHeader");
+        // Плашка mvs стоит первой, под ней — только то, что mvs добавил сам.
+        primaryHeaderRow = addRow("mvsHeader");
         categoryRowIndexes.clear();
-        for (int i = 0; i < categories.size(); i++) {
+        for (int i = 0; i < primary.size(); i++) {
             // Ключ строки нужен только для уникальности в rowMap/ссылках настроек.
             categoryRowIndexes.add(addRow("ddg_category_" + i));
         }
-        categoriesDividerRow = addRow();
+        primaryDividerRow = addRow();
+
+        otherHeaderRow = addRow("otherHeader");
+        for (int i = 0; i < secondary.size(); i++) {
+            categoryRowIndexes.add(addRow("ddg_category_" + (primary.size() + i)));
+        }
+        otherDividerRow = addRow();
 
         linksHeaderRow = addRow("linksHeader");
         channelRow = addRow("channel");
@@ -232,8 +254,10 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
             switch (holder.getItemViewType()) {
                 case TYPE_HEADER: {
                     HeaderCell cell = (HeaderCell) holder.itemView;
-                    if (position == categoriesHeaderRow) {
-                        cell.setText(getString(R.string.DuckDuckGramPreferences));
+                    if (position == primaryHeaderRow) {
+                        cell.setText(getString(R.string.DDGGroupMvs));
+                    } else if (position == otherHeaderRow) {
+                        cell.setText(getString(R.string.DDGGroupOther));
                     } else if (position == linksHeaderRow) {
                         cell.setText(getString(R.string.DDGChannel));
                     }
@@ -274,9 +298,9 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
         public int getItemViewType(int position) {
             if (position == aboutRow) {
                 return TYPE_ABOUT;
-            } else if (position == categoriesHeaderRow || position == linksHeaderRow) {
+            } else if (position == primaryHeaderRow || position == otherHeaderRow || position == linksHeaderRow) {
                 return TYPE_HEADER;
-            } else if (position == categoriesDividerRow) {
+            } else if (position == primaryDividerRow || position == otherDividerRow) {
                 return TYPE_SHADOW;
             } else if (position == linksDividerRow) {
                 return TYPE_INFO_PRIVACY;

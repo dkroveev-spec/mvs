@@ -4,6 +4,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 
+import static org.telegram.messenger.LocaleController.getString;
+
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.R;
 

@@ -781,12 +781,12 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         if (app.exteraless.general.GeneralConfig.showNagramSettings()) {
             items.add(SettingCell.Factory.of(100, 0xFF3CCFFF, 0xFF007AFF, R.drawable.filled_profile_settings, getString(R.string.NekoSettings)));
         }
-        // Как в exteraGram 12.9.0 (SettingsActivity.java:899): знак приложения вместо
-        // шестерёнки, акцент фирменного цвета на обе точки градиента.
-        items.add(SettingCell.Factory.of(-1, 0xFF993C38, 0xFF993C38, R.drawable.duckduckgram_icon_tile, getString(R.string.OpenExteraPreferences), getString(R.string.OpenExteraInfo)));
+        // mvs: у форка теперь своя графитовая строка выше, поэтому вход в настройки
+        // exteraless идёт ниже и с нейтральной иконкой, без второго знака приложения.
+        items.add(SettingCell.Factory.of(-1, 0xFF6E6A61, 0xFF6E6A61, R.drawable.msg_settings, getString(R.string.OpenExteraPreferences), getString(R.string.OpenExteraInfo)));
         // DuckDuckGram: собственный корень настроек поверх форка. Идёт первым,
         // потому что это лицо клиента, а список exteraless остаётся доступен ниже.
-        items.add(SettingCell.Factory.of(102, 0xFF0048FF, 0xFF0048FF, R.drawable.duckduckgram_icon_tile, getString(R.string.DuckDuckGramPreferences), getString(R.string.DDGSettingsInfo)));
+        items.add(SettingCell.Factory.of(102, 0xFF151412, 0xFF151412, R.drawable.duckduckgram_icon_tile, getString(R.string.DuckDuckGramPreferences), getString(R.string.DDGSettingsInfo)));
         items.add(UItem.asShadow(null));
 
         items.add(SettingCell.Factory.of(1, IconBackgroundColors.BLUE.top, IconBackgroundColors.BLUE.bottom, R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));

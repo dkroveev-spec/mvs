@@ -4,10 +4,15 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.graphics.Canvas;
 import android.graphics.Path;
+import android.graphics.drawable.GradientDrawable;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,23 +29,31 @@ import app.exteraless.icons.IconPacksConfig;
 import app.exteraless.icons.IconShapeHelper;
 
 /**
- * Шапка корневого экрана DuckDuckGram: логотип, название, версия.
+ * Плашка mvs в настройках.
  *
- * Повторяет {@link app.exteraless.settings.AboutHeaderCell}, но с логотипом DuckDuckGram.
- * Форма логотипа — маска лаунчера, а не жёсткий круг: на прошивке со сквирклом
- * иконка в настройках должна выглядеть так же, как на рабочем столе.
- * Переключается долгим нажатием по самому логотипу.
+ * Вместо прежней светлой шапки с логотипом — графитовая карточка Ink: знак,
+ * словесный знак mvs. серифом, девиз, версия сборки и метка издания. Плашка
+ * заодно служит заголовком хаба: под ней лежит всё, что mvs добавил поверх
+ * форка, ниже — остальные экраны.
+ *
+ * Долгое нажатие по карточке (или по знаку) переключает маску иконки, как
+ * раньше: на прошивке со сквирклом логотип должен совпадать с рабочим столом.
  */
 public class DdgHeaderCell extends LinearLayout {
 
-    /** Цвет подложки логотипа, как R.color.ic_background в exteraGram. */
-    private static final int LOGO_BACKGROUND = 0xFF151412;
+    /** Бумага и терракота Ink. */
+    private static final int PAPER = 0xFFF5F1E8;
+    private static final int ACCENT = 0xFFD9552F;
 
     private Path shapePath;
 
+    private static int dp(int value) {
+        return AndroidUtilities.dp(value);
+    }
+
     private Path shapePath() {
         if (shapePath == null) {
-            shapePath = IconShapeHelper.getFinalIconShapePath(72, 72, 18);
+            shapePath = IconShapeHelper.getFinalIconShapePath(46, 46, 13);
         }
         return shapePath;
     }
@@ -48,7 +61,29 @@ public class DdgHeaderCell extends LinearLayout {
     public DdgHeaderCell(Context context) {
         super(context);
         setOrientation(VERTICAL);
-        setGravity(Gravity.CENTER);
+        setPadding(dp(16), dp(8), dp(16), dp(8));
+
+        final boolean dark = Theme.getActiveTheme() != null && Theme.getActiveTheme().isDark();
+        final int cardColor = dark ? 0xFF1D1C19 : 0xFF151412;
+        final int muted = 0xB3F0EBE1;
+
+        LinearLayout card = new LinearLayout(context);
+        card.setOrientation(VERTICAL);
+        GradientDrawable cardBackground = new GradientDrawable();
+        cardBackground.setColor(cardColor);
+        cardBackground.setCornerRadius(dp(22));
+        if (dark) {
+            cardBackground.setStroke(dp(1), 0xFF3A3730);
+        }
+        card.setBackground(cardBackground);
+        card.setPadding(dp(18), dp(18), dp(18), dp(14));
+        card.setOnLongClickListener(this::toggleIconShape);
+        addView(card, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
+        LinearLayout head = new LinearLayout(context);
+        head.setOrientation(HORIZONTAL);
+        head.setGravity(Gravity.CENTER_VERTICAL);
+        card.addView(head, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         ImageView logo = new ImageView(context) {
             @Override
@@ -60,39 +95,86 @@ public class DdgHeaderCell extends LinearLayout {
             }
         };
         logo.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        logo.setBackgroundColor(LOGO_BACKGROUND);
+        logo.setBackgroundColor(cardColor);
         logo.setImageResource(R.drawable.duckduckgram_icon);
-        logo.setOnLongClickListener(v -> {
-            IconPacksConfig.toggleSystemIconShape();
-            IconShapeHelper.invalidate();
-            shapePath = null;
-            v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS,
-                    HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-            v.invalidate();
-            return true;
-        });
-        addView(logo, LayoutHelper.createLinear(72, 72,
-                Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 40, 0, 0));
+        logo.setOnLongClickListener(this::toggleIconShape);
+        head.addView(logo, new LinearLayout.LayoutParams(dp(46), dp(46)));
 
+        LinearLayout text = new LinearLayout(context);
+        text.setOrientation(VERTICAL);
+        LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+        textParams.leftMargin = dp(14);
+        head.addView(text, textParams);
+
+        String mark = LocaleController.getString(R.string.DuckDuckGramPreferences);
+        SpannableString wordmark = new SpannableString(mark);
+        if (mark.endsWith(".")) {
+            wordmark.setSpan(new ForegroundColorSpan(ACCENT),
+                    mark.length() - 1, mark.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
         TextView title = new TextView(context);
-        title.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlackText));
+        title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
         title.setTypeface(AndroidUtilities.serif());
-        title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-        title.setGravity(Gravity.CENTER);
+        title.setTextColor(PAPER);
+        title.setIncludeFontPadding(false);
         title.setSingleLine(true);
-        title.setText(LocaleController.getString(R.string.DuckDuckGramPreferences));
-        addView(title, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT,
-                Gravity.TOP | Gravity.CENTER_HORIZONTAL, 50, 16, 50, 0));
+        title.setText(wordmark);
+        text.addView(title, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        TextView tagline = new TextView(context);
+        tagline.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+        tagline.setTextColor(muted);
+        tagline.setText(LocaleController.getString(R.string.DuckDuckGramPreferencesInfo));
+        tagline.setMaxLines(2);
+        tagline.setLineSpacing(dp(2), 1f);
+        LinearLayout.LayoutParams taglineParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        taglineParams.topMargin = dp(4);
+        text.addView(tagline, taglineParams);
+
+        View divider = new View(context);
+        divider.setBackgroundColor(0x26F5F1E8);
+        LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, dp(1));
+        dividerParams.topMargin = dp(16);
+        card.addView(divider, dividerParams);
+
+        LinearLayout footer = new LinearLayout(context);
+        footer.setOrientation(HORIZONTAL);
+        footer.setGravity(Gravity.CENTER_VERTICAL);
+        LinearLayout.LayoutParams footerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        footerParams.topMargin = dp(10);
+        card.addView(footer, footerParams);
 
         TextView version = new TextView(context);
-        version.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
-        version.setTypeface(AndroidUtilities.bold());
-        version.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-        version.setGravity(Gravity.CENTER);
-        version.setLineSpacing(AndroidUtilities.dp(2), 1f);
+        version.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 11);
+        version.setTextColor(muted);
+        version.setSingleLine(true);
         version.setText(buildVersionString());
-        addView(version, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT,
-                Gravity.TOP | Gravity.CENTER_HORIZONTAL, 60, 2, 60, 28));
+        footer.addView(version, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        TextView edition = new TextView(context);
+        edition.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+        edition.setTextColor(ACCENT);
+        edition.setLetterSpacing(0.14f);
+        edition.setGravity(Gravity.END);
+        edition.setText(LocaleController.getString(R.string.DDGInkEdition));
+        footer.addView(edition, new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+    }
+
+    private boolean toggleIconShape(View view) {
+        IconPacksConfig.toggleSystemIconShape();
+        IconShapeHelper.invalidate();
+        shapePath = null;
+        view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS,
+                HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+        view.invalidate();
+        return true;
     }
 
     /** "12.9.2 (1258)" — версия плюс versionCode из PackageInfo, как в оригинале. */

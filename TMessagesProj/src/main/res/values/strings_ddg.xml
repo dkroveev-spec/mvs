@@ -5,24 +5,24 @@
     <string name="DuckDuckGramPreferences">mvs.</string>
     <string name="DuckDuckGramPreferencesInfo">Тихий мессенджер с характером</string>
 
-    <string name="DDGCategoryChats">Chats</string>
+    <string name="DDGCategoryChats">Чаты</string>
     <string name="DDGCategoryMedia">Media</string>
-    <string name="DDGCategoryInterface">Interface</string>
+    <string name="DDGCategoryInterface">Интерфейс</string>
     <string name="DDGCategoryAvatars">Avatars and folders</string>
-    <string name="DDGCategoryPrivacy">Privacy screen</string>
+    <string name="DDGCategoryPrivacy">Приватность</string>
     <string name="DDGCategoryTypography">Typography</string>
     <string name="DDGCategoryTranslate">Translation</string>
     <string name="DDGCategoryStorage">Storage and network</string>
     <string name="DDGCategoryGhost">Ghost mode</string>
     <string name="DDGCategoryAyuMoments">AyuMoments</string>
     <string name="DDGCategoryMonet">Monet theme</string>
-    <string name="DDGCategoryAppearance">Appearance</string>
-    <string name="DDGCategoryPlugins">Plugins</string>
-    <string name="DDGCategoryJavaPlugins">Java plugins</string>
+    <string name="DDGCategoryAppearance">Оформление</string>
+    <string name="DDGCategoryPlugins">Плагины</string>
+    <string name="DDGCategoryJavaPlugins">Java-плагины</string>
     <string name="DDGCategoryProfile">Local profile</string>
     <string name="DDGCategorySupporters">Supporters</string>
     <string name="DDGCategoryLogin">Login</string>
-    <string name="DDGCategoryOther">Other</string>
+    <string name="DDGCategoryOther">Прочее</string>
     <string name="DDGCategoryDonate">Donate</string>
 
     <!-- Chats -->
@@ -238,7 +238,7 @@
     <string name="DDGBotTokenHint">Get the token from @BotFather and paste it here. After a successful login, restart the app so the new session is picked up.</string>
     <string name="DDGLoginError">Login failed</string>
     <string name="DDGBotLoginSuccess">Logged in as a bot. Restart the app to pick up the new account.</string>
-    <string name="DDGSettingsInfo">Categories, features, plugins and supporter badges</string>
+    <string name="DDGSettingsInfo">Ink, плагины и защита</string>
     <string name="DDGSaveTrafficInfo">Chat list media previews are the main consumer of traffic on mobile data. Turning previews off keeps the list quiet until you open the chat</string>
     <string name="DDGGhostInDrawer">Show ghost mode in the drawer</string>
     <string name="DDGGhostStatus">Show ghost mode status</string>
@@ -331,16 +331,21 @@
     <string name="DeletedMarkCross">Cross</string>
     <string name="DeletedMarkEyeCrossed">Eye Crossed</string>
     <string name="DisableAds">Disable Ads</string>
+    <!-- mvs settings plate -->
+    <string name="DDGGroupMvs">Новое в mvs</string>
+    <string name="DDGGroupOther">Остальные настройки</string>
+    <string name="DDGInkEdition" translatable="false">INK</string>
+
     <!-- Security (v1 read-only) -->
-    <string name="DDGSecurityTitle">Security</string>
-    <string name="DDGSecurityState">State</string>
-    <string name="DDGSecurityApkSignature">APK signature</string>
-    <string name="DDGSecurityUpdates">Update verification</string>
-    <string name="DDGSecurityPluginSignatures">Plugin signatures</string>
-    <string name="DDGSecurityAllowlist">Network allowlist</string>
-    <string name="DDGSecurityPlanned">in v1.1</string>
-    <string name="DDGSecurityStateInfo">mvs v1 shows the state without changing it. Signing, update checks and the network allowlist arrive in v1.1.</string>
-    <string name="DDGSecurityPluginsHeader">Plugins</string>
-    <string name="DDGSecurityPlugins">Plugins and permissions</string>
-    <string name="DDGSecurityPluginsInfo">The list shows granted permissions, trust level and the audit journal for each plugin.</string>
+    <string name="DDGSecurityTitle">Защита</string>
+    <string name="DDGSecurityState">Состояние</string>
+    <string name="DDGSecurityApkSignature">Подпись APK</string>
+    <string name="DDGSecurityUpdates">Проверка обновлений</string>
+    <string name="DDGSecurityPluginSignatures">Подписи плагинов</string>
+    <string name="DDGSecurityAllowlist">Сетевой allowlist</string>
+    <string name="DDGSecurityPlanned">в v1.1</string>
+    <string name="DDGSecurityStateInfo">mvs v1 показывает состояние, но ничего не меняет. Подпись, проверка обновлений и allowlist появятся в v1.1.</string>
+    <string name="DDGSecurityPluginsHeader">Плагины</string>
+    <string name="DDGSecurityPlugins">Плагины и разрешения</string>
+    <string name="DDGSecurityPluginsInfo">Список показывает выданные разрешения, уровень доверия и журнал действий по каждому плагину.</string>
 </resources>
