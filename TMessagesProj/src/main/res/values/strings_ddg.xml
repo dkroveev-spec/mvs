@@ -2,6 +2,8 @@
 <!-- mvs: собственные строки клиента. Ключи с префиксом DDG. -->
 <resources>
     <string name="DuckDuckGram" translatable="false">mvs</string>
+    <!-- Словесный знак: всегда латиницей и с точкой, в любой локали. -->
+    <string name="DDGWordmark" translatable="false">mvs.</string>
     <string name="DuckDuckGramPreferences">mvs.</string>
     <string name="DuckDuckGramPreferencesInfo">Тихий мессенджер с характером</string>
 

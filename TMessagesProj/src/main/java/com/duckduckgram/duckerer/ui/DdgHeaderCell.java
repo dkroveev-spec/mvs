@@ -124,7 +124,8 @@ public class DdgHeaderCell extends LinearLayout {
         textParams.leftMargin = dp(14);
         head.addView(text, textParams);
 
-        String mark = LocaleController.getString(R.string.DuckDuckGramPreferences);
+        // Словесный знак не переводим: mvs. — это логотип, а не подпись экрана.
+        String mark = LocaleController.getString(R.string.DDGWordmark);
         SpannableString wordmark = new SpannableString(mark);
         if (mark.endsWith(".")) {
             wordmark.setSpan(new ForegroundColorSpan(ACCENT),
@@ -226,7 +227,7 @@ public class DdgHeaderCell extends LinearLayout {
             return;
         }
         new AlertDialog.Builder(context)
-                .setTitle(LocaleController.getString(R.string.DuckDuckGramPreferences))
+                .setTitle(LocaleController.getString(R.string.DDGWordmark))
                 .setMessage(buildVersionString() + "\n\n" + LocaleController.getString(R.string.DDGPlateAbout))
                 .setPositiveButton(LocaleController.getString(R.string.OK), null)
                 .show();
