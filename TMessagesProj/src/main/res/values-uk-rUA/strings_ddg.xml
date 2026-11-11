@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- DuckDuckGram: собственные строки клиента. Ключи с префиксом DDG. -->
 <resources>
-    <string name="DuckDuckGram" translatable="false">DuckDuckGram</string>
-    <string name="DuckDuckGramPreferences">Налаштування DuckDuckGram</string>
+    <string name="DuckDuckGram" translatable="false">mvs</string>
+    <string name="DuckDuckGramPreferences">Налаштування mvs</string>
     <string name="DuckDuckGramPreferencesInfo">Telegram-клієнт, де приватність понад усе</string>
 
     <string name="DDGCategoryChats">Чати</string>
@@ -212,7 +212,7 @@
     <string name="DDGBadgePrice">Ціна</string>
     <string name="DDGBadgeOwned">Уже придбано</string>
     <string name="DDGBadgeOpenBot">Відкрити @DDG_Badgesbot</string>
-    <string name="DDGSupporterBadgeBulletin">Ця людина підтримала DuckDuckGram</string>
+    <string name="DDGSupporterBadgeBulletin">Ця людина підтримала mvs</string>
 
     <string name="DDGCopyLogsHeader">Логи</string>
     <string name="DDGCopyLogs">Копіювати логи</string>
@@ -233,7 +233,7 @@
     <string name="DDGSourceCode">Вихідний код</string>
     <string name="DDGChannel">Канал</string>
     <string name="DDGDonateBot">Бот для донатів</string>
-    <string name="DDGCredits">Створено на базі DuckDuckGram, NagramX і Telegram Android</string>
+    <string name="DDGCredits">Створено на базі mvs, mvs і Telegram Android</string>
     <string name="DDGBotTokenHint">Візьміть токен у @BotFather і вставте його сюди. Після успішного входу перезапустіть застосунок, щоб нова сесія підхопилася.</string>
     <string name="DDGLoginError">Не вдалося увійти</string>
     <string name="DDGBotLoginSuccess">Ви увійшли як бот. Перезапустіть застосунок, щоб новий акаунт з\'явився.</string>
@@ -250,7 +250,7 @@
     <string name="ShowTextQuote">Цитата</string>
     <string name="ShowTextSpoiler">Спойлер</string>
     <string name="DDGChatExportTitle">Експорт чату</string>
-    <string name="DDGChatExportInfo">Виберіть чат, і DuckDuckGram запише його локальну історію в Markdown: текст повідомлень із форматуванням, авторів, час і таблицю вкладень з іменами, розмірами та ознакою того, чи файл уже на пристрої. Самі медіафайли не копіюються, тож експорт не дублює гігабайти з кешу Telegram. Файл потрапляє в папку ddg_export усередині каталогу зовнішніх файлів застосунку і одразу пропонується надіслати. У списку лише недавні чати</string>
+    <string name="DDGChatExportInfo">Виберіть чат, і mvs запише його локальну історію в Markdown: текст повідомлень із форматуванням, авторів, час і таблицю вкладень з іменами, розмірами та ознакою того, чи файл уже на пристрої. Самі медіафайли не копіюються, тож експорт не дублює гігабайти з кешу Telegram. Файл потрапляє в папку ddg_export усередині каталогу зовнішніх файлів застосунку і одразу пропонується надіслати. У списку лише недавні чати</string>
     <string name="DDGChatExportHeader">Недавні чати</string>
     <string name="DDGChatExportNoChats">Чати не знайдено</string>
     <string name="DDGChatExportBusy">Експорт уже виконується</string>

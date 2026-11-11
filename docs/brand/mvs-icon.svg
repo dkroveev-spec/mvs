@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 1024 1024" role="img" aria-label="mvs">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17150F"/>
+      <stop offset="1" stop-color="#090806"/>
+    </linearGradient>
+    <linearGradient id="ember" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#C4471F"/>
+      <stop offset="1" stop-color="#C4471F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="230" fill="url(#bg)"/>
+  <path d="M0 1024V600c150-150 380-240 640-230 140 5 260 45 384 120v534z" fill="#15130E" opacity="0.85"/>
+  <path d="M0 1024h330c-74-160-186-278-330-346z" fill="url(#ember)" opacity="0.9"/>
+  <path d="M812 268l40 104 104 40-104 40-40 104-40-104-104-40 104-40z" fill="#E2552A"/>
+  <text x="512" y="664" text-anchor="middle" fill="#F2E9D8"
+        font-family="Lora, 'Playfair Display', Georgia, 'Times New Roman', serif"
+        font-size="292" font-weight="600" letter-spacing="-6">mvs</text>
+</svg>
