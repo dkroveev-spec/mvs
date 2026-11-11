@@ -38,15 +38,15 @@ import tw.nekomimi.nekogram.config.ConfigItem;
 import xyz.nextalone.nagram.NaConfig;
 
 /**
- * Импорт и экспорт настроек в формате upstream («.extera»).
+ * Импорт и экспорт настроек в формате exteraGram («.extera»).
  *
  * Формат задан com/exteragram/messenger/backup/PreferencesUtils.java 12.9.0: JSON, ключи верхнего
  * уровня — имена файлов SharedPreferences (exteraconfig, pillstackconfig, mainconfig), внутри —
  * имена свойств ExteraConfig. Файл обёрнут {@link InvisibleEncryptor}.
  *
- * Наши ключи называются иначе и часть настроек живёт в upstream, поэтому связь задаётся таблицей
- * ниже: для каждого ключа upstream — чтение нашего значения и запись обратно, с проверкой
- * диапазонов теми же правилами, что у upstream (чужой файл считается недоверенным).
+ * Наши ключи называются иначе и часть настроек живёт в NagramX, поэтому связь задаётся таблицей
+ * ниже: для каждого ключа exteraGram — чтение нашего значения и запись обратно, с проверкой
+ * диапазонов теми же правилами, что у exteraGram (чужой файл считается недоверенным).
  */
 public final class EtgBackup {
 
@@ -104,7 +104,7 @@ public final class EtgBackup {
 
     // ---- Публичное API ----
 
-    /** Собирает бэкап в формате upstream. */
+    /** Собирает бэкап в формате exteraGram. */
     public static String buildBackup(boolean encrypt) {
         ensureConfigsLoaded();
         JsonObject root = new JsonObject();
@@ -131,10 +131,10 @@ public final class EtgBackup {
     }
 
     public static String generateBackupName() {
-        return "upstream-" + Utilities.generateRandomString(4) + EXTENSION;
+        return "exteraless-" + Utilities.generateRandomString(4) + EXTENSION;
     }
 
-    /** Файл похож на бэкап upstream: расширение на месте и внутри есть хоть один знакомый ключ. */
+    /** Файл похож на бэкап exteraGram: расширение на месте и внутри есть хоть один знакомый ключ. */
     public static boolean isBackup(File file) {
         if (file == null || !file.getName().toLowerCase().endsWith(EXTENSION)) {
             return false;
@@ -208,7 +208,7 @@ public final class EtgBackup {
     }
 
     /**
-     * Секция по имени. У mainconfig бывает суффикс аккаунта (mainconfig2) — upstream берёт
+     * Секция по имени. У mainconfig бывает суффикс аккаунта (mainconfig2) — exteraGram берёт
      * первую подходящую, повторяем.
      */
     private static JsonObject sectionOf(JsonObject root, String name) {
@@ -392,7 +392,7 @@ public final class EtgBackup {
 
         bool(list, "useGoogleCrashlytics", GeneralConfig.crashReports);
 
-        // Инверсия: у upstream тумблер «включено», у upstream — «выключено».
+        // Инверсия: у exteraGram тумблер «включено», у NagramX — «выключено».
         boolInverted(list, "inAppVibration", NekoConfig.disableVibration);
 
         list.add(new Entry(SECTION_EXTERA, "tabCounter", KIND_BOOL, 0, 0, null,
@@ -411,10 +411,10 @@ public final class EtgBackup {
         integer(list, "cameraType", ChatsConfig.cameraType, 0, 2);
         integer(list, "videoMessagesCamera", NaConfig.INSTANCE.getCameraInVideoMessages(), 0, 2);
 
-        // Провайдеры перевода нумерованы по-разному: 0/1/2/3 у upstream против 8/1/3/7 у upstream.
+        // Провайдеры перевода нумерованы по-разному: 0/1/2/3 у exteraGram против 8/1/3/7 у NagramX.
         remap(list, "translationProvider", NekoConfig.translationProvider, 0, 3,
                 new int[]{8, 1, 3, 7}, new int[][]{{8, 0}, {1, 1}, {3, 2}, {7, 3}});
-        // Вкладки: upstream 0 иконки+текст, 1 текст, 2 иконки; upstream 0 текст, 1 иконки, 2 микс.
+        // Вкладки: exteraGram 0 иконки+текст, 1 текст, 2 иконки; NagramX 0 текст, 1 иконки, 2 микс.
         remap(list, "tabIcons", NekoConfig.tabsTitleType, 0, 2,
                 new int[]{2, 0, 1}, new int[][]{{0, 1}, {1, 2}, {2, 0}});
         // Действия по двойному тапу: наборы не совпадают, переносим только общие.
@@ -444,7 +444,7 @@ public final class EtgBackup {
         text(list, SECTION_PILLS, "activePills", PillStackConfig.activePillsRaw, EtgBackup::isPillsLayout);
         text(list, SECTION_PILLS, "hiddenPills", PillStackConfig.hiddenPillsRaw, EtgBackup::isPillsLayout);
 
-        // «app» у upstream и «» у upstream означают одно и то же — язык приложения.
+        // «app» у exteraGram и «» у NagramX означают одно и то же — язык приложения.
         list.add(new Entry(SECTION_EXTERA, "targetLang", KIND_STRING, 0, 0,
                 value -> value.equalsIgnoreCase("app") || value.matches("^[a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*$"),
                 () -> {
@@ -476,7 +476,7 @@ public final class EtgBackup {
                 () -> new JsonPrimitive(NaConfig.INSTANCE.getBackAnimationStyle().Int() == 1),
                 value -> NaConfig.INSTANCE.getBackAnimationStyle().setConfigInt(value.getAsBoolean() ? 1 : 0)));
 
-        // Стили MD3 у upstream трёхпозиционные: 0 стандарт, 1 modern, 2 MD3.
+        // Стили MD3 у NagramX трёхпозиционные: 0 стандарт, 1 modern, 2 MD3.
         list.add(new Entry(SECTION_EXTERA, "newSliderStyle", KIND_BOOL, 0, 0, null,
                 () -> new JsonPrimitive(NaConfig.INSTANCE.getSliderStyle().Int() == 2),
                 value -> NaConfig.INSTANCE.getSliderStyle().setConfigInt(value.getAsBoolean() ? 2 : 0)));
@@ -484,7 +484,7 @@ public final class EtgBackup {
                 () -> new JsonPrimitive(NaConfig.INSTANCE.getSwitchStyle().Int() == 2),
                 value -> NaConfig.INSTANCE.getSwitchStyle().setConfigInt(value.getAsBoolean() ? 2 : 0)));
 
-        // Разделители: 0 скрыт, 1 линия, 2 сегменты. Ноль дублируется в рабочий ключ upstream.
+        // Разделители: 0 скрыт, 1 линия, 2 сегменты. Ноль дублируется в рабочий ключ NagramX.
         list.add(new Entry(SECTION_EXTERA, "dividerStyle", KIND_INT, 0, 2, null,
                 () -> new JsonPrimitive(AppearanceConfig.dividerStyle.Int()),
                 value -> {
@@ -509,7 +509,7 @@ public final class EtgBackup {
                 value -> NaConfig.INSTANCE.getHideBottomNavigationBar()
                         .setConfigBool(value.getAsInt() == 1)));
 
-        // Безлимит недавних стикеров — один тумблер поверх двух ключей upstream.
+        // Безлимит недавних стикеров — один тумблер поверх двух ключей NagramX.
         list.add(new Entry(SECTION_EXTERA, "unlimitedRecentStickers", KIND_BOOL, 0, 0, null,
                 () -> new JsonPrimitive(NekoConfig.maxRecentStickerCount.Int() > RECENT_STICKERS_DEFAULT),
                 value -> NekoConfig.maxRecentStickerCount.setConfigInt(
@@ -545,7 +545,7 @@ public final class EtgBackup {
     }
 
     /**
-     * Боковое меню. У upstream два JSON-массива, у нас одна строка «видимые;скрытые»,
+     * Боковое меню. У exteraGram два JSON-массива, у нас одна строка «видимые;скрытые»,
      * поэтому обе половины пишутся и читаются согласованно.
      */
     private static void addMainMenuEntries(List<Entry> list) {
@@ -592,7 +592,7 @@ public final class EtgBackup {
                     SharedConfig.fontSize = value.getAsInt();
                     SharedConfig.fontSizeIsDefault = false;
                     mainPreferences().edit().putInt("fons_size", SharedConfig.fontSize).apply();
-                    // mvs: textSizeScale. fons_size — это базовый размер, а рисование
+                    // DuckDuckGram: textSizeScale. fons_size — это базовый размер, а рисование
                     // идёт через getDdgFontSize(), то есть база, умноженная на множитель DDG.
                     // Множитель при этом живёт в nkmrcfg и восстанавливается сам, поэтому
                     // после импорта пересчитываем: иначе до перезапуска процесс держал бы
@@ -622,8 +622,8 @@ public final class EtgBackup {
     }
 
     /**
-     * Значение с разной нумерацией. {@code toOurs} — таблица «значение upstream → наше»
-     * ({@code -1} = переносить нечего), {@code toEtg} — пары «наше значение, значение upstream».
+     * Значение с разной нумерацией. {@code toOurs} — таблица «значение exteraGram → наше»
+     * ({@code -1} = переносить нечего), {@code toEtg} — пары «наше значение, значение exteraGram».
      */
     private static void remap(List<Entry> list, String key, ConfigItem item, int min, int max,
                               int[] toOurs, int[][] toEtg) {
@@ -645,7 +645,7 @@ public final class EtgBackup {
                 }));
     }
 
-    /** Дробное значение upstream против целого у нас: {@code наше = etg * scale}. */
+    /** Дробное значение exteraGram против целого у нас: {@code наше = etg * scale}. */
     private static void floatToInt(List<Entry> list, String key, ConfigItem item,
                                    float min, float max, float scale) {
         list.add(new Entry(SECTION_EXTERA, key, KIND_FLOAT, min, max, null,

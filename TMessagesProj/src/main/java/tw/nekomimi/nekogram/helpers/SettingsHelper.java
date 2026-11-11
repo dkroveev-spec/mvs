@@ -46,7 +46,7 @@ import tw.nekomimi.nekogram.settings.NekoTranslatorSettingsActivity;
 public class SettingsHelper {
 
     private static final String HOST_NAGRAM = "nasettings";
-    private static final String HOST_EXTERALESS = "upstream";
+    private static final String HOST_EXTERALESS = "exteraless";
 
     private static final Map<String, String> SEARCH_TITLE_ALIASES = new HashMap<>();
     private static final Map<String, String> TRANSLATOR_ROWS = new HashMap<>();
@@ -164,7 +164,7 @@ public class SettingsHelper {
             return null;
         }
         switch (key) {
-            case "upstream":
+            case "exteraless":
                 return HOST_EXTERALESS + "/settings";
             case "exteraless_general":
                 return HOST_EXTERALESS + "/general";
@@ -201,12 +201,12 @@ public class SettingsHelper {
             unknown.run();
             return;
         }
-        final boolean upstream = HOST_EXTERALESS.equals(segments.get(0));
-        if (!upstream && !HOST_NAGRAM.equals(segments.get(0))) {
+        final boolean exteraless = HOST_EXTERALESS.equals(segments.get(0));
+        if (!exteraless && !HOST_NAGRAM.equals(segments.get(0))) {
             unknown.run();
             return;
         }
-        if (upstream && segments.size() < 2) {
+        if (exteraless && segments.size() < 2) {
             unknown.run();
             return;
         }
@@ -218,7 +218,7 @@ public class SettingsHelper {
         BaseNekoSettingsActivity neko_fragment = null;
         BaseNekoXSettingsActivity nekox_fragment = null;
         OpenExteraAppNavigationActivity navigation_fragment = null;
-        String screen = upstream ? segments.get(1) : nagramScreen(segments.size() == 1 ? null : segments.get(1), row);
+        String screen = exteraless ? segments.get(1) : nagramScreen(segments.size() == 1 ? null : segments.get(1), row);
         if (screen == null && segments.size() == 2 && segments.get(1).startsWith("exteraless_")) {
             String base = segments.get(1).substring("exteraless_".length());
             if (row != null && MOVED_ROWS.containsKey(base + ":" + row)) {
@@ -300,7 +300,7 @@ public class SettingsHelper {
                 case "t":
                     fragment = nekox_fragment = new NekoTranslatorSettingsActivity();
                     break;
-                case "upstream":
+                case "exteraless":
                     fragment = neko_fragment = new OpenExteraSettingsActivity();
                     break;
                 case "exteraless_general":
@@ -461,9 +461,9 @@ public class SettingsHelper {
         ArrayList<SettingsSearchResult> items = new ArrayList<>();
         ArrayList<BaseNekoXSettingsActivity> fragments = new ArrayList<>();
         fragments.add(new NekoTranslatorSettingsActivity());
-        // Раньше AyuMoments был экраном upstream; теперь это самостоятельный
+        // Раньше AyuMoments был экраном exteraless; теперь это самостоятельный
         // экран настроек, поэтому в поиске он идёт рядом с переводчиком, а не
-        // среди разделов upstream.
+        // среди разделов exteraless.
         fragments.add(new NekoAyuMomentsSettingsActivity());
 
         ArrayList<BaseNekoSettingsActivity> exteralessFragments = new ArrayList<>();
@@ -478,8 +478,8 @@ public class SettingsHelper {
         exteralessFragments.add(new PillStackSettingsActivity());
         exteralessFragments.add(new AiSettingsActivity());
 
-        // Категории mvs: свой родитель в подписи, чтобы результаты не
-        // смешивались с upstream. Без этого списка все их getSearchGuid/Icon/
+        // Категории DuckDuckGram: свой родитель в подписи, чтобы результаты не
+        // смешивались с exteraless. Без этого списка все их getSearchGuid/Icon/
         // Prefix были объявлены, но никем не вызывались — настроек DDG в поиске
         // не было вовсе.
         ArrayList<BaseNekoSettingsActivity> ddgFragments = new ArrayList<>();

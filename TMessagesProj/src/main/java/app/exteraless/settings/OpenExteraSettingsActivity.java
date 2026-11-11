@@ -186,7 +186,7 @@ public class OpenExteraSettingsActivity extends BaseNekoSettingsActivity {
         } else if (position == otherRow) {
             presentFragment(new OpenExteraOtherActivity());
         } else if (position == channelRow) {
-            getMessagesController().openByUserName("mvs", this, 1);
+            org.telegram.messenger.browser.Browser.openUrl(getParentActivity(), "https://github.com/dkroveev-spec/mvs");
         } else if (position == sourceRow) {
             org.telegram.messenger.browser.Browser.openUrl(getParentActivity(),
                     "https://github.com/dkroveev-spec/mvs");
