@@ -39,11 +39,11 @@ import app.exteraless.plugins.ui.PluginIcons;
  * Перенос {@code plugins/ui/components/PluginCell}. До этого плагин занимал
  * обычную строку списка с тумблером: описание не помещалось, иконки не было
  * вовсе, а всё, кроме включения, пряталось в меню по долгому нажатию — то есть
- * было невидимо. exteraGram показывает карточку, где действия лежат прямо под
+ * было невидимо. upstream показывает карточку, где действия лежат прямо под
  * описанием, и это единственное место, где их вообще видно.
  *
  * Компактный режим ({@link PluginsController#isCompactView()}) сжимает карточку
- * до строки с иконкой слева, как у exteraGram.
+ * до строки с иконкой слева, как у upstream.
  */
 public class PluginCell extends FrameLayout implements NotificationCenter.NotificationCenterDelegate {
 
@@ -330,7 +330,7 @@ public class PluginCell extends FrameLayout implements NotificationCenter.Notifi
         }
     }
 
-    /** Кнопка действия: круглый селектор и «пружинка» на нажатие, как у exteraGram. */
+    /** Кнопка действия: круглый селектор и «пружинка» на нажатие, как у upstream. */
     private ImageView createButton(Context context, int iconRes, boolean red,
                                    OnClickListener listener) {
         ImageView button = new ImageView(context);
@@ -450,7 +450,7 @@ public class PluginCell extends FrameLayout implements NotificationCenter.Notifi
 
     /**
      * Компактный режим: иконка уезжает влево, тексты — в одну строку.
-     * exteraGram: {@code PluginCell.updateLayout}.
+     * upstream: {@code PluginCell.updateLayout}.
      */
     private void updateLayout() {
         headerLayout.setOrientation(compact ? LinearLayout.HORIZONTAL : LinearLayout.VERTICAL);

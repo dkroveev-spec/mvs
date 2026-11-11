@@ -69,9 +69,9 @@ import tw.nekomimi.nekogram.utils.AndroidUtil;
 import xyz.nextalone.nagram.NaConfig;
 
 /**
- * Экран «General» раздела openExtera — визуально 1:1 повторяет General из exteraGram.
- * Настройки по возможности привязаны к уже существующим ConfigItem NagramX; новые заводятся
- * только там, где в NagramX нет аналога, и помечены «UI-only» (без бэкенда, как в exteraGram 12.9.0).
+ * Экран «General» раздела openExtera — визуально 1:1 повторяет General из upstream.
+ * Настройки по возможности привязаны к уже существующим ConfigItem upstream; новые заводятся
+ * только там, где в upstream нет аналога, и помечены «UI-only» (без бэкенда, как в upstream 12.9.0).
  */
 public class OpenExteraGeneralActivity extends BaseNekoSettingsActivity {
 

@@ -2040,7 +2040,7 @@ public class BottomSheet extends Dialog implements BaseFragment.AttachedSheet {
     }
 
     // ---- Predictive back для шторки ----
-    // Перенос из exteraGram 12.9.0, BottomSheet.java:1579-1670, :1224/:1235, :1816.
+    // Перенос из upstream 12.9.0, BottomSheet.java:1579-1670, :1224/:1235, :1816.
     // У нас BottomSheet вообще не знал про OnBackAnimationCallback: шторки закрывались
     // мгновенно, без следования за жестом.
 

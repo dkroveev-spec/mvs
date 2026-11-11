@@ -1138,7 +1138,7 @@ public class EditTextCaption extends EditTextBoldCursor implements FloatingToolb
             makeSelectedSpoiler();
             return true;
         } else if (itemId == R.id.menu_translate) {
-            // NekoX
+            // upstream
             makeSelectedTranslate();
             return true;
         } else if (itemId == R.id.menu_quote) {

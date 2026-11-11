@@ -26,7 +26,7 @@ import java.util.Objects;
 /**
  * Внешние субтитры к видео в просмотрщике.
  *
- * Перенос exteraGram 12.9.0:utils/VideoSubtitlesHelper.java.
+ * Перенос upstream 12.9.0:utils/VideoSubtitlesHelper.java.
  *
  * Выбранный пользователем файл .srt/.vtt запоминается для конкретного видео:
  * ключ считается по документу, пути, uri или id блока статьи, значение лежит

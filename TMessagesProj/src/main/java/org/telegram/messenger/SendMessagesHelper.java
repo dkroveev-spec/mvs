@@ -4315,7 +4315,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
 
     public void sendMessage(SendMessageParams originalParams) {
         app.exteraless.plugins.HookResult hookResult = app.exteraless.plugins.HookResult.DEFAULT;
-        // exteraless plugins: исходящее сообщение через on_send_message_hook (CANCEL = не отправлять)
+        // upstream plugins: исходящее сообщение через on_send_message_hook (CANCEL = не отправлять)
         if (app.exteraless.plugins.PluginsController.getInstance().hasSendMessageHooks()) {
             hookResult = app.exteraless.plugins.PluginsController.getInstance()
                     .executeOnSendMessageHook(currentAccount, originalParams);
@@ -4325,7 +4325,7 @@ public class SendMessagesHelper extends BaseController implements NotificationCe
         }
         SendMessageParams replacement = hookResult.replacement(SendMessageParams.class);
         final SendMessageParams sendMessageParams = replacement != null ? replacement : originalParams;
-        // DuckDuckGram: DDGSendOnlyOnline. Держим одиночное приватное сообщение до тех
+        // mvs: DDGSendOnlyOnline. Держим одиночное приватное сообщение до тех
         // пор, пока собеседник не будет онлайн. Вставка до всех переписываний (параметры
         // ещё не менялись) — при флаше цепочка sendMessage пройдёт по полному пути один раз.
         if (com.duckduckgram.duckerer.chat.DdgSendWhenOnline.INSTANCE.intercept(currentAccount, sendMessageParams)) {

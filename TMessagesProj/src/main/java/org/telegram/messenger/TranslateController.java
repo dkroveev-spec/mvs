@@ -1090,7 +1090,7 @@ public class TranslateController extends BaseController {
             source.entities = message.messageOwner.entities;
         }
 
-        // --- NagramX Start ---
+        // --- upstream Start ---
         if (MessageHelper.shouldSkipTranslation(message.messageOwner.message)) {
             return;
         }
@@ -1128,7 +1128,7 @@ public class TranslateController extends BaseController {
             });
             return;
         }
-        // --- NagramX End ---
+        // --- upstream End ---
 
         PendingTranslation pendingTranslation;
         synchronized (this) {
@@ -1419,7 +1419,7 @@ public class TranslateController extends BaseController {
 
         long dialogId = message.getDialogId();
 
-        // --- NagramX Start ---
+        // --- upstream Start ---
         if (NekoConfig.translationProvider.Int() != Translator.providerTelegram) {
             final TLRPC.MessageMedia media = MessageObject.getMedia(message);
             if (!(media instanceof TLRPC.TL_messageMediaPoll)) {
@@ -1459,7 +1459,7 @@ public class TranslateController extends BaseController {
             });
             return;
         }
-        // --- NagramX End ---
+        // --- upstream End ---
 
         PendingPollTranslation pendingTranslation;
         synchronized (this) {
@@ -2077,7 +2077,7 @@ public class TranslateController extends BaseController {
 
         translatingStories.add(key);
 
-        // --- NagramX Start ---
+        // --- upstream Start ---
         if (NekoConfig.translationProvider.Int() != Translator.providerTelegram) {
             Translator.translate(storyItem.caption, storyItem.entities, new Translator.Companion.TranslateCallBack2() {
                 @Override
@@ -2109,7 +2109,7 @@ public class TranslateController extends BaseController {
             });
             return;
         }
-        // --- NagramX End ---
+        // --- upstream End ---
 
         final TLRPC.TL_messages_translateText req = new TLRPC.TL_messages_translateText();
         req.flags |= 2;
@@ -2245,7 +2245,7 @@ public class TranslateController extends BaseController {
 
         translatingPhotos.add(key);
 
-        // --- NagramX Start ---
+        // --- upstream Start ---
         if (NekoConfig.translationProvider.Int() != Translator.providerTelegram) {
             final long start = System.currentTimeMillis();
             Translator.translate(messageObject.messageOwner.message, messageObject.messageOwner.entities, new Translator.Companion.TranslateCallBack2() {
@@ -2279,7 +2279,7 @@ public class TranslateController extends BaseController {
             });
             return;
         }
-        // --- NagramX End ---
+        // --- upstream End ---
 
         final TLRPC.TL_messages_translateText req = new TLRPC.TL_messages_translateText();
         req.flags |= 2;

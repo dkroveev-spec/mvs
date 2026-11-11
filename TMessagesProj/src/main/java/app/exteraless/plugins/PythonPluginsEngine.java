@@ -22,7 +22,7 @@ import app.exteraless.debug.PluginToggleTrace;
 
 /**
  * Python-рантайм движка плагинов (Chaquopy, CPython 3.12).
- * Упрощённый аналог PythonPluginsEngine.java exteraGram (3097 строк): без pip,
+ * Упрощённый аналог PythonPluginsEngine.java upstream (3097 строк): без pip,
  * без dev-сервера, без Xposed — загрузка/выгрузка модулей, события, хуки.
  *
  * Вся Python-работа идёт через модуль-посредник {@code extera_utils.plugin_loader}
@@ -30,7 +30,7 @@ import app.exteraless.debug.PluginToggleTrace;
  * не зависит от деталей конвертации Chaquopy.
  *
  * Потоки: старт интерпретатора и загрузка плагинов — на своём executor;
- * хуки зовутся синхронно из потока вызывающего (как у exteraGram), GIL их
+ * хуки зовутся синхронно из потока вызывающего (как у upstream), GIL их
  * сериализует. Если движок ещё не поднялся, хук возвращает DEFAULT.
  */
 public class PythonPluginsEngine extends com.exteragram.messenger.plugins.PythonPluginsEngine
@@ -54,7 +54,7 @@ public class PythonPluginsEngine extends com.exteragram.messenger.plugins.Python
     }
 
     /**
-     * Загруженные экземпляры BasePlugin по id — в форме exteraGram.
+     * Загруженные экземпляры BasePlugin по id — в форме upstream.
      * У нас они живут словарём на Python-стороне, но плагины каталога читают
      * именно это поле: {@code engine.pluginInstances.get(plugin_id)}.
      */
@@ -306,7 +306,7 @@ public class PythonPluginsEngine extends com.exteragram.messenger.plugins.Python
     }
 
     /**
-     * Пересканировать каталог плагинов и выполнить колбэк. У exteraGram менеджеры
+     * Пересканировать каталог плагинов и выполнить колбэк. У upstream менеджеры
      * плагинов зовут это после установки или удаления файла:
      * {@code controller.engines.get("python").loadPlugins(callback)}.
      */

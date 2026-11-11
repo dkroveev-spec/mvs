@@ -1076,7 +1076,7 @@ public class RichEditor extends BaseFragment implements NotificationCenter.Notif
 
     private int bottomPanelType = -1;
     private void updateBottomPanel(int type, boolean animated) {
-        // DuckDuckGram: forceCopy («вводить только копипастом, без панели форматирования»).
+        // mvs: forceCopy («вводить только копипастом, без панели форматирования»).
         // Панель форматирования не удаляется, а подменяется обычной панелью инструментов
         // редактора: если просто её скрыть, то при выделении текста не будет ни одной
         // кнопки и меню исчезнет вместе с выделением. Само вырезать/копировать/вставить

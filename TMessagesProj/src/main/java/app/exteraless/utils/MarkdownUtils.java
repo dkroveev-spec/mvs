@@ -15,7 +15,7 @@ import java.util.Locale;
  * Распознавание текстовых и кодовых файлов, которые стоит открывать не «скачать и отдать
  * стороннему приложению», а внутренним Instant View с подсветкой синтаксиса.
  *
- * exteraGram: {@code com/exteragram/messenger/utils/MarkdownUtils.java} (12.9.0), перенесён целиком.
+ * upstream: {@code com/exteragram/messenger/utils/MarkdownUtils.java} (12.9.0), перенесён целиком.
  * Потребитель — {@code org.telegram.ui.Components.MarkdownParser}: {@code isMarkdown} получает
  * третий дизъюнкт, а {@code fromMarkdown} — развилку «markdown или преформат».
  */

@@ -49,7 +49,7 @@ import tw.nekomimi.nekogram.ui.icons.IconsResources;
  * Экран-редактор пака: список <b>всех</b> иконок приложения с заменой по тапу
  * (порт {@code com.exteragram.messenger.icons.ui.IconPacksEditorActivity}, 447 строк).
  *
- * <p>Что перенесено из exteraGram:
+ * <p>Что перенесено из upstream:
  * <ul>
  *   <li>поиск в шапке с дебаунсом 200 мс ({@code IconPacksEditorActivity.java:47});</li>
  *   <li>три фильтра — все / заменённые / незаменённые ({@code :186–188});</li>
@@ -61,18 +61,18 @@ import tw.nekomimi.nekogram.ui.icons.IconsResources;
  *
  * <p>Отличия:
  * <ul>
- *   <li>exteraGram живёт на {@code BasePreferencesActivity} + {@code UniversalRecyclerView};
+ *   <li>upstream живёт на {@code BasePreferencesActivity} + {@code UniversalRecyclerView};
  *       у нас база — {@link BaseNekoSettingsActivity}, поэтому ячейка своя
  *       ({@code TextCell.setTextAndIconAndValueDrawable} в форке нет), тип строки — 100;</li>
- *   <li>«сохранить и выйти» ({@code :195}) сделан пунктом меню, как в exteraGram, но завершает
+ *   <li>«сохранить и выйти» ({@code :195}) сделан пунктом меню, как в upstream, но завершает
  *       редактирование через {@link IconPickerController#finishEditing()};</li>
  *   <li>пункт «Edit» открывает {@link NewIconPackBottomSheet} в режиме правки метаданных, как
- *       в exteraGram ({@code :317}); список обновляется через колбэк, потому что
+ *       в upstream ({@code :317}); список обновляется через колбэк, потому что
  *       {@code NotificationCenter.iconPackUpdated} в форке нет;</li>
  *   <li>подписи фильтров ждут строк {@code IconPickerAllIcons} / {@code IconPickerReplacedIcons} /
  *       {@code IconPickerNotReplacedIcons} / {@code IconPickerFilter} / {@code IconPickerSaveAndExit}:
  *       строки правит только координатор, поэтому резолвим их по имени и до появления
- *       показываем английский текст exteraGram (см. {@link #localized(String, String)}).</li>
+ *       показываем английский текст upstream (см. {@link #localized(String, String)}).</li>
  * </ul>
  */
 public class IconPacksEditorActivity extends BaseNekoSettingsActivity {
@@ -186,7 +186,7 @@ public class IconPacksEditorActivity extends BaseNekoSettingsActivity {
         if (IconPacksConfig.isEditing()) {
             ActionBarMenuSubItem saveItem = otherItem.addSubItem(MENU_SAVE_AND_EXIT, R.drawable.ic_ab_done,
                     localized("IconPickerSaveAndExit", "Save and exit"));
-            // exteraGram красит пункт в key_featuredStickers_addButtonPressed
+            // upstream красит пункт в key_featuredStickers_addButtonPressed
             // (IconPacksEditorActivity.java:196); в форке у ActionBarMenuSubItem нет setColors(int,int)
             int accent = getThemedColor(Theme.key_featuredStickers_addButtonPressed);
             saveItem.setTextColor(accent);
@@ -240,7 +240,7 @@ public class IconPacksEditorActivity extends BaseNekoSettingsActivity {
 
     // ---- данные ----
 
-    /** Один ресурс приложения: id и имя. Аналог {@code UItem} с {@code id}/{@code text} у exteraGram. */
+    /** Один ресурс приложения: id и имя. Аналог {@code UItem} с {@code id}/{@code text} у upstream. */
     private static class IconEntry {
         final int id;
         final String name;
@@ -354,7 +354,7 @@ public class IconPacksEditorActivity extends BaseNekoSettingsActivity {
 
     /**
      * Строка списка: слева оригинал, справа замена из пака (порт {@code EditorIconCell},
-     * {@code IconPacksEditorActivity.java:63}; в exteraGram это {@code TextCell} с
+     * {@code IconPacksEditorActivity.java:63}; в upstream это {@code TextCell} с
      * {@code setTextAndIconAndValueDrawable} + {@code setOffsetFromImage(68)}).
      */
     private static class EditorIconCell extends FrameLayout {
@@ -389,7 +389,7 @@ public class IconPacksEditorActivity extends BaseNekoSettingsActivity {
             textView.setSingleLine(true);
             textView.setEllipsize(TextUtils.TruncateAt.END);
             textView.setGravity((rtl ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL);
-            // 68 dp от края — offsetFromImage exteraGram
+            // 68 dp от края — offsetFromImage upstream
             addView(textView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT,
                     (rtl ? Gravity.RIGHT : Gravity.LEFT) | Gravity.CENTER_VERTICAL,
                     rtl ? 56 : 68, 0, rtl ? 68 : 56, 0));

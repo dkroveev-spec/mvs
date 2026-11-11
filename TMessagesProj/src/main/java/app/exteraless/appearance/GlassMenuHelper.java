@@ -23,8 +23,8 @@ import org.telegram.ui.Components.blur3.utils.Blur3Utils;
 /**
  * Матовое стекло под меню сообщения и панелью реакций.
  *
- * <p>Ключ — {@link AppearanceConfig#glassMessageMenu()} (дефолт true, как в exteraGram).
- * Стекло включается только когда блюр реально доступен: тот же гейт, что и в exteraGram —
+ * <p>Ключ — {@link AppearanceConfig#glassMessageMenu()} (дефолт true, как в upstream).
+ * Стекло включается только когда блюр реально доступен: тот же гейт, что и в upstream —
  * {@code BlurredBackgroundProviderImpl.checkBlurEnabled} (SharedConfig.chatBlurEnabled плюс
  * серверные флаги disableBlurInLight/DarkTheme). Если блюр недоступен — вызывающий код
  * должен оставить обычный popup, поведение при этом ровно прежнее.

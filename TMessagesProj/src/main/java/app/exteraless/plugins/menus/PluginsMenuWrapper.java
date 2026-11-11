@@ -30,7 +30,7 @@ import app.exteraless.plugins.PluginsController;
 
 /**
  * Подменю с пунктами плагинов внутри всплывающего меню «⋮» — swipe-back-слой,
- * как у exteraGram ({@code com.exteragram.messenger.plugins.ui.components.PluginsMenuWrapper}).
+ * как у upstream ({@code com.exteragram.messenger.plugins.ui.components.PluginsMenuWrapper}).
  *
  * Используется там, где пунктов может быть много и они не должны раздувать
  * основное меню: CHAT_ACTION_MENU (ChatActivity) и PROFILE_ACTION_MENU
@@ -43,7 +43,7 @@ public class PluginsMenuWrapper {
     private static final int GAP_ITEM_HEIGHT = 8;
     private static final int ITEM_HEIGHT = 48;
     private static final int SUBTITLE_ITEM_HEIGHT = 56;
-    /** Выше этого подменю скроллится, а не растёт. Значение exteraGram. */
+    /** Выше этого подменю скроллится, а не растёт. Значение upstream. */
     private static final int MAX_HEIGHT_DP = 436;
 
     private final MenuItemRecord.MenuType menuType;

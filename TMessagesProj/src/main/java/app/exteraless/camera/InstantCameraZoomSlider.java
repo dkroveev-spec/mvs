@@ -31,7 +31,7 @@ import java.util.List;
 import app.exteraless.chats.ChatsConfig;
 
 /**
- * Ползунок зума для кружка: перенос {@code InstantCameraZoomSlider} из exteraGram 12.9.0.
+ * Ползунок зума для кружка: перенос {@code InstantCameraZoomSlider} из upstream 12.9.0.
  *
  * Привязывается к любому из трёх бэкендов камеры и берёт у него настоящие пределы зума,
  * поэтому «.5» на делениях — это реальный ширик, а не цифровое увеличение. У Camera1 зум

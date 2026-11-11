@@ -19,8 +19,8 @@ import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
 
 /**
- * Корневой экран раздела exteraless.
- * Структура повторяет настройки exteraGram: About-шапка + категории с иконками.
+ * Корневой экран раздела upstream.
+ * Структура повторяет настройки upstream: About-шапка + категории с иконками.
  * Открывается из главных настроек (SettingsActivity, id 102).
  */
 public class OpenExteraSettingsActivity extends BaseNekoSettingsActivity {
@@ -129,7 +129,7 @@ public class OpenExteraSettingsActivity extends BaseNekoSettingsActivity {
     protected void setupAdaptiveBackground() {
     }
 
-    /** Блюр-подложка NagramX закрывает верх логотипа; у экстеры её нет. */
+    /** Блюр-подложка upstream закрывает верх логотипа; у экстеры её нет. */
     @Override
     protected boolean needActionBarBlur() {
         return false;
@@ -186,10 +186,10 @@ public class OpenExteraSettingsActivity extends BaseNekoSettingsActivity {
         } else if (position == otherRow) {
             presentFragment(new OpenExteraOtherActivity());
         } else if (position == channelRow) {
-            getMessagesController().openByUserName("DuckDuckGram", this, 1);
+            getMessagesController().openByUserName("mvs", this, 1);
         } else if (position == sourceRow) {
             org.telegram.messenger.browser.Browser.openUrl(getParentActivity(),
-                    "https://github.com/Duckerer/DuckDuckGram");
+                    "https://github.com/dkroveev-spec/mvs");
         } else if (position == designerRow) {
             getMessagesController().openByUserName("the8055u", this, 1);
         } else if (position == designStudioRow) {
@@ -245,7 +245,7 @@ public class OpenExteraSettingsActivity extends BaseNekoSettingsActivity {
                         cell.setTextAndIcon(getString(R.string.OpenExteraOther), R.drawable.msg_fave, false);
                     } else if (position == channelRow) {
                         cell.setTextAndValueAndIcon(getString(R.string.ProfileChannel),
-                                "@DuckDuckGram", R.drawable.msg_channel, true);
+                                "@mvs", R.drawable.msg_channel, true);
                     } else if (position == sourceRow) {
                         cell.setTextAndValueAndIcon(getString(R.string.OpenExteraSource),
                                 "GitHub", R.drawable.msg_language, false);

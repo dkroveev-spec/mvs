@@ -253,7 +253,7 @@ public final class PluginSinkGate {
                         for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
                             trace.append("    ").append(element).append('\n');
                         }
-                        android.util.Log.w("exteraless-gate", trace.toString());
+                        android.util.Log.w("upstream-gate", trace.toString());
                         deny(pluginId, event, "reflection", name,
                                 "class " + name + " is never available to plugins", param);
                         return;

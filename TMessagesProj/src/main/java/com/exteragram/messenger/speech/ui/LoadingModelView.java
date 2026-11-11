@@ -30,7 +30,7 @@ import java.util.Locale;
  *
  * Своей модели у форка нет, но плагины каталога создают эту вьюху сами
  * ({@code LoadingModelView(context)}) и двигают прогресс — им нужен ровно
- * этот класс под именем exteraGram.
+ * этот класс под именем upstream.
  */
 public class LoadingModelView extends FrameLayout {
 

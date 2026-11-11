@@ -2581,9 +2581,9 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
     /**
      * openExtera: отключает глобальное масштабирование радиуса для этого ресивера.
      * <p>
-     * Хук ниже умножает <b>запрошенный</b> радиус на corners/28 и совпадает с exteraGram только
+     * Хук ниже умножает <b>запрошенный</b> радиус на corners/28 и совпадает с upstream только
      * там, где сток просит ровно половину стороны. Где сток просит больше (радиус во всю сторону
-     * ради гарантированного круга), масштабирование даёт круг и на середине слайдера — exteraGram
+     * ради гарантированного круга), масштабирование даёт круг и на середине слайдера — upstream
      * в таких местах зовёт {@code ExteraConfig.getAvatarCorners(сторона)} напрямую
      *. Вызывающий, сделавший так же,
      * обязан взвести этот флаг.
@@ -2596,7 +2596,7 @@ public class ImageReceiver implements NotificationCenter.NotificationCenterDeleg
     }
 
     /**
-     * openExtera: радиус для аватарки со стороной {@code sizePx} пикселей — ровно контракт exteraGram
+     * openExtera: радиус для аватарки со стороной {@code sizePx} пикселей — ровно контракт upstream
      * {@code ExteraConfig.getAvatarCorners(f, true)}. Порядок вызовов не важен: флаг взводится до
      * записи радиуса.
      */

@@ -3,7 +3,7 @@ package app.exteraless.plugins.models;
 import com.chaquo.python.PyObject;
 
 /**
- * Базовая модель строки настроек плагина из SDK exteraGram.
+ * Базовая модель строки настроек плагина из SDK upstream.
  *
  * У нас строки описываются питоновскими датаклассами из `ui/settings.py`, но плагины
  * каталога наследуют джавовые модели напрямую (`@java_subclass(CustomSetting.Factory)`),

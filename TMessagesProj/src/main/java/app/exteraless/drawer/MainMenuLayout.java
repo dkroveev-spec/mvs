@@ -11,7 +11,7 @@ import org.telegram.ui.MainTabsLayout;
 /**
  * Порядок и видимость пунктов главного меню.
  *
- * exteraGram хранит два JSON-массива, {@code mainMenuLayout} и {@code mainMenuHiddenItems}
+ * upstream хранит два JSON-массива, {@code mainMenuLayout} и {@code mainMenuHiddenItems}
  * ({@code com/exteragram/messenger/ExteraConfig.java:1333-1380}, сохранение — {@code :1474}).
  * У нас координатор завёл один строковый ключ {@code OEAppearanceMainMenuLayout}, поэтому оба
  * списка лежат в нём: {@code "видимые;скрытые"}, id через запятую. Пустая строка — «настройку
@@ -46,7 +46,7 @@ public final class MainMenuLayout {
         layout.add(MainMenuItem.SAVED.getId());
         layout.add(MainMenuItem.FEED.getId());
         layout.add(MainMenuItem.BOTS.getId());
-        // DuckDuckGram: стример-режим. В отличие от призрачного режима он попадает в
+        // mvs: стример-режим. В отличие от призрачного режима он попадает в
         // дефолтную раскладку: это просьба «кнопкой в боковом меню», то есть пункт должен
         // быть сразу. Кто не хочет — убирает через экран-редактор, как и любой другой.
         layout.add(MainMenuItem.STREAMER_MODE.getId());
@@ -117,7 +117,7 @@ public final class MainMenuLayout {
 
     /**
      * Возвращает {@code [видимые, скрытые]}. Неизвестные id выкидываются, новые
-     * (появившиеся с обновлением) дописываются в скрытые — как в exteraGram при миграции.
+     * (появившиеся с обновлением) дописываются в скрытые — как в upstream при миграции.
      */
     private static List<Integer>[] parse() {
         AppearanceConfig.ensureLoaded();

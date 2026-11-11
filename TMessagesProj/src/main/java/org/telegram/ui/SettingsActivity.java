@@ -693,7 +693,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
     private ArrayList<Integer> accountNumbers = new ArrayList<>();
 
-    // exteraGram 12.9.0, SettingsActivity.java:984-987 — число активных сессий
+    // upstream 12.9.0, SettingsActivity.java:984-987 — число активных сессий
     // показывается значением справа от строки «Devices».
     private String getDevicesCount() {
         final int count = getMessagesController().lastKnownSessionsCount;
@@ -775,17 +775,17 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
-        // Настройки NagramX по умолчанию спрятаны: у форка свои экраны, а второй
+        // Настройки upstream по умолчанию спрятаны: у форка свои экраны, а второй
         // набор тех же настроек рядом только путает. Строку включают на экране
         // «Other» (GeneralConfig.showNagramSettings).
         if (app.exteraless.general.GeneralConfig.showNagramSettings()) {
             items.add(SettingCell.Factory.of(100, 0xFF3CCFFF, 0xFF007AFF, R.drawable.filled_profile_settings, getString(R.string.NekoSettings)));
         }
         // mvs: у форка теперь своя графитовая строка выше, поэтому вход в настройки
-        // exteraless идёт ниже и с нейтральной иконкой, без второго знака приложения.
+        // upstream идёт ниже и с нейтральной иконкой, без второго знака приложения.
         items.add(SettingCell.Factory.of(-1, 0xFF6E6A61, 0xFF6E6A61, R.drawable.msg_settings, getString(R.string.OpenExteraPreferences), getString(R.string.OpenExteraInfo)));
-        // DuckDuckGram: собственный корень настроек поверх форка. Идёт первым,
-        // потому что это лицо клиента, а список exteraless остаётся доступен ниже.
+        // mvs: собственный корень настроек поверх форка. Идёт первым,
+        // потому что это лицо клиента, а список upstream остаётся доступен ниже.
         items.add(SettingCell.Factory.of(102, 0xFF151412, 0xFF151412, R.drawable.duckduckgram_icon_tile, getString(R.string.DuckDuckGramPreferences), getString(R.string.DDGSettingsInfo)));
         items.add(UItem.asShadow(null));
 
@@ -1524,7 +1524,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 if (app.exteraless.appearance.M3ListItems.enabled()) {
                     item.subtext = subtitle;
                 }
-                // Подпись намеренно отбрасывается — так же, как в exteraGram 12.9.0
+                // Подпись намеренно отбрасывается — так же, как в upstream 12.9.0
                 // (SettingsActivity.java:539-560: subtext не присваивается вовсе).
                 // Из-за этого twoLines остаётся false и строка меряется в dp(50), а не dp(60).
                 // Параметр оставлен в сигнатуре, чтобы не трогать 11 мест вызова.

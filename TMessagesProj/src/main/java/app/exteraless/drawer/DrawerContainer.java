@@ -63,16 +63,16 @@ import xyz.nextalone.nagram.NaConfig;
 import com.duckduckgram.duckerer.sidebar.DdgSidebarMetrics;
 
 /**
- * Собственная шторка бокового меню exteraGram: панель шириной min(300dp, экран − 56dp),
+ * Собственная шторка бокового меню upstream: панель шириной min(300dp, экран − 56dp),
  * жесты от левого края, затемнение и сдвиг контента.
  *
- * exteraGram: {@code com/exteragram/messenger/drawer/DrawerContainer.java} (1655 строк).
+ * upstream: {@code com/exteragram/messenger/drawer/DrawerContainer.java} (1655 строк).
  * Включается флагом {@link AppearanceConfig#navigationDrawer()}; при выключенном флаге
  * {@code LaunchActivity} даже не создаёт этот вид, а {@link #handleEdgeSwipeIntercept}
  * и {@link #openDrawer} выходят сразу — поведение остаётся стоковым.
  *
  * Что не перенесено (и почему):
- * — «бейдж exteraGram» ({@code showBadgeSelect}, {@code BadgesController}) — сервер exteraGram;
+ * — «бейдж upstream» ({@code showBadgeSelect}, {@code BadgesController}) — сервер upstream;
  * — превью аккаунта по долгому нажатию ({@code showAccountPreview}): у нашего
  *   {@code MainTabsActivity} нет конструктора с {@code Bundle} и режима {@code drawer_account_preview},
  *   а {@code DrawerLayoutContainer} не рисует превью поверх шторки. Долгое нажатие на чужой
@@ -156,7 +156,7 @@ public class DrawerContainer extends FrameLayout implements NotificationCenter.N
         drawerPanel.addView(bulletinContainer, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         headerView = new DrawerHeaderView(context);
-        // DuckDuckGram: compactSidebar — шапка ниже, чтобы меню и список аккаунтов
+        // mvs: compactSidebar — шапка ниже, чтобы меню и список аккаунтов
         // помещались на экране без прокрутки.
         content.addView(headerView, new LinearLayout.LayoutParams(LayoutHelper.MATCH_PARENT,
                 AndroidUtilities.dp(DdgSidebarMetrics.headerHeight())));
@@ -621,7 +621,7 @@ public class DrawerContainer extends FrameLayout implements NotificationCenter.N
 
     /**
      * Аналог {@code ExteraConfig.getSpringAnimations()} (дефолт true) у нас живёт
-     * в NagramX как стиль анимации «назад» (см. {@code UtilsConfig.applyMotionDefaults}).
+     * в upstream как стиль анимации «назад» (см. {@code UtilsConfig.applyMotionDefaults}).
      */
     private static boolean useSpringAnimations() {
         try {
@@ -976,7 +976,7 @@ public class DrawerContainer extends FrameLayout implements NotificationCenter.N
     }
 
     /**
-     * DuckDuckGram: compactSidebar — применяет метрики сайдбара к уже созданным вьюхам.
+     * mvs: compactSidebar — применяет метрики сайдбара к уже созданным вьюхам.
      *
      * Размеры заданы в конструкторах DrawerHeaderView, DrawerMenuView,
      * DrawerAccountPickerView и DrawerMenuItemView, а галочку можно переключить, пока
@@ -1045,7 +1045,7 @@ public class DrawerContainer extends FrameLayout implements NotificationCenter.N
     }
 
     /**
-     * exteraGram открывает превью {@code MainTabsActivity} чужого аккаунта
+     * upstream открывает превью {@code MainTabsActivity} чужого аккаунта
      * ({@code DrawerContainer.showAccountPreview} :855). У нас нет ни его конструктора
      * с {@code Bundle}, ни отрисовки превью поверх шторки, поэтому долгое нажатие
      * делает то же, что тап: закрывает шторку и переключает аккаунт.
@@ -1062,7 +1062,7 @@ public class DrawerContainer extends FrameLayout implements NotificationCenter.N
     }
 
     /**
-     * exteraGram: {@code lambda$setupCallbacks$2} — метод «не декомпилирован», но байткод читаемый
+     * upstream: {@code lambda$setupCallbacks$2} — метод «не декомпилирован», но байткод читаемый
      * и восстановлен по нему: выбираются последняя дневная и последняя ночная темы, при
      * совпадении — разводятся к «Blue»/«Dark Blue», дальше уведомление
      * {@code needSetDayNightTheme} с центром круга на кнопке переключателя.

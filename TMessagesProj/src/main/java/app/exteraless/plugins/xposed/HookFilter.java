@@ -21,7 +21,7 @@ import de.robv.android.xposed.XC_MethodHook;
  * ({"before":[&lt;filter&gt;...], "after":[&lt;filter&gt;...]}), вычисляется на каждый
  * вызов ДО входа в Python. Фильтры внутри списка AND-ятся; type="or" — любой подфильтр.
  *
- * Семантика типов — как в exteraGram: result_* в before-фазе не проходят,
+ * Семантика типов — как в upstream: result_* в before-фазе не проходят,
  * аргумент вне диапазона индексов проваливает любой argument_*-фильтр, ошибка
  * вычисления (в т.ч. MVEL) — fail closed (фильтр не пройден) + FileLog.
  */
@@ -243,7 +243,7 @@ final class HookFilter {
             case "result_equal":
             case "result_not_equal":
             case "result_is_instance_of":
-                // result_* — только after-фаза (как в exteraGram)
+                // result_* — только after-фаза (как в upstream)
                 return afterPhase && evalResult(param);
             default:
                 return false;
@@ -291,7 +291,7 @@ final class HookFilter {
             vars.put("thisObject", param.thisObject);
             vars.put("args", param.args);
             vars.put("result", afterPhase ? param.getResult() : null);
-            // thisObject — ещё и MVEL-контекст: поля объекта доступны по имени (как в exteraGram).
+            // thisObject — ещё и MVEL-контекст: поля объекта доступны по имени (как в upstream).
             return truthy(MVEL.executeExpression(compiled(expr), param.thisObject, vars));
         } finally {
             vars.clear();

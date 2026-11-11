@@ -53,7 +53,7 @@ import app.exteraless.plugins.ui.components.PluginPermissionsDelegate;
  * Экран «Plugins». Порт
  * {@code com/exteragram/messenger/plugins/ui/PluginsActivity.java}.
  *
- * Устройство повторяет exteraGram: в шапке — поиск и кнопка (i), ведущая на
+ * Устройство повторяет upstream: в шапке — поиск и кнопка (i), ведущая на
  * {@link PluginsInfoActivity}; в списке — крупный переключатель движка
  * ({@code UItem.asRippleCheck}) и сами плагины, а при пустом списке —
  * подсказка со ссылкой на канал. Настройки движка (developer/safe/compatibility)
@@ -254,7 +254,7 @@ public class PluginsActivity extends BaseFragment {
 
     /**
      * Делает @username в подсказке кликабельной ссылкой на канал.
-     * exteraGram зовёт свой LocaleUtils.formatWithUsernames; у нас такого хелпера
+     * upstream зовёт свой LocaleUtils.formatWithUsernames; у нас такого хелпера
      * нет, а тянуть его целиком ради одной строки незачем.
      */
     private CharSequence withUsernameLink(String text) {

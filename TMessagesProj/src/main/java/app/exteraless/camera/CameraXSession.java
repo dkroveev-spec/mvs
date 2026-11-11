@@ -64,7 +64,7 @@ import app.exteraless.chats.ChatsConfig;
 /**
  * Камера круглых видеосообщений на CameraX.
  *
- * Порт {@code com/exteragram/messenger/camera/CameraXSession.java} из exteraGram 12.9.0.
+ * Порт {@code com/exteragram/messenger/camera/CameraXSession.java} из upstream 12.9.0.
  * Третий движок рядом с Camera1 ({@link org.telegram.messenger.camera.CameraSession}) и
  * Camera2 ({@link org.telegram.messenger.camera.Camera2Session}); чем снимать, выбирает
  * {@link ChatsConfig#cameraType}.
@@ -252,7 +252,7 @@ public class CameraXSession {
     // ---- Привязка ----
 
     /**
-     * Одна линза. Порядок попыток тот же, что у exteraGram: сперва запрошенные 60 кадров,
+     * Одна линза. Порядок попыток тот же, что у upstream: сперва запрошенные 60 кадров,
      * потом без стабилизации, потом 30, потом вообще без требований к частоте — на
      * каждом шаге превью пересобирается, потому что частота задаётся при сборке.
      */

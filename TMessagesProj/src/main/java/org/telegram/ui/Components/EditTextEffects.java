@@ -176,7 +176,7 @@ public class EditTextEffects extends ReceiveContentEditText {
                 Layout layout = getLayout();
                 if (text instanceof Spannable && layout != null) {
                     int line = layout.getLineForOffset(start);
-                    // NekoX: Fix official bug: Mention crash
+                    // upstream: Fix official bug: Mention crash
                     if (start > layout.getText().length())
                         return;
                     int x = (int) layout.getPrimaryHorizontal(start);

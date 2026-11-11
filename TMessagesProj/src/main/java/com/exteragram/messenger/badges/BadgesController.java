@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 /**
  * Локальный аналог {@code com.exteragram.messenger.badges.BadgesController}.
  *
- * У exteraGram значки приходят с их сервера; сюда это не переносится, поэтому
+ * У upstream значки приходят с их сервера; сюда это не переносится, поэтому
  * хранилище локальное — SharedPreferences. Плагины каталога подменяют
  * {@link #getBadge}, {@link #isExtera} и {@link #isDeveloper} через Xposed и
  * рисуют значки сами, им нужен именно этот набор имён.

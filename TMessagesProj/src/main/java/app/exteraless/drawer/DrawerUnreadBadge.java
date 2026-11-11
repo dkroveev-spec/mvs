@@ -10,7 +10,7 @@ import org.telegram.ui.ActionBar.Theme;
 
 /**
  * Счётчик непрочитанных на пункте бокового меню.
- * exteraGram: {@code com/exteragram/messenger/drawer/DrawerUnreadBadge.java} (79 строк).
+ * upstream: {@code com/exteragram/messenger/drawer/DrawerUnreadBadge.java} (79 строк).
  *
  * Рисуется поверх пункта, а подпись пункта получает увеличенный правый отступ,
  * чтобы длинное имя не залезло под бейдж.

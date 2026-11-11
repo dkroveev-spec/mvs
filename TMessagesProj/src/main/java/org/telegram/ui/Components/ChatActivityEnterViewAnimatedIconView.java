@@ -45,7 +45,7 @@ public class ChatActivityEnterViewAnimatedIconView extends RLottieImageView {
      * Иконка из пака вместо анимации Lottie.
      *
      * Кнопка эмодзи рисуется анимацией (улыбка перетекает в клавиатуру), а
-     * анимацию иконпаком не подменишь: в паке лежат обычные картинки. exteraGram
+     * анимацию иконпаком не подменишь: в паке лежат обычные картинки. upstream
      * ради этого держит отдельный ChatActivityEnterViewStaticIconView и
      * подставляет его, когда активен не только встроенный набор
      * (ChatActivityEnterView:5335). У нас то же самое сделано режимом внутри

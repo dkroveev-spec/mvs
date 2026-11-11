@@ -1379,7 +1379,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
     private boolean ignoreDelete;
 
     public void openMedia(MessageObject messageObject, PhotoViewer.PhotoViewerProvider provider, Runnable onOpen, Runnable onClose) {
-        // DuckDuckGram: viewOnceUnlimited. needDrawBluredPreview() у сгоревшего медиа
+        // mvs: viewOnceUnlimited. needDrawBluredPreview() у сгоревшего медиа
         // возвращает false (внутри messageMediaPhoto лежит photo_empty), поэтому штатный
         // гейт закрывает просмотр наглухо и показать сохранённую копию просто некуда.
         // Снимаем гейт только там, где копия реально есть на диске, — см. DdgViewOnce.
@@ -1395,7 +1395,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
         //messageObject.messageOwner.destroyTime = (int) (System.currentTimeMillis() / 1000 + ConnectionsManager.getInstance().getTimeDifference()) + 4;
 
         ignoreDelete = messageObject.messageOwner.ttl == 0x7FFFFFFF;
-        // DuckDuckGram: viewOnceUnlimited. ignoreDelete отключает таймер самоуничтожения,
+        // mvs: viewOnceUnlimited. ignoreDelete отключает таймер самоуничтожения,
         // который висит поверх открытого медиа и сам закрывает просмотр, — столько, сколько
         // нужно. Серверное сжигание после просмотра отменить нельзя, но копия медиа
         // сохраняется при каждом открытии, см. DdgViewOnce.
@@ -1524,7 +1524,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
                 if (messageObject.messageOwner.attachPath != null && messageObject.attachPathExists) {
                     location = ImageLocation.getForPath(messageObject.messageOwner.attachPath);
                 } else {
-                    // DuckDuckGram: viewOnceUnlimited — снимаем копию и в GIF-ветке: при
+                    // mvs: viewOnceUnlimited — снимаем копию и в GIF-ветке: при
                     // показе через centerImage файл с ключом ещё в кэше, и без копии
                     // сгоревший GIF открыть было бы нечем (после сжигания он приходит
                     // document_empty и уходит уже в ветку видео).
@@ -1546,7 +1546,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
                     File file = FileLoader.getInstance(currentAccount).getPathToMessage(messageObject.messageOwner);
                     File encryptedFile = file != null ? new File(file.getAbsolutePath() + ".enc") : null;
                     if (encryptedFile != null && encryptedFile.exists()) {
-                        // DuckDuckGram: viewOnceUnlimited — снимаем копию в приватный каталог,
+                        // mvs: viewOnceUnlimited — снимаем копию в приватный каталог,
                         // пока файл с ключом ещё лежит в кэше: копия переживёт и сжигание.
                         // saveCopy возвращает null, если галочка выключена или ключа нет,
                         // тогда остаётся штатное поведение форка.
@@ -1563,7 +1563,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
                             }
                         }
                     } else if (file == null || !file.exists() || file.length() <= 0) {
-                        // DuckDuckGram: viewOnceUnlimited. Сгоревший view-once ролик:
+                        // mvs: viewOnceUnlimited. Сгоревший view-once ролик:
                         // файла с ключом уже нет (сервер прислал document_empty), но
                         // расшифрованная копия лежит в приватном каталоге — берём её,
                         // иначе проигрывателю нечего открывать.
@@ -1585,7 +1585,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
             }
         } else {
             actionBar.setTitle(LocaleController.getString(R.string.DisappearingPhoto));
-            // DuckDuckGram: viewOnceUnlimited. У сгоревшего view-on photoThumbs пуст, и
+            // mvs: viewOnceUnlimited. У сгоревшего view-on photoThumbs пуст, и
             // штатный код ниже сразу уходит в getPathToAttach(null) и падает. Поэтому
             // пустой размер — это отдельная ветка: показываем сохранённую копию.
             boolean ddgNoMedia = ddgExpiredCopy || messageObject.photoThumbs == null || messageObject.photoThumbs.isEmpty();
@@ -1604,7 +1604,7 @@ public class SecretMediaViewer implements NotificationCenter.NotificationCenterD
                 File photoFile = FileLoader.getInstance(currentAccount).getPathToAttach(sizeFull, true);
                 File encryptedPhotoFile = new File(photoFile.getAbsolutePath() + ".enc");
                 if (encryptedPhotoFile.exists()) {
-                    // DuckDuckGram: viewOnceUnlimited — та же копия в приватный каталог, что и
+                    // mvs: viewOnceUnlimited — та же копия в приватный каталог, что и
                     // на ветке видео выше, но дальше показываем её, а не копию AyuGram.
                     File ddgCopy = DdgViewOnce.saveCopy(encryptedPhotoFile, photoFile.getName(), messageObject);
                     if (ddgCopy != null && ddgCopy.exists() && ddgCopy.length() > 0) {

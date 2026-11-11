@@ -3,7 +3,7 @@ package app.exteraless.plugins;
 import com.chaquo.python.PyObject;
 
 /**
- * Пункт меню, добавленный плагином. Аналог hooks/MenuItemRecord.java exteraGram.
+ * Пункт меню, добавленный плагином. Аналог hooks/MenuItemRecord.java upstream.
  * Колбэк хранится как PyObject и зовётся напрямую с Map-контекстом.
  */
 public class MenuItemRecord {

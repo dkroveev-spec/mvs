@@ -28,7 +28,7 @@ import java.security.MessageDigest;
 import java.util.Calendar;
 import java.util.Locale;
 
-/** Шим {@code com.exteragram.messenger.utils.AppUtils}: то, что плагины зовут по имени exteraGram. */
+/** Шим {@code com.exteragram.messenger.utils.AppUtils}: то, что плагины зовут по имени upstream. */
 public final class AppUtils {
 
     private static final String RELEASE_SIGNATURE = "n4MjWgos1KTzGpMSD4ztPg==";
@@ -222,7 +222,7 @@ public final class AppUtils {
             FileLog.e(e);
         }
         if (isAppModified()) {
-            builder.append("\nbased on @exteraless");
+            builder.append("\nmvs · Ink");
         }
         return builder.toString();
     }

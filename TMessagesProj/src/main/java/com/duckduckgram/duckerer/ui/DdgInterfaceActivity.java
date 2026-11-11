@@ -48,7 +48,7 @@ public class DdgInterfaceActivity extends DdgCategoryActivity {
         List<Row> rows = new ArrayList<>();
 
         rows.add(Row.header(R.string.DDGCategoryInterface));
-        // DuckDuckGram: compactSidebar — уменьшенные метрики сайдбара (пункты, шапка,
+        // mvs: compactSidebar — уменьшенные метрики сайдбара (пункты, шапка,
         // список аккаунтов), см. DdgSidebarMetrics. Отдельные вкладки чатов и
         // «прокручиваемые превью» из DDG убраны: аналогов нет ни в форке, ни в
         // NagramXF, и обе задачи решаются на стороне сервера или разметки списка.

@@ -505,7 +505,7 @@ public class Camera2Session {
             captureRequestBuilder.set(CaptureRequest.FLASH_MODE, flashing ? (recordingVideo ? CaptureRequest.FLASH_MODE_TORCH : CaptureRequest.FLASH_MODE_SINGLE) : CaptureRequest.FLASH_MODE_OFF);
 
             if (recordingVideo) {
-                // exteraGram 12.9.0, Camera2Session.java:545-560. У апстрима здесь просто
+                // upstream 12.9.0, Camera2Session.java:545-560. У апстрима здесь просто
                 // просят диапазон 30-60 (драйвер почти всегда выбирает 30) и не трогают AE.
                 captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraMetadata.CONTROL_AE_MODE_ON);
                 recordingFrameRate = 30;
@@ -522,7 +522,7 @@ public class Camera2Session {
                 if (app.exteraless.chats.ChatsConfig.cameraStabilization.Bool()) {
                     chooseStabilizationMode(captureRequestBuilder);
                 }
-                chooseFocusMode(captureRequestBuilder);   // без настройки, как в exteraGram
+                chooseFocusMode(captureRequestBuilder);   // без настройки, как в upstream
             }
 
             if (zoomRatioRange != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -549,7 +549,7 @@ public class Camera2Session {
         }
     }
 
-    // ---- Перенос из exteraGram 12.9.0, Camera2Session.java:336-357, 513-530, 617, 715 ----
+    // ---- Перенос из upstream 12.9.0, Camera2Session.java:336-357, 513-530, 617, 715 ----
 
     private volatile int recordingFrameRate = 30;
 
@@ -601,7 +601,7 @@ public class Camera2Session {
         FileLog.d("Camera2Session: stabilization not available");
     }
 
-    /** Непрерывный автофокус на время записи. У exteraGram без настройки. */
+    /** Непрерывный автофокус на время записи. У upstream без настройки. */
     private void chooseFocusMode(CaptureRequest.Builder builder) {
         final int[] modes = cameraCharacteristics.get(CameraCharacteristics.CONTROL_AF_AVAILABLE_MODES);
         if (modes != null) {

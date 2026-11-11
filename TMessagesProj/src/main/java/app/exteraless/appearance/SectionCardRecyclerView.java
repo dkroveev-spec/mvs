@@ -12,7 +12,7 @@ import org.telegram.ui.Components.BlurredRecyclerView;
 
 /**
  * openExtera: список настроек с единой скруглённой карточкой-секцией и мягкой тенью-elevation,
- * точно как в exteraGram 12.9.0.
+ * точно как в upstream 12.9.0.
  *
  * <p>Геометрию (группировку смежных ячеек в секцию, горизонтальные отступы, раздельные радиусы
  * top/bottom крайних ячеек, клип к области видимости) полностью обеспечивает уже присутствующий
@@ -23,7 +23,7 @@ import org.telegram.ui.Components.BlurredRecyclerView;
  *
  * <p>Единственное отличие от стока: штатный {@code drawBackgroundRect} рисует тень только при
  * глобальном флаге {@code SharedConfig.shadowsInSections} (по умолчанию выключен). Здесь тень
- * форсируется ЛОКАЛЬНО — только для экранов настроек exteraless/Neko — без правки глобального
+ * форсируется ЛОКАЛЬНО — только для экранов настроек upstream/Neko — без правки глобального
  * {@code RecyclerListView} и без изменения глобального конфига. Порт логики
  * {@code RecyclerListView.drawBackgroundRect} один-в-один, но с всегда включённой тенью.</p>
  *

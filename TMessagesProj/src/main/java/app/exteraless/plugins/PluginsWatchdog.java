@@ -33,7 +33,7 @@ import tw.nekomimi.nekogram.helpers.AppRestartHelper;
 
 /**
  * Защита от плагина, который вешает или роняет приложение. Перенос
- * {@code com.exteragram.messenger.plugins.utils.PluginsWatchdog} exteraGram.
+ * {@code com.exteragram.messenger.plugins.utils.PluginsWatchdog} upstream.
  *
  * <h3>Детект зависаний (основная функция)</h3>
  * Вход в код плагина кладёт {@link ExecutionInfo} в {@link #executingPlugins}
@@ -69,7 +69,7 @@ import tw.nekomimi.nekogram.helpers.AppRestartHelper;
  */
 public class PluginsWatchdog {
 
-    /** Столько ждём возврата из плагина, прежде чем считать его зависшим. Как в exteraGram. */
+    /** Столько ждём возврата из плагина, прежде чем считать его зависшим. Как в upstream. */
     private static final int FREEZE_TIMEOUT_SECONDS = 5;
     /** Задержка очистки файла-маркера после выхода из последнего плагина. */
     private static final long IDLE_CLEAR_DELAY_MS = 2000L;
@@ -585,7 +585,7 @@ public class PluginsWatchdog {
     /**
      * Плагин кинул исключение через мост.
      *
-     * Только лог. Отключать плагин за брошенное исключение нельзя: у exteraGram
+     * Только лог. Отключать плагин за брошенное исключение нельзя: у upstream
      * {@code executeGenericHook} ловит Throwable, зовёт
      * {@code onPluginExecutionFinished} и пробрасывает дальше — плагин
      * продолжает жить. Ошибка в одном хуке — это ошибка в одном хуке, а не

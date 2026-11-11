@@ -57541,7 +57541,7 @@ public class TLRPC {
         public long ephemeralReceiverBotId; //custom
         public boolean welcomeTemplateFirst; // custom
 
-        // NekoX Customs
+        // upstream Customs
         public String translatedMessage; //custom
         public boolean translated; // custom
         public boolean hide; // custom

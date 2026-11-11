@@ -51,7 +51,7 @@ import xyz.nextalone.nagram.NaConfig;
  * только здесь есть перетаскивание строк, без которого редактор порядка пунктов
  * бокового меню не собрать.
  *
- * Режим нижней панели трёхпозиционный, как в exteraGram: «Показать», «Скрыть»,
+ * Режим нижней панели трёхпозиционный, как в upstream: «Показать», «Скрыть»,
  * «Плавающая». Хранит его {@link MainTabsLayout}.
  */
 public class OpenExteraAppNavigationActivity extends BaseFragment {

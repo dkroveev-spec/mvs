@@ -1724,7 +1724,7 @@ public class FileLoader extends BaseController {
             if (docExt.length() <= 1) {
                 docExt = getExtensionByMimeType(document.mime_type);
             }
-            // DuckDuckGram: своё имя файла вместо dc_id_id. Точка врезки та же, что в
+            // mvs: своё имя файла вместо dc_id_id. Точка врезки та же, что в
             // Talagram (ApplicationLoader.KEEP_ORIGINAL_FILENAME), — здесь сходятся все
             // три пути, которые зовут эту функцию: кэш, FileLoadOperation и ячейка.
             String ddgName = getDdgOriginalFileName(document, docExt);

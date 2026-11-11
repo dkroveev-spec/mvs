@@ -6018,7 +6018,7 @@ public class ChatActivityEnterView extends FrameLayout implements
         }
 
         private boolean handleFormattingShortcut(KeyEvent event) {
-            // DuckDuckGram: forceCopy. Панели форматирования уже нет (см. RichEditor),
+            // mvs: forceCopy. Панели форматирования уже нет (см. RichEditor),
             // но горячие клавиши вводного поля остались бы — Ctrl+B продолжал бы
             // менять начертание выделенного вслепую. Галочка означает «только текст»,
             // значит и стиль по горячим клавишам применяться не должен.
@@ -6276,7 +6276,7 @@ public class ChatActivityEnterView extends FrameLayout implements
         final ContentInfoCompat withUri = split.first;
         final ContentInfoCompat rest = split.second;
         // isEditingBusinessLink()/isLiveComment выставляются уже ПОСЛЕ createMessageEditText(),
-        // так что условие exteraGram при регистрации всегда истинно — реальный отсев здесь.
+        // так что условие upstream при регистрации всегда истинно — реальный отсев здесь.
         // Возвращаем rest: текст вставится, а медиа-элементы просто выбрасываем
         if (withUri == null || parentFragment == null || isEditingBusinessLink() || isLiveComment) {
             return rest;
@@ -7000,7 +7000,7 @@ public class ChatActivityEnterView extends FrameLayout implements
 
     private boolean shownRichButton;
     private void showRichButton(boolean show_) {
-        // DuckDuckGram: forceCopy. Кнопка «rich» открывает редактор с форматированием
+        // mvs: forceCopy. Кнопка «rich» открывает редактор с форматированием
         // в обход гейта в RichEditor, поэтому при включённой галочке — «вводить только
         // обычным текстом» — она просто не показывается.
         final boolean show = (richDraftActive || show_) && !DdgConfig.forceCopy.Bool() && parentFragment != null
@@ -8524,7 +8524,7 @@ public class ChatActivityEnterView extends FrameLayout implements
     protected boolean sendMessageInternal(boolean notify, int scheduleDate, int scheduleRepeatPeriod, long payStars, boolean allowConfirm, SendMessageInternalParams internalParams, boolean ddgConfirmShown) {
         final boolean allowConfirmFinal = allowConfirm && !animatorEphemeralMessageVisibility.getValue();
 
-        // DuckDuckGram: confirmSend. Подтверждение показывается до проверки платных
+        // mvs: confirmSend. Подтверждение показывается до проверки платных
         // сообщений и до формирования runnable отправки. Раньше проверка стояла внутри
         // send.run(), но сам send выполнялся только при allowConfirm == false, поэтому
         // подтверждение для текста не появлялось никогда.
@@ -8743,7 +8743,7 @@ public class ChatActivityEnterView extends FrameLayout implements
     }
 
     protected boolean showConfirmAlert(int messageRes, Runnable onConfirmed) {
-        // DuckDuckGram: confirmSend. Форк оставил здесь пустой хук и никто его не
+        // mvs: confirmSend. Форк оставил здесь пустой хук и никто его не
         // переопределяет — то есть штатного подтверждения отправки нет вообще. Текст,
         // гифки и быстрый ответ проходят сюда, поэтому настройка работает везде сразу,
         // а не по одной точке на вид отправки.
@@ -11176,7 +11176,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                 openKeyboard();
             }
         } else {
-            // NagramX: Ask before sending bot command
+            // upstream: Ask before sending bot command
             if (NaConfig.INSTANCE.getDisableClickCommandToSend().Bool()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
                 builder.setTitle(LocaleController.getString(R.string.botCommandConfirmTitle));
@@ -14258,7 +14258,7 @@ public class ChatActivityEnterView extends FrameLayout implements
                     }
                     MediaDataController.getInstance(currentAccount).addRecentSticker(MediaDataController.TYPE_IMAGE, parent, sticker, (int) (System.currentTimeMillis() / 1000), false);
                 };
-                // DuckDuckGram: confirmSend для стикеров. Свой вызов, а не общий
+                // mvs: confirmSend для стикеров. Свой вызов, а не общий
                 // showConfirmAlert: у стикера есть превью, и подтверждать отправку
                 // вслепую здесь ровно тот случай, где промах дорого стоит.
                 if (!DdgConfirmSend.checkSticker(parentFragment, sticker, runnable)) {

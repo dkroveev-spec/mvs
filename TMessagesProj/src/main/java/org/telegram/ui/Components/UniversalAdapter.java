@@ -745,7 +745,7 @@ public class UniversalAdapter extends AdapterWithDiffUtils {
                     checkCell.setChecked(item.checked);
                 }
                 checkCell.setEnabled(item.enabled, null);
-                // Иконка и подпись — как у exteraGram: setIcon(0) обязателен, иначе
+                // Иконка и подпись — как у upstream: setIcon(0) обязателен, иначе
                 // переиспользованная ячейка сохранит иконку соседней строки.
                 checkCell.setIcon(item.iconResId);
                 if (TextUtils.isEmpty(item.textValue)) {

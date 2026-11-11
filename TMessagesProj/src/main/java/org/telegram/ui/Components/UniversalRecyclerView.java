@@ -470,7 +470,7 @@ public class UniversalRecyclerView extends RecyclerListView {
                     return false;
                 }
                 // Элемент, помеченный transparent, не должен получать карточку секции:
-                // так exteraGram рисует пустые состояния (папка + подсказка) — на голом фоне,
+                // так upstream рисует пустые состояния (папка + подсказка) — на голом фоне,
                 // а не внутри скруглённого блока.
                 final int position = viewHolder.getAdapterPosition();
                 if (position == NO_POSITION) {

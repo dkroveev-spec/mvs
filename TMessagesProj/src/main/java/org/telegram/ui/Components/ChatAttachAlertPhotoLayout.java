@@ -144,7 +144,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
     private final boolean needCamera;
 
     /**
-     * Показывать ли плитку камеры в сетке. exteraGram 12.9.0 добавляет это условие
+     * Показывать ли плитку камеры в сетке. upstream 12.9.0 добавляет это условие
      * к каждому месту, где плитка участвует в раскладке или в арифметике позиций
      * (ChatAttachAlertPhotoLayout.java: 22 точки, паттерн
      * `needCamera && ... && (!hideCameraTile || noCameraPermissions)`).
@@ -852,7 +852,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
         gridView.getFastScroll().usePadding = false;
         gridView.getFastScroll().topOffset = ActionBar.getCurrentActionBarHeight(); // + AndroidUtilities.statusBarHeight;
         gridView.setAdapter(adapter = new PhotoAttachAdapter(context, needCamera));
-        // exteraGram зовёт openCamera(boolean) прямо из клик-листенера кнопки
+        // upstream зовёт openCamera(boolean) прямо из клик-листенера кнопки
         // (ChatAttachAlertPhotoLayout.java:4593); у нас точка входа с проверкой разрешения.
         parentAlert.openInAppCameraAction = this::openCameraWithPermissionCheck;
         gridView.addItemDecoration(cameraViewItemDecoration = new CameraViewItemDecoration(gridView));
@@ -963,7 +963,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                 } else if (noGalleryPermissions && position != 0) {
                     try {
                         if (position == adapter.itemsCount - 2) {
-                            menu.onItemClick(open_in); // NekoX: Use system photo picker
+                            menu.onItemClick(open_in); // upstream: Use system photo picker
                         } else {
                             if (Build.VERSION.SDK_INT >= 33) {
                                 fragment.getParentActivity().requestPermissions(new String[]{Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.READ_MEDIA_IMAGES}, BasePermissionsActivity.REQUEST_CODE_EXTERNAL_STORAGE);
@@ -4655,7 +4655,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             }
             if (noGalleryPermissions && this == adapter) {
                 count++;
-                count++; // NekoX: Additional Open In picker
+                count++; // upstream: Additional Open In picker
             }
             photosStartRow = count;
             if (!noGalleryPermissions) {

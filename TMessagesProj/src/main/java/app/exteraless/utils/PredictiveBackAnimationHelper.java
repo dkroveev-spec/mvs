@@ -25,7 +25,7 @@ import org.telegram.ui.ViewPagerActivity;
  * Material 3 predictive back: геометрия «уезжающей карточки» и уменьшенного экрана под ней.
  *
  * Построчный порт {@code com/exteragram/messenger/utils/ui/PredictiveBackAnimationHelper.java}
- * из exteraGram 12.9.0. Класс только считает прямоугольники/радиусы/альфы —
+ * из upstream 12.9.0. Класс только считает прямоугольники/радиусы/альфы —
  * рисует их {@code ActionBarLayout.drawChild}.
  */
 public final class PredictiveBackAnimationHelper {

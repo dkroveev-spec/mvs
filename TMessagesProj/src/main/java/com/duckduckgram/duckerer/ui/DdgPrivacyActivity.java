@@ -67,10 +67,10 @@ public class DdgPrivacyActivity extends DdgCategoryActivity {
         List<Row> rows = new ArrayList<>();
 
         rows.add(Row.header(R.string.DDGCategoryPrivacy));
-        // DuckDuckGram: privacyScreen — FLAG_SECURE на время ухода в фон, см.
+        // mvs: privacyScreen — FLAG_SECURE на время ухода в фон, см.
         // ForegroundDetector.applyPrivacyScreen.
         rows.add(Row.toggle(R.string.DDGPrivacyScreen, R.string.DDGPrivacyScreenInfo, DdgConfig.privacyScreen));
-        // DuckDuckGram: streamerMode. Переключатель — второе место того же выключателя,
+        // mvs: streamerMode. Переключатель — второе место того же выключателя,
         // первое — пункт «Streamer mode» в боковом меню. Состояние одно (DdgConfig),
         // поэтому они не могут разойтись.
         rows.add(Row.toggle(R.string.DDGStreamerMode, R.string.DDGStreamerModeInfo, DdgConfig.streamerMode));
@@ -102,7 +102,7 @@ public class DdgPrivacyActivity extends DdgCategoryActivity {
 
     @Override
     protected void onToggleChanged(Row row, int position, boolean enabled) {
-        // DuckDuckGram: streamerMode. Пункт в боковом меню после переключения
+        // mvs: streamerMode. Пункт в боковом меню после переключения
         // перерисовывает список чатов и снимает висящие уведомления. Этот экран —
         // вторая сторона того же выключателя, и без той же команды режим выглядел бы
         // включившимся в настройках, но не в приложении.

@@ -17,7 +17,7 @@ import tw.nekomimi.nekogram.translate.Translator;
 /**
  * Перевод текста под именем {@code com.exteragram.messenger.utils.text.TranslatorUtils}.
  *
- * Своего движка перевода форк не заводит: под капотом — переводчики NagramX
+ * Своего движка перевода форк не заводит: под капотом — переводчики upstream
  * ({@link Translator}). Совпадают имя класса, имя вложенного интерфейса и формы
  * {@code translate(...)} — именно их зовут плагины каталога.
  */

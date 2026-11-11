@@ -1,7 +1,7 @@
 package com.exteragram.messenger.plugins;
 
 /**
- * Основание контроллера плагинов под именем exteraGram.
+ * Основание контроллера плагинов под именем upstream.
  *
  * dex-модули берут именно этот класс (`PluginsController.class`) и перебирают его
  * `getDeclaredMethods()`, поэтому всё, что они зовут, обязано быть объявлено здесь,

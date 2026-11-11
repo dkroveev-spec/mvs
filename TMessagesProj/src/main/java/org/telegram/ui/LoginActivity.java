@@ -800,7 +800,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
         moreButtonView.addSubItem(1, R.drawable.msg_qrcode_solar, getString(R.string.ImportLogin));
         if (BuildVars.SUPPORTS_PASSKEYS) moreButtonView.addSubItem(4, R.drawable.menu_passkey_add, getString(R.string.PasskeyLogin));
         moreButtonView.addSubItem(2, R.drawable.msg_permissions_solar, getString(R.string.CustomApi)).setContentDescription(getString(R.string.CustomApi));
-        // DuckDuckGram: вход по токену бота — там, где происходит вход в клиент,
+        // mvs: вход по токену бота — там, где происходит вход в клиент,
         // а не в настройках.
         moreButtonView.addSubItem(5, R.drawable.msg_contacts, getString(R.string.DDGLoginAsBot));
         moreButtonView.setDelegate(id -> {
@@ -1744,7 +1744,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
     }
 
     /**
-     * DuckDuckGram: вход по токену бота. Диалог показывается прямо в LoginActivity,
+     * mvs: вход по токену бота. Диалог показывается прямо в LoginActivity,
      * а успех обрабатывается штатным onAuthSuccess -> needFinishActivity, который
      * сам переключает экран на главный (без перезапуска приложения).
      */
@@ -2614,7 +2614,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             }
 
             if (activityMode == MODE_LOGIN) {
-                // DuckDuckGram: режим совместимости — обычный тумблер рядом с Sync Contacts,
+                // mvs: режим совместимости — обычный тумблер рядом с Sync Contacts,
                 // значение живёт в DdgConfig, чтобы совпадать с настройкой в разделе Other.
                 compatibilityModeCheckBox = new CheckBoxCell(context, 2);
                 compatibilityModeCheckBox.setText(getString(R.string.DDGCompatibilityMode), "", DdgConfig.compatibilityMode.Bool(), false);
@@ -2636,7 +2636,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
 
             final boolean allowTestBackend = true;
             if (allowTestBackend && activityMode == MODE_LOGIN) {
-                // DuckDuckGram: testBackend. Переключение на тестовые ДЦ должно произойти
+                // mvs: testBackend. Переключение на тестовые ДЦ должно произойти
                 // ДО отправки номера, иначе код уйдёт на боевой сервер, а сессия окажется
                 // в другом бэкенде. Значение живёт в DdgConfig и применяется сразу при
                 // показе экрана, тумблер виден всегда — как Sync Contacts выше.
@@ -3273,7 +3273,7 @@ public class LoginActivity extends BaseFragment implements NotificationCenter.No
             }
 
             TLRPC.TL_codeSettings settings = new TLRPC.TL_codeSettings();
-            // DuckDuckGram: compatibilityMode. Галочка «всегда по SMS» снимает запрос
+            // mvs: compatibilityMode. Галочка «всегда по SMS» снимает запрос
             // звонка от Telegram: allow_flashcall = false убирает и звонок, и отмену
             // звонка, и запрос журнала — всё, что нужно SIM-карте. Сама привязка к SIM
             // (simcardAvailable/allowCall/...) при этом не меняется, режим совместимости

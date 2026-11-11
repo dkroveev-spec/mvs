@@ -80,7 +80,7 @@ public class IconPacksActivity extends BaseNekoSettingsActivity {
         packs.addAll(sortByPriority(IconPackStorage.getInstalledPacks()));
 
         // Секция «Базовые наборы» — порт IconPacksActivity.fillItems:254 (заголовок BasePacks).
-        // В exteraGram активен ровно один встроенный набор: первый id "base.*" в iconPacksLayout,
+        // В upstream активен ровно один встроенный набор: первый id "base.*" в iconPacksLayout,
         // по умолчанию "base.default". У нас выбор лежит в NaConfig.iconReplacements
         // (0/1/2), см. BaseIconPacks — отдельного ключа под это заводить не стали.
         basePacksHeaderRow = addRow("iconPacksBase");
@@ -263,7 +263,7 @@ public class IconPacksActivity extends BaseNekoSettingsActivity {
      * Сдвинуть пак в списке приоритета.
      *
      * Порядок активных паков решает, чья иконка победит при совпадении имён:
-     * берётся первая найденная (IconPackManager). exteraGram двигает паки
+     * берётся первая найденная (IconPackManager). upstream двигает паки
      * перетаскиванием за ручку (IconPacksActivity: allowReorder +
      * setReorderHandleOnly), но там строка пака — своя ячейка с ручкой, а у нас
      * обычный TextCheckCell с переключателем; отдельная ячейка с превью — своя
@@ -311,7 +311,7 @@ public class IconPacksActivity extends BaseNekoSettingsActivity {
 
     /**
      * Экран со списком всех иконок пака (порт IconPacksActivity.java:409): открывается
-     * вместе с включением режима точечной замены, как в exteraGram.
+     * вместе с включением режима точечной замены, как в upstream.
      */
     private void openEditor(IconPack pack) {
         if (!IconPacksConfig.enabled()) {

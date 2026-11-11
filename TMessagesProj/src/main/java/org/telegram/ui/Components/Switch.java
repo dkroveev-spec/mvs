@@ -191,14 +191,14 @@ public class Switch extends View {
         }
     }
 
-    /** Новый (exteraGram) стиль тумблера — тот же слот, что рисует {@code drawExteraSwitch}. */
+    /** Новый (upstream) стиль тумблера — тот же слот, что рисует {@code drawExteraSwitch}. */
     private static boolean isExteraSwitchStyle() {
         return NaConfig.INSTANCE.getSwitchStyle().Int() == SWITCH_STYLE_MD3;
     }
 
     /**
      * Запас вокруг тумблера для overlay-битмапов: капсула нового стиля вылезает
-     * за measuredWidth/Height (exteraGram: {@code Switch.getOverlayPadding()} = dp(5)).
+     * за measuredWidth/Height (upstream: {@code Switch.getOverlayPadding()} = dp(5)).
      */
     private int getOverlayPadding() {
         return isExteraSwitchStyle() ? dp(5) : 0;
@@ -297,7 +297,7 @@ public class Switch extends View {
     private void animateToCheckedState(boolean newCheckedState) {
         cancelCheckAnimator();
         if (isExteraSwitchStyle()) {
-            // exteraGram: SpringForce(target).setDampingRatio(0.9f).setStiffness(1400f), minimumVisibleChange 0.001f
+            // upstream: SpringForce(target).setDampingRatio(0.9f).setStiffness(1400f), minimumVisibleChange 0.001f
             checkSpringAnimator = new SpringAnimation(this, PROGRESS_PROPERTY)
                     .setSpring(new SpringForce(newCheckedState ? 1f : 0f)
                             .setDampingRatio(0.9f)
@@ -335,7 +335,7 @@ public class Switch extends View {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         attachedToWindow = true;
-        // Стиль exteraGram рисует дорожку шире собственных границ вьюхи
+        // Стиль upstream рисует дорожку шире собственных границ вьюхи
         // (-2dp слева, +3dp справа, высота 26dp против 20-22dp у ячейки), и
         // клип по границам ребёнка срезает капсуле бока. TextCheckCell снимает
         // клип у себя, но переключатель живёт ещё в восьми ячейках — проще
@@ -357,7 +357,7 @@ public class Switch extends View {
 
     @Override
     public void setAlpha(float alpha) {
-        // exteraGram: при новом стиле альфа не уходит во View, иначе гаснут overlay-битмапы
+        // upstream: при новом стиле альфа не уходит во View, иначе гаснут overlay-битмапы
         if (!isExteraSwitchStyle()) {
             overrideAlpha = 1.0f;
             super.setAlpha(alpha);
@@ -674,7 +674,7 @@ public class Switch extends View {
     }
 
     private void drawCustomSwitch(Canvas canvas, int switchStyle) {
-        // exteraGram "new switch" look reversed from exteraGram 12.9.0 onDraw (exteraSwitch.smali).
+        // upstream "new switch" look reversed from upstream 12.9.0 onDraw (exteraSwitch.smali).
         // We reuse the MD3 slot (SWITCH_STYLE_MD3 == 2, the current default) to render it 1:1:
         // a fully-filled capsule track (no border, no icon) with a solid round thumb.
         if (switchStyle == SWITCH_STYLE_MD3) {
@@ -848,7 +848,7 @@ public class Switch extends View {
     }
 
     /**
-     * exteraGram "new switch" style, reversed from exteraGram 12.9.0 Switch.onDraw
+     * upstream "new switch" style, reversed from upstream 12.9.0 Switch.onDraw
      * (tools/exteraSwitch.smali, method onDraw, ExteraConfig.getNewSwitchStyle()==true branch).
      *
      * All const/high16 float values below were decoded as Float.intBitsToFloat(N << 16):

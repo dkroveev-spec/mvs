@@ -34,7 +34,7 @@ public class AppIconBulletinLayout extends Bulletin.ButtonLayout {
         textView.setTypeface(Typeface.SANS_SERIF);
         addView(textView, LayoutHelper.createFrameRelatively(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.START | Gravity.CENTER_VERTICAL, 56, 0, 16, 0));
 
-        // NekoX: try to fix NekoX icon
+        // upstream: try to fix upstream icon
         imageView.setImageDrawable(ContextCompat.getDrawable(context, icon.background));
         imageView.setOuterPadding(AndroidUtilities.dp(8));
         imageView.setBackgroundOuterPadding(AndroidUtilities.dp(24));

@@ -7933,7 +7933,7 @@ public class SharedMediaLayout extends FrameLayout implements NotificationCenter
                             }
                             return;
                         }
-                        // exteraless plugins: установить плагин, а не открывать его в просмотрщике.
+                        // upstream plugins: установить плагин, а не открывать его в просмотрщике.
                         if (app.exteraless.plugins.PluginInstallHelper.handleMessageTap(profileActivity.getParentActivity(), message)) {
                             return;
                         }

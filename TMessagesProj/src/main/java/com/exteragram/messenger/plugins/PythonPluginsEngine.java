@@ -3,7 +3,7 @@ package com.exteragram.messenger.plugins;
 import org.telegram.ui.ActionBar.BaseFragment;
 
 /**
- * Основание движка плагинов под именем exteraGram.
+ * Основание движка плагинов под именем upstream.
  *
  * {@link #openPluginSettings} объявлен здесь намеренно: dex-модули вешают на
  * него Xposed-хук, чтобы подменить свой экран настроек. Хук ловит вызовы,

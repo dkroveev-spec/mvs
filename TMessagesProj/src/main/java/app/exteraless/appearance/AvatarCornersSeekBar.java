@@ -24,7 +24,7 @@ import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.SeekBarView;
 
 /**
- * Слайдер с заголовком и подписями по краям — как в exteraGram (AltSeekbar).
+ * Слайдер с заголовком и подписями по краям — как в upstream (AltSeekbar).
  * Используется для закругления аватарок: слева «Квадрат», справа «Круг».
  */
 @SuppressLint("ViewConstructor")
@@ -164,7 +164,7 @@ public class AvatarCornersSeekBar extends FrameLayout {
 
     /**
      * Единица измерения для промежуточных значений, например «dp» у радиуса секций
-     * (exteraGram: formatSectionRadius — 0 «Off», 28 «Max», иначе «N dp»).
+     * (upstream: formatSectionRadius — 0 «Off», 28 «Max», иначе «N dp»).
      * Пусто у закругления аватарок, где число выводится без единиц.
      */
     private String valueSuffix = "";

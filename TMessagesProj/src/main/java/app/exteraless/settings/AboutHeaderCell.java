@@ -24,18 +24,18 @@ import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 
 /**
- * About-шапка корневого экрана exteraless.
- * Порт HeaderSettingsCell из exteraGram 12.9.0: логотип 72dp,
+ * About-шапка корневого экрана upstream.
+ * Порт HeaderSettingsCell из upstream 12.9.0: логотип 72dp,
  * название 20sp bold, версия 15sp bold с кодом сборки в скобках.
  *
  * Форма логотипа — маска лаунчера, а не жёсткий круг: на прошивке со сквирклом
  * или каплей иконка в настройках выглядит так же, как на рабочем столе
  *. Переключается долгим
- * нажатием по самому логотипу, отдельной строки нет и у exteraGram.
+ * нажатием по самому логотипу, отдельной строки нет и у upstream.
  */
 public class AboutHeaderCell extends LinearLayout {
 
-    /** Цвет подложки иконки приложения, как R.color.ic_background в exteraGram. */
+    /** Цвет подложки иконки приложения, как R.color.ic_background в upstream. */
     public static final int LOGO_BACKGROUND = 0xFFE83030;
 
     /** Путь формы логотипа. Считается один раз, сбрасывается при смене режима. */

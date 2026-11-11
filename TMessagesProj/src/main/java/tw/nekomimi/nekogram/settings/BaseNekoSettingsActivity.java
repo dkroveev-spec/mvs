@@ -188,13 +188,13 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
 
     /**
      * Фон actionBar, зависящий от прокрутки. Вынесено в метод, чтобы экран мог
-     * сделать шапку прозрачной наверху (topColorKey = -1) — как корневой экран exteraless.
+     * сделать шапку прозрачной наверху (topColorKey = -1) — как корневой экран upstream.
      * Повторный вызов setAdaptiveBackground после первого не перекрашивает шапку,
      * поэтому настраивать нужно именно здесь, а не после createView.
      */
     /**
      * Рисовать ли блюр-подложку под actionBar. Экраны с прозрачной шапкой
-     * (корневой экран exteraless) её отключают: подложка закрывает контент под шапкой.
+     * (корневой экран upstream) её отключают: подложка закрывает контент под шапкой.
      * Снять её после вызова нельзя — {@code setDrawBlurBackground(null)} падает.
      */
     protected boolean needActionBarBlur() {
@@ -484,7 +484,7 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
 
         /** Типы ячеек со сплошным белым фоном — из них собираются карточки-секции. */
         protected boolean isSectionContent(int viewType) {
-            // exteraGram: при вынесенных заголовках заголовок лежит на фоне окна,
+            // upstream: при вынесенных заголовках заголовок лежит на фоне окна,
             // а не в своей карточке — поэтому он вообще не участвует в секциях.
             if (viewType == TYPE_HEADER && app.exteraless.appearance.AppearanceConfig.separateHeaders()) {
                 return false;
@@ -532,7 +532,7 @@ public abstract class BaseNekoSettingsActivity extends BaseFragment {
                     break;
                 case TYPE_HEADER: {
                     HeaderCell headerCell = new HeaderCell(mContext, resourcesProvider);
-                    // exteraGram: вынесенный заголовок лежит на фоне окна — без белой подложки
+                    // upstream: вынесенный заголовок лежит на фоне окна — без белой подложки
                     // и вне карточки. Группировку карточек делает RecyclerListView.setSections
                     // по предикату вью, поэтому исключаем заголовок именно тегом.
                     if (app.exteraless.appearance.AppearanceConfig.separateHeaders()) {

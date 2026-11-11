@@ -128,7 +128,7 @@ public class AvatarDrawable extends Drawable {
         super();
         this.resourcesProvider = resourcesProvider;
         namePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        // exteraGram 12.9.0, AvatarDrawable.java:96-107 — инициалы рисуются Nunito ExtraBold,
+        // upstream 12.9.0, AvatarDrawable.java:96-107 — инициалы рисуются Nunito ExtraBold,
         // а не системным жирным. Единственное место, где этот шрифт используется.
         namePaint.setTypeface(AndroidUtilities.getTypeface(AndroidUtilities.TYPEFACE_NUNITO_EXTRABOLD));
         namePaint.setTextSize(dp(18));

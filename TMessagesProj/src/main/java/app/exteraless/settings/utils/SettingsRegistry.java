@@ -33,7 +33,7 @@ import app.exteraless.settings.OpenExteraSettingsActivity;
  * и открывают экран по алиасу через {@link #handleLink}. Имена и форма хранилища
  * повторяют эталон именно поэтому.
  *
- * Наши экраны настроек построены на строках NagramX, а не на UItem, поэтому сами
+ * Наши экраны настроек построены на строках upstream, а не на UItem, поэтому сами
  * себя в реестр не добавляют — заполняют его плагины через {@link #addSearchEntry}
  * и {@link #addLinkAliasForOption}.
  */
@@ -157,7 +157,7 @@ public class SettingsRegistry {
         icons.put(OpenExteraOtherActivity.class, R.drawable.msg_fave);
         icons.put(OpenExteraAppNavigationActivity.class, R.drawable.msg_list);
 
-        // DuckDuckGram: те же категории, что и в DuckDuckGram Preferences.
+        // mvs: те же категории, что и в mvs Preferences.
         // Регистрация нужна поиску настроек: он обходит этот список и строит по
         // нему индекс, поэтому без неё настройки DDG в поиске не находятся.
         icons.put(com.duckduckgram.duckerer.ui.DdgChatsActivity.class, R.drawable.msg_discussion);

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
 /**
- * UI-утилиты, перенесённые из exteraGram
+ * UI-утилиты, перенесённые из upstream
  */
 public final class UIUtil {
 
@@ -19,7 +19,7 @@ public final class UIUtil {
      * «Вдавливание» вью при нажатии: 80 мс до {@code 1 - scale}, отпускание — 350 мс
      * с {@link OvershootInterpolator}.
      *
-     * exteraGram дополнительно поджимает маску ripple ({@code Theme.RippleRadMaskDrawable}
+     * upstream дополнительно поджимает маску ripple ({@code Theme.RippleRadMaskDrawable}
      * с padding'ом), но у нас {@code RippleRadMaskDrawable} не умеет padding, а
      * {@code Theme.java} правит другой агент — поэтому здесь только масштаб.
      * Визуально основную часть эффекта даёт именно он.
@@ -55,7 +55,7 @@ public final class UIUtil {
 
     /**
      * Фон плавающей кнопки. Апстрим всегда рисует круг
-     * ({@code Theme.createSimpleSelectorCircleDrawable}); exteraGram при включённом
+     * ({@code Theme.createSimpleSelectorCircleDrawable}); upstream при включённом
      * squareFab рисует «squircle» с радиусом ceil(size * 16 / 56) dp
      *
      * @param size сторона кнопки в dp

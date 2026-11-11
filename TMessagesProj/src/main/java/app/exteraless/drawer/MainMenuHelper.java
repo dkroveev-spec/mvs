@@ -58,7 +58,7 @@ import tw.nekomimi.nekogram.settings.GhostModeActivity;
 /**
  * Резолвер пунктов главного меню: id из {@link MainMenuLayout} → иконка, подпись и действие.
  *
- * exteraGram: {@code com/exteragram/messenger/utils/chats/MainMenuHelper.java} (12.9.0, 819 строк).
+ * upstream: {@code com/exteragram/messenger/utils/chats/MainMenuHelper.java} (12.9.0, 819 строк).
  * Из {@code MenuContext} убран {@code pluginContextData}.
  */
 public final class MainMenuHelper {
@@ -67,7 +67,7 @@ public final class MainMenuHelper {
     }
 
     /**
-     * Контекст резолва. exteraGram: {@code MainMenuHelper.MenuContext} — record из четырёх полей,
+     * Контекст резолва. upstream: {@code MainMenuHelper.MenuContext} — record из четырёх полей,
      * из них {@code pluginContextData} выброшен вместе с движком плагинов.
      *
      * @param archiveClick своё действие для «Архива»: в списке чатов архив открывается
@@ -327,14 +327,14 @@ public final class MainMenuHelper {
                 return new MenuItemInfo(R.drawable.menu_recent, LocaleController.getString(R.string.RecentChats),
                         () -> showRecentChats(fragment, currentAccount), null);
             case STREAMER_MODE:
-                // DuckDuckGram: тап переключает режим, длинное нажатие открывает его
+                // mvs: тап переключает режим, длинное нажатие открывает его
                 // настройки. Само состояние живёт в DdgConfig, чтобы экран приватности
                 // и пункт меню вели себя как две стороны одного выключателя.
                 return new MenuItemInfo(R.drawable.msg_screencast_remix, streamerModeTitle(),
                         () -> toggleStreamerMode(fragment),
                         () -> fragment.presentFragment(new DdgPrivacyActivity()));
             case READ_ALL:
-                // DuckDuckGram: «Mark as read». Считывание идёт в MessagesStorage
+                // mvs: «Mark as read». Считывание идёт в MessagesStorage
                 // (readAllDialogs(-1) покрывает все папки), а перерисовку списка чатов
                 // делает сам форк внутри — от нас нужен только вызов и буллетин.
                 return new MenuItemInfo(R.drawable.msg_markread, LocaleController.getString(R.string.DDGReadAll),
@@ -369,7 +369,7 @@ public final class MainMenuHelper {
     }
 
     /**
-     * DuckDuckGram: подпись пункта стример-режима — то, что он сделает, а не его имя.
+     * mvs: подпись пункта стример-режима — то, что он сделает, а не его имя.
      * Так же оформлен пункт призрачного режима выше.
      */
     private static CharSequence streamerModeTitle() {
@@ -379,7 +379,7 @@ public final class MainMenuHelper {
     }
 
     /**
-     * DuckDuckGram: переключение стример-режима из меню.
+     * mvs: переключение стример-режима из меню.
      *
      * <p>Записи в конфиг недостаточно: список чатов уже собран, и превью в нём лежат
      * до перерисовки, поэтому пересборка ячеек обязательна. Всё это делает общий
@@ -419,7 +419,7 @@ public final class MainMenuHelper {
     }
 
     /**
-     * exteraGram: {@code MainMenuHelper.$r8$lambda$saqA7TDqFSmi2ZXfA6fwir6uv4I} — открывает
+     * upstream: {@code MainMenuHelper.$r8$lambda$saqA7TDqFSmi2ZXfA6fwir6uv4I} — открывает
      * домашнюю страницу поисковика во встроенном браузере. В нашем {@code SearchEngine}
      * нет {@code getHomepage()}, поэтому берётся {@code search_url}.
      */
@@ -433,7 +433,7 @@ public final class MainMenuHelper {
     }
 
     /**
-     * Сканер QR со своим листом результата — как у exteraGram
+     * Сканер QR со своим листом результата — как у upstream
      * ({@code MainMenuHelper} → {@code CameraScanActivity.showAsSheet} →
      * {@code QRCodeSheet}).
      *
@@ -492,7 +492,7 @@ public final class MainMenuHelper {
             case PLUGINS -> new MenuItemInfo(R.drawable.msg_plugins, LocaleController.getString(R.string.OpenExteraPlugins), null, null);
             case QR -> new MenuItemInfo(R.drawable.msg_qrcode, LocaleController.getString(R.string.AuthAnotherClient), null, null);
             case GHOST_MODE -> new MenuItemInfo(R.drawable.ayu_ghost, ghostModeTitle(), null, null);
-            // DuckDuckGram: подпись пункта в описании — то же самое, что и в самом меню,
+            // mvs: подпись пункта в описании — то же самое, что и в самом меню,
             // иначе редактор раскладки покажет «Streamer mode» вместо «Turn on streamer mode».
             case STREAMER_MODE -> new MenuItemInfo(R.drawable.msg_screencast_remix, streamerModeTitle(), null, null);
             case RECENT_CHATS -> new MenuItemInfo(R.drawable.menu_recent, LocaleController.getString(R.string.RecentChats), null, null);
@@ -561,7 +561,7 @@ public final class MainMenuHelper {
     }
 
     /**
-     * exteraGram: {@code ChatUtils.hasArchivedChats()} → {@code MessagesController.hasArchivedChatsActual()}.
+     * upstream: {@code ChatUtils.hasArchivedChats()} → {@code MessagesController.hasArchivedChatsActual()}.
      * У нас поле {@code hasArchivedChats} приватное, поэтому смотрим сам список папки 1.
      */
     public static boolean hasArchivedChats(int currentAccount) {

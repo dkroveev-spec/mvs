@@ -127,7 +127,7 @@ public class PillStackController implements PillStackEvents.Listener {
         }
         if (stackView == null) {
             stackView = new PillStackView(container.getContext());
-            // Отступ от края строки поиска — 6dp с обеих сторон, как в exteraGram
+            // Отступ от края строки поиска — 6dp с обеих сторон, как в upstream
             // (FragmentSearchField.updatePillStack, :421). Раньше со стороны края
             // стояло 44dp «под крестик очистки», из-за чего полоса заметно не
             // доходила до правого бока поиска; крестика при пустом поле нет, а с

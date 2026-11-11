@@ -30,12 +30,12 @@ import org.telegram.ui.Components.SeekBarView;
  * {@code com.exteragram.messenger.preferences.components.AltSeekbar} (12.9.0).
  *
  * Работает в единицах настройки, а не в долях: {@link #setProgress(float)} принимает
- * значение из диапазона [min..max] — так же, как у exteraGram, и так его зовут превью
+ * значение из диапазона [min..max] — так же, как у upstream, и так его зовут превью
  * (SliderPreviewCell:52). Не путать с {@link AvatarCornersSeekBar}, у которого
  * setProgress принимает 0..1; тот появился раньше и остаётся ради экранов,
  * которые уже на него завязаны.
  *
- * Ветку exteraGram с {@code com.google.android.material.slider.Slider} перенести
+ * Ветку upstream с {@code com.google.android.material.slider.Slider} перенести
  * нельзя — библиотеки Material Components в дереве нет; MD3-вид слайдера у нас
  * рисует сам {@link SeekBarView} (SeekBarView.java:469).
  */
@@ -140,7 +140,7 @@ public class AltSeekbar extends FrameLayout {
         addView(seekBarView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 44,
                 Gravity.TOP, 6, 68, 6, 0));
 
-        // Стартуем с min, а не с нуля: у exteraGram поле currentValue инициализировано нулём
+        // Стартуем с min, а не с нуля: у upstream поле currentValue инициализировано нулём
         // и при min > 0 ползунок на миг уезжает за левый край. Реальное значение
         // владелец выставляет своим setProgress сразу после конструктора.
         setProgress(min);

@@ -53,13 +53,13 @@ import app.exteraless.plugins.ui.components.PluginFileViewer;
  *
  * Раньше здесь был системный AlertDialog со списком галочек: он не показывал ни
  * иконки, ни описания, а на длинном списке разрешений упирался в собственную
- * высоту. exteraGram ({@code plugins/ui/components/InstallPluginBottomSheet}) на
+ * высоту. upstream ({@code plugins/ui/components/InstallPluginBottomSheet}) на
  * этом месте показывает карточку — иконка, имя, версия и автор, описание, — и
  * ставит рядом с кнопкой отдельную галочку «включить после установки».
  *
- * Наше отличие от exteraGram одно и намеренное: в списке под описанием стоят
+ * Наше отличие от upstream одно и намеренное: в списке под описанием стоят
  * разрешения, которые нашёл статический разбор, и у каждого своя раскрывашка с
- * именами из исходника. exteraGram вместо этого показывает бейдж «источник
+ * именами из исходника. upstream вместо этого показывает бейдж «источник
  * неизвестен»; бейдж говорит о канале, а не о плагине, и ничего не решает.
  */
 public class PluginInstallBottomSheet extends com.exteragram.messenger.plugins.ui.components.InstallPluginBottomSheet {

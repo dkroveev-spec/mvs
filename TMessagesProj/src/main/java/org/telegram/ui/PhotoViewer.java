@@ -1064,7 +1064,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
     private Theme.ResourcesProvider resourcesProvider;
 
     private boolean pausedOnPause = false;
-    // Аудиофокус просмотрщика, перенос из exteraGram 12.9.0 (PhotoViewer.java:537, 6424).
+    // Аудиофокус просмотрщика, перенос из upstream 12.9.0 (PhotoViewer.java:537, 6424).
     // Без него музыка соседнего приложения не глохнет на видео и не возвращается после.
     private boolean hasAudioFocus;
     private final AudioManager photoViewerAudioManager = (AudioManager) ApplicationLoader.applicationContext.getSystemService(Context.AUDIO_SERVICE);
@@ -1552,7 +1552,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         }
     }
 
-    // Перенос из exteraGram 12.9.0, PhotoViewer.java:15029-15031. Фокусом рулим только когда
+    // Перенос из upstream 12.9.0, PhotoViewer.java:15029-15031. Фокусом рулим только когда
     // включена пауза при сворачивании: иначе просмотрщик ведёт себя как в ванили.
     private boolean shouldManageAudioFocus() {
         return NekoConfig.autoPauseVideo.Bool();
@@ -5520,7 +5520,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                         }
                     }
 
-                    // DuckDuckGram: skipUndoTimer. Диалог подтверждения удаления в просмотрщике
+                    // mvs: skipUndoTimer. Диалог подтверждения удаления в просмотрщике
                     // свой, мимо AlertsCreator.createDeleteMessagesAlert, поэтому хук там не
                     // доходит и автонажатие штатной кнопки сделано в конце блока. Обратная
                     // сторона: поставить галку «Удалить у всех» в невидимом диалоге нельзя, и
@@ -5685,7 +5685,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
                     TextView button = (TextView) alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
                     if (button != null) {
                         button.setTextColor(getThemedColor(Theme.key_text_RedBold));
-                        // DuckDuckGram: skipUndoTimer. Здесь своё подтверждение удаления,
+                        // mvs: skipUndoTimer. Здесь своё подтверждение удаления,
                         // мимо AlertsCreator, поэтому хук в createDeleteMessagesAlert сюда
                         // не доходит. Не дублируем логику удаления: жмём штатную кнопку.
                         // Состояние галки «Удалить у всех» к этому моменту уже задано выше —
@@ -21949,7 +21949,7 @@ public class PhotoViewer implements NotificationCenter.NotificationCenterDelegat
         return true;
     }
 
-    // Перенос из exteraGram 12.9.0, PhotoViewer.java:8489-8491. До этого метод был заглушкой
+    // Перенос из upstream 12.9.0, PhotoViewer.java:8489-8491. До этого метод был заглушкой
     // на `return false`, хотя тумблер в настройках стоял и точка вызова была готова.
     private boolean enableSwipeToPiP() {
         return (pipItem.getVisibility() == View.VISIBLE

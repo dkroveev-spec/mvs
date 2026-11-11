@@ -502,7 +502,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private ActionBarMenuItem videoCallItem;
     private ActionBarMenuItem editItem;
     private ActionBarMenuItem otherItem;
-    // exteraless plugins: подменю PROFILE_ACTION_MENU в меню «⋮».
+    // upstream plugins: подменю PROFILE_ACTION_MENU в меню «⋮».
     private app.exteraless.plugins.menus.MenuInjector.SwipeBackMenu pluginsMenu;
     private ActionBarMenuItem searchItem;
     private ActionBarMenuSubItem editColorItem;
@@ -2326,7 +2326,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         getNotificationCenter().addObserver(this, NotificationCenter.profileMusicUpdated);
         getNotificationCenter().addObserver(this, NotificationCenter.updatedChatRanks);
         NotificationCenter.getGlobalInstance().addObserver(this, NotificationCenter.emojiLoaded);
-        // exteraless plugins: реестр пунктов меняется, когда плагин включают/выключают.
+        // upstream plugins: реестр пунктов меняется, когда плагин включают/выключают.
         NotificationCenter.getGlobalInstance().addObserver(this, NotificationCenter.pluginMenuItemsUpdated);
         updateRowsIds();
         if (listAdapter != null) {
@@ -6326,7 +6326,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     }
 
     private void updateGooey() {
-        // Перенос из exteraGram 12.9.0, ProfileActivity.java:13215-13236.
+        // Перенос из upstream 12.9.0, ProfileActivity.java:13215-13236.
         // Было три расхождения: настройка gooeyAvatarAnimation не проверялась вовсе
         // (эффект работал всегда), кривая затухания была линейной за первые 25 %
         // вместо pow(progress, 1.5), и giftsView не гас при отключённом эффекте.
@@ -9420,7 +9420,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     @Override
     public void didReceivedNotification(int id, int account, final Object... args) {
         if (id == NotificationCenter.pluginMenuItemsUpdated) {
-            // exteraless plugins: пересобрать подменю PROFILE_ACTION_MENU.
+            // upstream plugins: пересобрать подменю PROFILE_ACTION_MENU.
             if (pluginsMenu != null) {
                 pluginsMenu.refresh();
             }
@@ -11077,7 +11077,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
 
                 settingsSectionRow = rowCount++;
 
-                // Строка настроек NagramX появляется только если её включили на
+                // Строка настроек upstream появляется только если её включили на
                 // экране «Other» — как и в общем списке настроек.
                 if (app.exteraless.general.GeneralConfig.showNagramSettings()) {
                     nekoRow = rowCount++;
@@ -11985,7 +11985,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 } else {
                     nameTextView[a].setText(newString);
                 }
-                // DuckDuckGram: значок поддержавшего слева от имени.
+                // mvs: значок поддержавшего слева от имени.
                 if (user != null) {
                     nameTextView[a].setText(DdgSupporters.prependBadge(
                             nameTextView[a].getText(), user.id,
@@ -12847,7 +12847,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         editItemVisible = true;
                     }
                 } else {
-                    if (true/*ChatObject.hasAdminRights(chat) || chat.megagroup && ChatObject.canChangeChatInfo(chat)*/) { // NagramX: allow change chat name without admin rights
+                    if (true/*ChatObject.hasAdminRights(chat) || chat.megagroup && ChatObject.canChangeChatInfo(chat)*/) { // upstream: allow change chat name without admin rights
                         editItemVisible = true;
                     }
                 }
@@ -13019,7 +13019,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
             actionsView.commitActions();
         }
 
-        // exteraless plugins: подменю PROFILE_ACTION_MENU в конце меню «⋮».
+        // upstream plugins: подменю PROFILE_ACTION_MENU в конце меню «⋮».
         if (otherItem != null) {
             java.util.Map<String, Object> pluginMenuContext = new java.util.HashMap<>();
             pluginMenuContext.put("account", currentAccount);
@@ -14220,7 +14220,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             text = PhoneFormat.getInstance().format("+" + vcardPhone);
                             phoneNumber = vcardPhone;
                         } else if (!shouldHide && user != null && !TextUtils.isEmpty(user.phone)) {
-                            // DuckDuckGram: локальная подмена номера выводится как введена,
+                            // mvs: локальная подмена номера выводится как введена,
                             // без принудительного «+» (displayPhone это учитывает).
                             text = DdgProfileOverride.displayPhone(user);
                             phoneNumber = user.phone;

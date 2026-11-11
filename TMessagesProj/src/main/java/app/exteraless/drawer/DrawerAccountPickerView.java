@@ -63,10 +63,10 @@ import com.duckduckgram.duckerer.sidebar.DdgSidebarMetrics;
 
 /**
  * Раскрывающийся список аккаунтов под шапкой шторки.
- * exteraGram: {@code com/exteragram/messenger/drawer/DrawerAccountPickerView.java} (858 строк).
+ * upstream: {@code com/exteragram/messenger/drawer/DrawerAccountPickerView.java} (858 строк).
  *
- * Не переносится «бейдж exteraGram» ({@code BadgesController} / {@code BadgeDTO}) — это
- * запрос к серверу exteraGram, которого у нас нет. Из-за этого убраны {@code badgeOverride},
+ * Не переносится «бейдж upstream» ({@code BadgesController} / {@code BadgeDTO}) — это
+ * запрос к серверу upstream, которого у нас нет. Из-за этого убраны {@code badgeOverride},
  * {@code loadAccounts(BadgeDTO)} и второй правый drawable у имени.
  */
 public class DrawerAccountPickerView extends FrameLayout {
@@ -284,17 +284,17 @@ public class DrawerAccountPickerView extends FrameLayout {
         clipWrapper.setLayoutParams(lp);
     }
 
-    /** exteraGram: высота списка = 48dp * min(itemCount, 5.5) + 4dp сверху и снизу. */
+    /** upstream: высота списка = 48dp * min(itemCount, 5.5) + 4dp сверху и снизу. */
     private int getMaxListHeight() {
         final int itemCount = adapter.getItemCount();
-        // DuckDuckGram: compactSidebar — высота строки аккаунта уменьшается, поэтому и
-        // раскрытый список становится ниже. При выключенной галочке 48dp, как в exteraGram.
+        // mvs: compactSidebar — высота строки аккаунта уменьшается, поэтому и
+        // раскрытый список становится ниже. При выключенной галочке 48dp, как в upstream.
         return (int) ((AndroidUtilities.dp(DdgSidebarMetrics.accountRowHeight()) * (itemCount <= 6 ? itemCount : 5.5f))
                 + (AndroidUtilities.dp(4.0f) * 2));
     }
 
     /**
-     * DuckDuckGram: compactSidebar — повторно применяет метрики к живым строкам.
+     * mvs: compactSidebar — повторно применяет метрики к живым строкам.
      *
      * Высота строки задаётся в конструкторе ViewHolder'а, а notifyDataSetChanged()
      * переиспользует уже созданные view, поэтому после переключения галочки они остались
@@ -470,11 +470,11 @@ public class DrawerAccountPickerView extends FrameLayout {
     }
 
     /**
-     * exteraGram: {@code freeAccountsForAdd()} — без премиума доступна лишь половина слотов.
-     * У exteraGram {@code MAX_ACCOUNT_COUNT} = 16 и вычитается 8; у нас константа 10,
+     * upstream: {@code freeAccountsForAdd()} — без премиума доступна лишь половина слотов.
+     * У upstream {@code MAX_ACCOUNT_COUNT} = 16 и вычитается 8; у нас константа 10,
      * поэтому вычитается её половина.
      *
-     * DuckDuckGram: DDGUnlimitedAccounts снимает штатное ограничение — открываются все
+     * mvs: DDGUnlimitedAccounts снимает штатное ограничение — открываются все
      * свободные слоты, а не половина.
      */
     private int freeAccountsForAdd() {
@@ -552,7 +552,7 @@ public class DrawerAccountPickerView extends FrameLayout {
         public AccountRowView(Context context) {
             super(context);
             setWillNotDraw(false);
-            // DuckDuckGram: compactSidebar — строка аккаунта ниже, шаг списка меняется вместе с ней.
+            // mvs: compactSidebar — строка аккаунта ниже, шаг списка меняется вместе с ней.
             setLayoutParams(new RecyclerView.LayoutParams(LayoutHelper.MATCH_PARENT, AndroidUtilities.dp(DdgSidebarMetrics.pickerItemHeight())));
             setBackground(createAccountItemRippleDrawable());
 
@@ -671,7 +671,7 @@ public class DrawerAccountPickerView extends FrameLayout {
             super(context);
             setOrientation(LinearLayout.HORIZONTAL);
             setGravity(Gravity.CENTER_VERTICAL);
-            // DuckDuckGram: compactSidebar — строка аккаунта ниже, шаг списка меняется вместе с ней.
+            // mvs: compactSidebar — строка аккаунта ниже, шаг списка меняется вместе с ней.
             setLayoutParams(new RecyclerView.LayoutParams(LayoutHelper.MATCH_PARENT, AndroidUtilities.dp(DdgSidebarMetrics.pickerItemHeight())));
 
             final ImageView imageView = new ImageView(context);
@@ -771,7 +771,7 @@ public class DrawerAccountPickerView extends FrameLayout {
                 }
             });
             rowView.setOnLongClickListener(v -> {
-                // exteraGram: текущий аккаунт тащится, остальные открывают превью.
+                // upstream: текущий аккаунт тащится, остальные открывают превью.
                 if (account == UserConfig.selectedAccount) {
                     itemTouchHelper.startDrag(holder);
                     return true;

@@ -524,7 +524,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         public Boolean highQuality;
         public boolean isHighQuality() {
             if (highQuality == null)
-                // exteraGram 12.9.0, MediaController.java:1269
+                // upstream 12.9.0, MediaController.java:1269
                 return app.exteraless.chats.ChatsConfig.alwaysSendInHD.Bool() || SharedConfig.photoHighQualityDefault;
             return highQuality;
         }
@@ -4438,7 +4438,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
     /**
      * Приложение уходит в фон: остановить голосовое или кружок, если это включено
      * в настройках. Перенос {@code MediaController.pauseInBackgroundIfNeeded}
-     * exteraGram (12.9.0, строка 4728). Музыка продолжает играть — её ставить на
+     * upstream (12.9.0, строка 4728). Музыка продолжает играть — её ставить на
      * паузу при сворачивании незачем.
      */
     public void pauseInBackgroundIfNeeded() {

@@ -31,7 +31,7 @@ public class TimeStringHelper {
     /**
      * openExtera: «изменено» иконкой вместо слова.
      * Источник один — NaConfig.useEditedIcon: на него смотрят оба экрана,
-     * и NagramX-овский, и exteraGram-овский.
+     * и upstream-овский, и upstream-овский.
      */
     public static boolean useEditedIcon() {
         return NaConfig.INSTANCE.getUseEditedIcon().Bool();

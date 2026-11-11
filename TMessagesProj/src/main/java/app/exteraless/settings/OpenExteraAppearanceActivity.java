@@ -55,11 +55,11 @@ import java.util.List;
 
 /**
  * Экран «Оформление» раздела openExtera — визуальный порт AppearancePreferencesActivity
- * из exteraGram. Живые превью (аватарки, список чатов, папки) портированы 1:1 из
- * exteraGram 10.10.1 в пакет {@link app.exteraless.appearance}.
+ * из upstream. Живые превью (аватарки, список чатов, папки) портированы 1:1 из
+ * upstream 10.10.1 в пакет {@link app.exteraless.appearance}.
  *
- * Настройки, у которых в NagramX уже есть аналог, привязаны к существующим ConfigItem
- * (NaConfig / NekoConfig). Чисто визуальные настройки, которых в NagramX нет,
+ * Настройки, у которых в upstream уже есть аналог, привязаны к существующим ConfigItem
+ * (NaConfig / NekoConfig). Чисто визуальные настройки, которых в upstream нет,
  * хранятся в {@link AppearanceConfig} и помечены в отчёте как «только UI».
  */
 public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
@@ -149,7 +149,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
     private FabShapeCell fabShapeCell;
 
     /**
-     * Отложенный rebuild после слайдера радиуса секций. exteraGram
+     * Отложенный rebuild после слайдера радиуса секций. upstream
      * (handleSectionRadiusChange :335-343) зовёт rebuildFragments на каждое изменение,
      * но у него слайдер — Material-виджет с редкими колбэками; наш SeekBarView отдаёт
      * значение на каждый dp, и пересборка всех фрагментов на каждом шаге даёт рывки.
@@ -203,7 +203,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
         appearanceHeaderRow = addRow("appearanceHeader");
         fabShapeRow = addRow("fabShape");
         useSystemFontsRow = addRow("useSystemFonts");
-        // Material Design 3 — сворачиваемая группа, как у exteraGram
+        // Material Design 3 — сворачиваемая группа, как у upstream
         // (AppearancePreferencesActivity: asExteraExpandableSwitch + пять asRoundCheckbox).
         // Прежние отдельные селекторы «стиль переключателей» и «стиль слайдеров»
         // стали двумя галочками внутри неё.
@@ -818,7 +818,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
                     break;
                 case TYPE_ROUND_CHECK: {
                     // Тип 4 — круглая галочка с отступом под вложенный пункт,
-                    // ровно как у exteraGram в UniversalAdapter (view type 35).
+                    // ровно как у upstream в UniversalAdapter (view type 35).
                     org.telegram.ui.Cells.CheckBoxCell checkBoxCell =
                             new org.telegram.ui.Cells.CheckBoxCell(mContext, 4, 21, resourcesProvider);
                     checkBoxCell.getCheckBoxRound().setColor(Theme.key_switch2TrackChecked,
@@ -848,7 +848,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
                     view = fabShapeCell;
                     break;
                 case TYPE_DETAIL_SETTINGS: {
-                    // Базовый класс делает такую же ячейку, но многострочной; exteraGram
+                    // Базовый класс делает такую же ячейку, но многострочной; upstream
                     // (asButtonWithSubtext(..., 64, 60) :456-458) держит ровно 64 dp.
                     TextDetailSettingsCell detailCell = new TextDetailSettingsCell(mContext);
                     detailCell.setBackgroundColor(getThemedColor(Theme.key_windowBackgroundWhite));
@@ -943,7 +943,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
                     }
                     cell.setTextAndCheck(getString(R.string.OEAppearanceMaterialDesign3),
                             md3SelectedCount() > 0, true);
-                    // Правая зона (76 dp за разделителем) — сам переключатель, как у exteraGram:
+                    // Правая зона (76 dp за разделителем) — сам переключатель, как у upstream:
                     // туда уходит клик по мастер-тумблеру. Тело строки сворачивает группу.
                     cell.setCollapseArrow(md3SelectedCount() + "/" + MD3_STYLE_COUNT, !md3Expanded,
                             OpenExteraAppearanceActivity.this::toggleAllMd3StylesFromCell);
@@ -984,7 +984,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
                                 AppearanceConfig.iosChatHeader.Bool(), false, true);
                     }
                     cell.setPad(1);
-                    // По умолчанию ячейка этого типа красит текст серым; у exteraGram
+                    // По умолчанию ячейка этого типа красит текст серым; у upstream
                     // вложенные пункты того же цвета, что и обычные строки.
                     cell.setTextColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
                     break;
@@ -1116,7 +1116,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
 
     /** Сколько стилей MD3 включено. Счётчик «N/8» рядом с шевроном. */
     private static final int MD3_STYLE_COUNT = 8;
-    /** Значение селектора NagramX, соответствующее Material Design 3. */
+    /** Значение селектора upstream, соответствующее Material Design 3. */
     private static final int STYLE_MD3 = 2;
 
     private static boolean isMd3(int styleValue) {
@@ -1149,7 +1149,7 @@ public class OpenExteraAppearanceActivity extends BaseNekoSettingsActivity {
 
     /**
      * Клик по мастер-переключателю группы: если включено хоть что-то — гасим всё,
-     * иначе включаем всё. Так же ведёт себя handleMD3StylesSwitchClick exteraGram.
+     * иначе включаем всё. Так же ведёт себя handleMD3StylesSwitchClick upstream.
      */
     private void toggleAllMd3StylesFromCell() {
         toggleAllMd3Styles();

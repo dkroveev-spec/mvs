@@ -88,7 +88,7 @@ public class M3CircularProgress {
     }
 
     /**
-     * Волна. exteraGram для RadialProgressView: setWavyValues(dp(15), dp(1.6f), dp(5), 0.05f)
+     * Волна. upstream для RadialProgressView: setWavyValues(dp(15), dp(1.6f), dp(5), 0.05f)
      * (RadialProgressView.java:288-296), для CircularProgressDrawable — wavelength dp(7),
      * amplitude dp(0.75f), speed dp(6) (CircularProgressDrawable.java:355-360).
      */

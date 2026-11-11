@@ -105,7 +105,7 @@ public final class FilesControllerJava {
         }
         FileHandler handler = handlers.get(normalized);
         if (handler == null || !handler.pluginId.equals(pluginId) || !handler.secret.equals(secret)) {
-            // exteraGram бросает ExtensionNotRegistered/SecretInvalid; сигнатура void — только лог.
+            // upstream бросает ExtensionNotRegistered/SecretInvalid; сигнатура void — только лог.
             FileLog.d("FilesControllerJava: unregister rejected for ." + normalized + " from " + pluginId);
             return;
         }

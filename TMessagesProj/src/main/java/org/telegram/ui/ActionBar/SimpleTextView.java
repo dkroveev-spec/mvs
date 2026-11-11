@@ -156,7 +156,7 @@ public class SimpleTextView extends View implements Drawable.Callback {
     public SimpleTextView(Context context) {
         super(context);
         textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-        // DuckDuckGram: свой шрифт клиента. Владелец может задать начертание позже
+        // mvs: свой шрифт клиента. Владелец может задать начертание позже
         // через setTypeface, но многие SimpleTextView его не задают вовсе — без
         // этого их текст молча рисовался системным шрифтом.
         if (TypefaceHelper.hasCustomTypeface()) {
@@ -1361,7 +1361,7 @@ public class SimpleTextView extends View implements Drawable.Callback {
     }
 
     /**
-     * DuckDuckGram: нажатие на значок поддержавшего (см. {@link DdgSupporters.SupporterSpan}).
+     * mvs: нажатие на значок поддержавшего (см. {@link DdgSupporters.SupporterSpan}).
      */
     public void setBadgeOnClickListener(OnClickListener onClickListener) {
         badgeOnClickListener = onClickListener;

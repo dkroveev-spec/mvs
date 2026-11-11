@@ -392,7 +392,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
         @Override
         protected void onDraw(Canvas canvas) {
             textPaint.setColor(Theme.getColor(Theme.key_windowBackgroundWhiteValueText));
-            // DuckDuckGram: textSizeScale. Показываем не базу SharedConfig.fontSize, а то,
+            // mvs: textSizeScale. Показываем не базу SharedConfig.fontSize, а то,
             // что реально рисуется, — getDdgFontSize() возвращает базу, умноженную на
             // множитель клиента. При 125 % рядом со слайдером стоял бы «16», а текст в
             // превью был бы 20dp: подпись врала бы о том, что сейчас на экране.
@@ -556,7 +556,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
             editor.putInt("fons_size", SharedConfig.fontSize);
             editor.commit();
 
-            // DuckDuckGram: слайдер меняет базу, поэтому множитель пересчитываем
+            // mvs: слайдер меняет базу, поэтому множитель пересчитываем
             // заново. Если этого не сделать, отмасштабированный размер остался бы
             // от старой базы и текст не поменялся бы до перезапуска.
             SharedConfig.applyDdgTextSizeScale();
@@ -910,7 +910,7 @@ public class ThemeActivity extends BaseFragment implements NotificationCenter.No
         if (currentType == THEME_TYPE_BASIC) {
             Theme.loadRemoteThemes(currentAccount, true);
             Theme.checkCurrentRemoteTheme(true);
-            // DuckDuckGram: emoji chat themes ("Color theme" row and the Browse Themes
+            // mvs: emoji chat themes ("Color theme" row and the Browse Themes
             // grid) come from the server via account.getChatThemes (ChatThemeController),
             // not from the legacy account.getThemes path. Feed them into the same
             // preview pipeline official Telegram uses, so the row shows the full set.

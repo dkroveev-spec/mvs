@@ -369,7 +369,7 @@ public class OpenExteraAyuMomentsActivity extends BaseNekoSettingsActivity {
         }
     }
 
-    /** Заголовок берётся из ключа настройки — так же, как это делают ячейки NagramX. */
+    /** Заголовок берётся из ключа настройки — так же, как это делают ячейки upstream. */
     private void bindAyuCheck(TextCheckCell cell, ConfigItem config, boolean divider) {
         cell.setTextAndCheck(getString(config.getKey()), config.Bool(), divider);
     }

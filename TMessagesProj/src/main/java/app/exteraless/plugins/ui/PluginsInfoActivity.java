@@ -22,19 +22,19 @@ import app.exteraless.plugins.PluginsConstants;
 import app.exteraless.plugins.PluginsController;
 
 /**
- * Экран «Plugins Engine» — то, что у exteraGram открывается кнопкой (i) в шапке
+ * Экран «Plugins Engine» — то, что у upstream открывается кнопкой (i) в шапке
  * списка плагинов. Порт
  * {@code com/exteragram/messenger/plugins/ui/PluginsInfoActivity.java}.
  *
- * Порядок секций и строк повторяет exteraGram: Settings (Developer Mode, Compact
+ * Порядок секций и строк повторяет upstream: Settings (Developer Mode, Compact
  * View, Compatibility Mode, Safe Mode) → пояснение про safe mode → Python SDK
  * → Links → «Powered by Chaquopy».
  *
  * Расхождения, осознанные:
- *  - у exteraGram SDK докачивается с сервера (авто-обновление, бета-канал,
+ *  - у upstream SDK докачивается с сервера (авто-обновление, бета-канал,
  *    «проверить обновления»); у нас SDK собран внутрь APK, поэтому вместо трёх
  *    неработающих переключателей — строка с его версией;
- *  - «Установить из файла» перенесено сюда с главного экрана: у exteraGram его нет
+ *  - «Установить из файла» перенесено сюда с главного экрана: у upstream его нет
  *    вовсе (там ставят только тапом по .plugin), но убирать единственный
  *    надёжный способ установки было бы регрессом.
  */

@@ -434,7 +434,7 @@ public class ConnectionsManager extends BaseController {
         final var onComplete = interceptResult.effectiveOnComplete();
         // --- Ghost Mode ---
 
-        // --- exteraless plugins: pre_request_hook (CANCEL = запрос не уходит) ---
+        // --- upstream plugins: pre_request_hook (CANCEL = запрос не уходит) ---
         TLObject pluginRequest = object;
         if (app.exteraless.plugins.PluginsController.getInstance().hasAnyRequestHooks()) {
             app.exteraless.plugins.HookResult preHook = app.exteraless.plugins.PluginsController.getInstance()
@@ -448,7 +448,7 @@ public class ConnectionsManager extends BaseController {
                 pluginRequest = replacement;
             }
         }
-        // --- exteraless plugins ---
+        // --- upstream plugins ---
 
         try {
             final TLObject normalizedObject = FeedRequestNormalizer.normalize(currentAccount, pluginRequest);
@@ -517,7 +517,7 @@ public class ConnectionsManager extends BaseController {
                     final TLRPC.TL_error finalError = error;
                     Utilities.stageQueue.postRunnable(() -> {
                         TLObject pluginResponse = finalResponse;
-                        // exteraless plugins: post_request_hook
+                        // upstream plugins: post_request_hook
                         if (app.exteraless.plugins.PluginsController.getInstance().hasAnyRequestHooks()) {
                             app.exteraless.plugins.HookResult postHook = app.exteraless.plugins.PluginsController.getInstance()
                                     .executePostRequestHook(currentAccount, app.exteraless.plugins.PluginsController.hookName(normalizedObject), finalResponse, finalError);

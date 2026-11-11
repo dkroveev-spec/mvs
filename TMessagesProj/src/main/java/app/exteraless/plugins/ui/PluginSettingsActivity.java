@@ -55,7 +55,7 @@ import com.exteragram.messenger.preferences.BasePreferencesActivity;
  * без обращения к движку.
  *
  * Список собирается через {@link #fillItems(ArrayList, UniversalAdapter)} —
- * ровно как у exteraGram. Плагины каталога хукают этот метод, чтобы дорисовать
+ * ровно как у upstream. Плагины каталога хукают этот метод, чтобы дорисовать
  * себе шапку, и ищут у фрагмента приватное поле {@code plugin}; и то и другое
  * здесь есть намеренно.
  *
@@ -196,7 +196,7 @@ public class PluginSettingsActivity extends BasePreferencesActivity {
                 LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
         actionBar.setAdaptiveBackground(listView);
 
-        // Кнопка сброса — как у exteraGram: только на корневом экране плагина и
+        // Кнопка сброса — как у upstream: только на корневом экране плагина и
         // только когда есть что сбрасывать.
         if (subPageIndex == null) {
             resetItem = actionBar.createMenu().addItem(0, R.drawable.msg_reset);
@@ -292,7 +292,7 @@ public class PluginSettingsActivity extends BasePreferencesActivity {
 
     /**
      * Перестроить экран из движка. Публичный метод — его зовут и плагины:
-     * экранов у exteraGram два (свой и наш), и плагины ищут у фрагмента именно
+     * экранов у upstream два (свой и наш), и плагины ищут у фрагмента именно
      * {@code updateItems()}, а не найдя — лезут чистить приватные поля рефлексией.
      */
     public void updateItems() {
@@ -900,7 +900,7 @@ public class PluginSettingsActivity extends BasePreferencesActivity {
     }
 
     /**
-     * Выбор из списка — как у exteraGram
+     * Выбор из списка — как у upstream
      * ({@code plugins/ui/PluginSettingsActivity.showSelectorDialog}): строки с
      * радиокнопками и отмеченным текущим значением, а не голый список.
      */
@@ -949,7 +949,7 @@ public class PluginSettingsActivity extends BasePreferencesActivity {
     }
 
     /**
-     * Диалог ввода значения — как у exteraGram
+     * Диалог ввода значения — как у upstream
      * ({@code plugins/ui/PluginSettingsActivity.showStringInputDialog}):
      * подпись строки над полем, поле EditTextBoldCursor с подчёркиванием и
      * курсором темы, ширина 292dp, кнопка «Готово» и клавиатура сразу.

@@ -289,7 +289,7 @@ public class FileLoadOperation {
 
     private void updateParams() {
         // Ускорение загрузки, три уровня — перенос FileLoadOperation.updateParams
-        // exteraGram (12.9.0, строка 1758). Уровень 2 берёт куски по мегабайту и
+        // upstream (12.9.0, строка 1758). Уровень 2 берёт куски по мегабайту и
         // двенадцать параллельных запросов.
         if (app.exteraless.general.GeneralConfig.INSTANCE.downloadSpeedBoost() == 2) {
             downloadChunkSizeBig = 1024 * 1024;

@@ -55,7 +55,7 @@ import app.exteraless.icons.IconPacksConfig;
  * иконок, которые запросил текущий экран ({@link IconObserver}). Тап по иконке открывает
  * {@link ReplaceIconBottomSheet} — точечную замену внутри редактируемого пака.
  *
- * exteraGram использует пружинные анимации {@code DynamicAnimation} и {@code UniversalRecyclerView};
+ * upstream использует пружинные анимации {@code DynamicAnimation} и {@code UniversalRecyclerView};
  * здесь то же поведение собрано на {@code ViewPropertyAnimator} и {@link RecyclerListView},
  * чтобы не тянуть зависимостей за пределы модуля.
  *

@@ -2285,7 +2285,7 @@ public class Theme {
 
     public static Paint dividerPaint;
     /**
-     * Кисть подшапочной линии. exteraGram рисует ей ровно 1 px вместо градиентной тени
+     * Кисть подшапочной линии. upstream рисует ей ровно 1 px вместо градиентной тени
      * (12.9.0: Theme.java:425, 6476-6481, ActionBarLayout.java:2603-2615).
      * Цвет берётся из {@link #getDividerColor}, поэтому линия не гаснет в режиме «сегменты»,
      * но исчезает вместе со всеми разделителями в режиме «скрыт».
@@ -4163,7 +4163,7 @@ public class Theme {
             final ThemeInfo themeDarkBlue = themesDict.get("Night");
 
             String theme = preferences.getString("theme", null);
-            if ("NekoX".equals(theme)) {
+            if ("upstream".equals(theme)) {
                 theme = "Blue";
                 preferences.edit().putString("theme", theme).apply();
             }
@@ -4203,7 +4203,7 @@ public class Theme {
             }
 
             String lastDayTheme = themeConfig.getString("lastDayTheme", null);
-            if ("NekoX".equals(lastDayTheme)) {
+            if ("upstream".equals(lastDayTheme)) {
                 themeConfig.edit().putString("lastDayTheme", "Blue").apply();
             }
 
@@ -7967,7 +7967,7 @@ public class Theme {
                 dialogs_nameEncryptedPaint[a].setTypeface(AndroidUtilities.serif());
                 dialogs_messagePaint[a] = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
                 dialogs_messagePrintingPaint[a] = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
-                // DuckDuckGram: превью последнего сообщения в списке чатов тоже
+                // mvs: превью последнего сообщения в списке чатов тоже
                 // должно использовать выбранный шрифт.
                 dialogs_messagePaint[a].setTypeface(AndroidUtilities.regular());
                 dialogs_messagePrintingPaint[a].setTypeface(AndroidUtilities.regular());
@@ -8181,7 +8181,7 @@ public class Theme {
                 chat_ephemeralPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             }
 
-            // DuckDuckGram: свой шрифт клиента. Этим перьям начертание раньше не
+            // mvs: свой шрифт клиента. Этим перьям начертание раньше не
             // задавалось вообще, поэтому тело сообщений, ответы/цитаты и подпись
             // времени рисовались системным шрифтом даже при заданном файле шрифта.
             // Ставим их каждый раз, а не только при создании: после смены шрифта
@@ -8261,7 +8261,7 @@ public class Theme {
             chat_audioTitlePaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
             chat_audioTitlePaint.setTypeface(AndroidUtilities.bold());
             chat_audioPerformerPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
-            // DuckDuckGram: вариант ответа в опросе строится на этом пере,
+            // mvs: вариант ответа в опросе строится на этом пере,
             // поэтому без него текст опроса оставался системным шрифтом.
             chat_audioPerformerPaint.setTypeface(AndroidUtilities.regular());
             chat_botButtonPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
@@ -9045,7 +9045,7 @@ public class Theme {
         }
 
         profile_aboutTextPaint.setTextSize(dp(16));
-        // DuckDuckGram: свой шрифт клиента — описание в профиле рисуется этим
+        // mvs: свой шрифт клиента — описание в профиле рисуется этим
         // пером, и без начертания оно оставалось системным.
         profile_aboutTextPaint.setTypeface(AndroidUtilities.regular());
     }

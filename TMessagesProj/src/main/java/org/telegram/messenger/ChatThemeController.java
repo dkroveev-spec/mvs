@@ -375,8 +375,8 @@ public class ChatThemeController extends BaseController {
     }
 
     public TLRPC.WallPaper getDialogWallpaper(long dialogId) {
-        // Перенос exteraGram 12.9.0:ChatThemeController:950 — «Индивидуальные
-        // темы в чатах». NagramX-условие рядом про своё: показ обоев премиума.
+        // Перенос upstream 12.9.0:ChatThemeController:950 — «Индивидуальные
+        // темы в чатах». upstream-условие рядом про своё: показ обоев премиума.
         if (!AppearanceConfig.customThemes()) {
             return null;
         }

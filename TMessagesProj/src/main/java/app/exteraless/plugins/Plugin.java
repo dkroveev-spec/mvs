@@ -80,7 +80,7 @@ public class Plugin extends com.exteragram.messenger.plugins.Plugin {
     public transient volatile boolean handlesSendMessage = true;
 
     /**
-     * Геттеры в форме exteraGram. У эталона Plugin — Kotlin-класс с приватными
+     * Геттеры в форме upstream. У эталона Plugin — Kotlin-класс с приватными
      * полями, и плагины каталога зовут именно методы; наши публичные поля
      * Chaquopy отдаёт как атрибуты, но {@code plugin.getEngine()} без этого
      * блока падает с AttributeError.

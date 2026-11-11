@@ -13,7 +13,7 @@ import org.telegram.ui.ActionBar.Theme;
 
 /**
  * Счётчик непрочитанных на строке аккаунта.
- * exteraGram: {@code com/exteragram/messenger/drawer/DrawerAccountUnreadBadge.java} (68 строк).
+ * upstream: {@code com/exteragram/messenger/drawer/DrawerAccountUnreadBadge.java} (68 строк).
  */
 final class DrawerAccountUnreadBadge {
 

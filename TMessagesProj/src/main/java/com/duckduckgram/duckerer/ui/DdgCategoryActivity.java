@@ -30,7 +30,7 @@ import tw.nekomimi.nekogram.config.cell.ConfigCellCustom;
 import tw.nekomimi.nekogram.config.cell.AbstractConfigCell;
 
 /**
- * Базовый экран категории DuckDuckGram Preferences.
+ * Базовый экран категории mvs Preferences.
  *
  * Категория описывается списком {@link Row}: заголовок секции, переключатель,
  * ссылка на вложенный экран или действие. Всё остальное — раскладка, разделители,

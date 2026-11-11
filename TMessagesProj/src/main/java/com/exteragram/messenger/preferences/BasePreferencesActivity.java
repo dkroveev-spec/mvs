@@ -18,10 +18,10 @@ import org.telegram.ui.Components.UniversalRecyclerView;
 import java.util.ArrayList;
 
 /**
- * Базовый экран настроек exteraGram — для dex-модулей плагинов.
+ * Базовый экран настроек upstream — для dex-модулей плагинов.
  *
  * Плагины каталога подгружают собственный dex, скомпилированный против классов
- * exteraGram, и наследуют этот экран напрямую. Подстановка имён из
+ * upstream, и наследуют этот экран напрямую. Подстановка имён из
  * `extera_utils/class_aliases.py` работает только для Python, поэтому имя пакета
  * здесь настоящее, а не наше.
  */

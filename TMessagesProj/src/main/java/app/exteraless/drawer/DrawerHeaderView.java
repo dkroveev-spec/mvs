@@ -52,11 +52,11 @@ import tw.nekomimi.nekogram.NekoConfig;
 /**
  * Шапка бокового меню: аватар 72dp, переключатель темы, пилюля прокси, имя и подпись.
  *
- * Отличия от exteraGram:
- * — нет «бейджа exteraGram» ({@code BadgesController}/{@code BadgeDTO}): это его сервер,
+ * Отличия от upstream:
+ * — нет «бейджа upstream» ({@code BadgesController}/{@code BadgeDTO}): это его сервер,
  *   поэтому убраны {@code exteraBadgeDrawable}, {@code onBadgeClick} и второй правый drawable;
- * — иконки прокси взяты из NagramX ({@code proxy_on_solar}/{@code proxy_off_solar}) —
- *   {@code drawer_proxy_on/off} из exteraGram в ресурсах форка нет;
+ * — иконки прокси взяты из upstream ({@code proxy_on_solar}/{@code proxy_off_solar}) —
+ *   {@code drawer_proxy_on/off} из upstream в ресурсах форка нет;
  * — подпись пинга собирается вручную: строки {@code NavigationDrawerProxyPingShort}
  *   («%1$d ms») в форке пока нет.
  */
@@ -95,7 +95,7 @@ public class DrawerHeaderView extends FrameLayout {
     private Runnable onThemeToggle;
     private Runnable onThemeToggleLongClick;
 
-    /** DuckDuckGram: compactSidebar — блок с именем, его позиция зависит от высоты шапки. */
+    /** mvs: compactSidebar — блок с именем, его позиция зависит от высоты шапки. */
     private final FrameLayout nameBlock;
 
     public DrawerHeaderView(Context context) {
@@ -171,7 +171,7 @@ public class DrawerHeaderView extends FrameLayout {
                 LayoutHelper.WRAP_CONTENT, Gravity.CENTER_VERTICAL));
 
         final FrameLayout nameBlock = new FrameLayout(context);
-        // DuckDuckGram: compactSidebar. Блок с именем поднимается и сжимается вместе с
+        // mvs: compactSidebar. Блок с именем поднимается и сжимается вместе с
         // высотой шапки: ниже 88dp опустить нельзя, там аватар (16dp отступ + 72dp).
         this.nameBlock = nameBlock;
         addView(nameBlock, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, DdgSidebarMetrics.headerNameHeight(),
@@ -223,7 +223,7 @@ public class DrawerHeaderView extends FrameLayout {
     }
 
     /**
-     * DuckDuckGram: compactSidebar — повторно применяет положение блока с именем.
+     * mvs: compactSidebar — повторно применяет положение блока с именем.
      *
      * Позиция задана в конструкторе, а галочку можно переключить, пока шторка живёт.
      * Без этого шапка изменила бы высоту, а блок с именем остался бы на старом месте
@@ -388,7 +388,7 @@ public class DrawerHeaderView extends FrameLayout {
         proxyButton.setVisibility(View.VISIBLE);
         if (state == PROXY_STATE_PING) {
             proxyTextView.setVisibility(View.VISIBLE);
-            // exteraGram: LocaleController.formatString(R.string.NavigationDrawerProxyPingShort, ping) — «%1$d ms».
+            // upstream: LocaleController.formatString(R.string.NavigationDrawerProxyPingShort, ping) — «%1$d ms».
             proxyTextView.setText(String.format(Locale.US, "%d ms", ping), true);
         } else {
             proxyTextView.setVisibility(View.GONE);

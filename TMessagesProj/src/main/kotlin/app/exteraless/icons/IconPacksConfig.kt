@@ -7,7 +7,7 @@ import tw.nekomimi.nekogram.NekoConfig
 import tw.nekomimi.nekogram.config.ConfigItem
 
 /**
- * Настройки подсистемы Icon Packs (порт из exteraGram).
+ * Настройки подсистемы Icon Packs (порт из upstream).
  *
  * Схема повторяет [app.exteraless.OpenExteraConfig]: те же SharedPreferences, тот же [ConfigItem],
  * собственный список конфигов. Ключи с префиксом OEIcon.
@@ -51,7 +51,7 @@ object IconPacksConfig {
     /**
      * Обрезать логотип в шапке настроек по форме иконок лаунчера.
      *
-     * Перенос ключа `useSystemIconShape` exteraGram (12.9.0). Переключается долгим
+     * Перенос ключа `useSystemIconShape` upstream (12.9.0). Переключается долгим
      * нажатием на самом логотипе — своей строки в настройках у него нет и там
      * (MainPreferencesActivity:211).
      */

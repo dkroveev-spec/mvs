@@ -71,7 +71,7 @@ public class TypefaceHelper {
     }
 
     public static Typeface createTypeface(String assetPath) {
-        // DuckDuckGram: свой шрифт клиента. Проверка стоит до switch, потому что
+        // mvs: свой шрифт клиента. Проверка стоит до switch, потому что
         // ни одна из веток ниже (кроме моноширинной) не строит Typeface из файла —
         // там только имена системных шрифтов, — и свой файл иначе некуда было бы
         // подставить.
@@ -118,7 +118,7 @@ public class TypefaceHelper {
         };
     }
 
-    // ---------- DuckDuckGram: свой файл шрифта ----------
+    // ---------- mvs: свой файл шрифта ----------
 
     /** Кэш загруженного файла: шрифт спрашивают на каждый экран, грузить заново дорого. */
     private static Typeface ddgTypeface;
@@ -401,7 +401,7 @@ public class TypefaceHelper {
     }
 
     public static Typeface createTypeface(int weight, boolean italic) {
-        // DuckDuckGram: свой шрифт клиента. Эта ветка обслуживает всё, что строится
+        // mvs: свой шрифт клиента. Эта ветка обслуживает всё, что строится
         // по весу, а не по имени ассета, — в первую очередь AndroidUtilities.bold() и
         // medium-начертания. Без неё кастомный файл применялся бы только к обычному
         // тексту, и интерфейс остался бы наполовину системным.
@@ -432,8 +432,8 @@ public class TypefaceHelper {
     public static SpannableStringBuilder getTitleText(int currentAccount) {
         String title = (String) NaConfig.INSTANCE.getCustomTitle().defaultValue;
         // openExtera: заголовок списка чатов (AppearanceConfig.titleText).
-        // Перенесено из exteraGram 12.9.0, LocaleUtils.getActionBarTitle(int).
-        // 0 — имя приложения (NagramX customTitle), 1 — username, 2 — имя, 3 — «Чаты».
+        // Перенесено из upstream 12.9.0, LocaleUtils.getActionBarTitle(int).
+        // 0 — имя приложения (upstream customTitle), 1 — username, 2 — имя, 3 — «Чаты».
         final int oeTitleText = app.exteraless.appearance.AppearanceConfig.titleText();
         if (oeTitleText == 3) {
             title = LocaleController.getString(R.string.FilterChats);
@@ -455,7 +455,7 @@ public class TypefaceHelper {
             }
         }
         final boolean wordmark = "mvs".equals(title) || "mvs.".equals(title)
-                || "DuckDuckGram".equals(title) || "Telegram".equals(title);
+                || "mvs".equals(title) || "Telegram".equals(title);
         if (wordmark) {
             title = "mvs.";
         }

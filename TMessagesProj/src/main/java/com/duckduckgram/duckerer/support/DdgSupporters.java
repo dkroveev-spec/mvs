@@ -41,7 +41,7 @@ import java.util.Locale;
 import java.util.Set;
 
 /**
- * Список поддержавших DuckDuckGram и значок рядом с ником.
+ * Список поддержавших mvs и значок рядом с ником.
  *
  * <p>Список берётся из публичного репозитория
  * {@code github.com/Duckerer/ddg-donors} (файл {@code donors.json}). Telegram id и
@@ -65,7 +65,7 @@ public final class DdgSupporters {
 
     public static final String BADGES_BOT = "DDG_Badgesbot";
 
-    /** Значок у имени поддержавшего — кастомный эмодзи DuckDuckGram. */
+    /** Значок у имени поддержавшего — кастомный эмодзи mvs. */
     private static final long BADGE_DOCUMENT_ID = 5386399931378440814L;
 
     /**
@@ -340,7 +340,7 @@ public final class DdgSupporters {
             connection.setRequestProperty("Cache-Control", "no-cache, no-store");
             connection.setRequestProperty("Pragma", "no-cache");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setRequestProperty("User-Agent", "DuckDuckGram");
+            connection.setRequestProperty("User-Agent", "mvs");
             if (etag != null && !etag.isEmpty()) {
                 connection.setRequestProperty("If-None-Match", etag);
             }

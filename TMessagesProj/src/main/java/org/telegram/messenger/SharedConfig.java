@@ -740,7 +740,7 @@ public class SharedConfig {
             fontSizeIsDefault = !preferences.contains("fons_size");
             bubbleRadius = preferences.getInt("bubbleRadius", 17);
             ivFontSize = preferences.getInt("iv_font_size", fontSize);
-            // DuckDuckGram: множитель размера текста накладываем поверх базового
+            // mvs: множитель размера текста накладываем поверх базового
             // размера, прочитанного из fons_size. Сам fontSize остаётся базой.
             com.duckduckgram.duckerer.config.DdgConfig.loadConfig(false);
             applyDdgTextSizeScale();
@@ -845,7 +845,7 @@ public class SharedConfig {
     }
 
     /**
-     * Множитель размера текста DuckDuckGram.
+     * Множитель размера текста mvs.
      *
      * <p>Штатный размер шрифта в форке меняется слайдером и хранится в {@code fons_size}
      * — это единственное место, откуда берётся базовый размер, поэтому множитель
@@ -880,7 +880,7 @@ public class SharedConfig {
     }
 
     /**
-     * Добавка к межстрочному интервалу DuckDuckGram, в пикселях.
+     * Добавка к межстрочному интервалу mvs, в пикселях.
      *
      * <p>Хранится отдельно от настройки, потому что настройка задана в десятых долях
      * пункта — единицах, отвязанных от плотности экрана, — а раскладке нужен сразу

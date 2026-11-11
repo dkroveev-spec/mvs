@@ -72,10 +72,10 @@ import xyz.nextalone.nagram.NaConfig;
 import xyz.nextalone.nagram.helper.DoubleTap;
 
 /**
- * Экран «Chats» раздела openExtera — визуальный порт экрана exteraGram
+ * Экран «Chats» раздела openExtera — визуальный порт экрана upstream
  * (com.exteragram.messenger.preferences.ChatsPreferencesActivity, читаемый исходник 10.10.1).
  *
- * Настройки, которые уже есть в NagramX, переиспользуются из {@link NekoConfig} / {@link NaConfig};
+ * Настройки, которые уже есть в upstream, переиспользуются из {@link NekoConfig} / {@link NaConfig};
  * то, чего нет — новые ConfigItem в {@link ChatsConfig} (помечены «только UI»).
  * Группы-мультивыбор (Replies, Hide Reactions, Quick Swipe Transition, Message Menu,
  * Extended Settings, Auto-Pause) сделаны разворачивающимися: строка «x/y» + чекбоксы.
@@ -1567,7 +1567,7 @@ public class OpenExteraChatsActivity extends BaseNekoSettingsActivity {
 
     /**
      * Список с заголовком и иконками действий, а не голый попап. Набор действий
-     * наш, из NagramX: TRANSLATE_LLM и REPEAT_AS_COPY.
+     * наш, из upstream: TRANSLATE_LLM и REPEAT_AS_COPY.
      */
     private void showDoubleTapOptions(int position, boolean outgoing) {
         if (getParentActivity() == null) {
@@ -1626,8 +1626,8 @@ public class OpenExteraChatsActivity extends BaseNekoSettingsActivity {
     }
 
     /**
-     * «Безлимит недавних стикеров» из exteraGram — один тумблер поверх двух рабочих ключей
-     * NagramX: лимита недавних ({@link NekoConfig#maxRecentStickerCount}, шкала 20…200) и
+     * «Безлимит недавних стикеров» из upstream — один тумблер поверх двух рабочих ключей
+     * upstream: лимита недавних ({@link NekoConfig#maxRecentStickerCount}, шкала 20…200) и
      * безлимитных избранных ({@link NekoConfig#unlimitedFavedStickers}).
      */
     private static final int RECENT_STICKERS_DEFAULT = 20;
@@ -1644,8 +1644,8 @@ public class OpenExteraChatsActivity extends BaseNekoSettingsActivity {
     }
 
     /**
-     * «Быстрые действия администратора» из exteraGram — один тумблер поверх пяти пунктов меню чата
-     * NagramX ({@code NaConfig.shortcuts*}) и пункта «Права администратора» в меню сообщения
+     * «Быстрые действия администратора» из upstream — один тумблер поверх пяти пунктов меню чата
+     * upstream ({@code NaConfig.shortcuts*}) и пункта «Права администратора» в меню сообщения
      * ({@link NekoConfig#showAdminActions}). Включён, пока включён хотя бы один пункт.
      */
     private static ConfigItem[] adminShortcutItems() {
@@ -2209,7 +2209,7 @@ public class OpenExteraChatsActivity extends BaseNekoSettingsActivity {
 
     /** Слайдер размера стикеров с живым превью переписки. */
     /**
-     * Слайдер размера стикеров. Оформление перенесено из exteraGram 12.9.0
+     * Слайдер размера стикеров. Оформление перенесено из upstream 12.9.0
      * (AltSeekbar): синий жирный заголовок 15sp, рядом плашка со значением
      * (12sp bold, фон — тот же цвет с alpha 0.15, скругление 4dp), под слайдером
      * серые подписи краёв 13sp. Диапазон 4..20.

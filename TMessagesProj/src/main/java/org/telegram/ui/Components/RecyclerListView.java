@@ -3332,7 +3332,7 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
     }
 
     /**
-     * Помечает строку как «таблетку». У exteraGram тег ставится прямо в
+     * Помечает строку как «таблетку». У upstream тег ставится прямо в
      * Вызов вынесен сюда, чтобы ключ тега знал только этот файл.
      */
     public static void setRoundSectionView(View view, boolean round) {
@@ -3361,7 +3361,7 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
     /**
      * Радиус карточек-секций берётся из настроек внешнего вида openExtera, чтобы слайдер
      * «Радиус секций» действовал на всех экранах, а не только на наших. Значение по
-     * умолчанию (20 dp) повторяет exteraGram, 0 даёт стоковые острые углы.
+     * умолчанию (20 dp) повторяет upstream, 0 даёт стоковые острые углы.
      */
     public void setSections() {
         setSections(dp(12), dp(app.exteraless.appearance.AppearanceConfig.sectionRadius()), false);
@@ -3493,7 +3493,7 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
                         if (last) outRect.bottom = padding;
 
                         // В режиме «Сегменты» между строками одного раздела —
-                        // зазор 2dp, иначе карточки склеятся в одну (exteraGram:
+                        // зазор 2dp, иначе карточки склеятся в одну (upstream:
                         // getItemOffsets, rect.top += dp(2)).
                         if (!first && this.parent.useSegmentedSections()
                                 && this.parent.isViewTypeSection != null
@@ -3537,7 +3537,7 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
     /**
      * Режим «Сегменты»: каждая строка — своя карточка.
      *
-     * Перенос exteraGram 12.9.0 (RecyclerListView: segmentedSectionsEnabled,
+     * Перенос upstream 12.9.0 (RecyclerListView: segmentedSectionsEnabled,
      * drawSegmentedSections, getSegmentedSectionTop/BottomRadius). Стиль
      * выбирается в настройках внешнего вида и до сих пор был выбираемым, но
      * наполовину рабочим: разделители пропадали, а строки оставались одной
@@ -3551,7 +3551,7 @@ public class RecyclerListView extends RecyclerView implements IBlur3Capture {
                         || app.exteraless.appearance.M3ListItems.enabled());
     }
 
-    /** Внутренний угол сегмента: у exteraGram min(радиус секции, 4dp). */
+    /** Внутренний угол сегмента: у upstream min(радиус секции, 4dp). */
     private float segmentInnerRadius() {
         return Math.min(sectionRadius, dp(4));
     }

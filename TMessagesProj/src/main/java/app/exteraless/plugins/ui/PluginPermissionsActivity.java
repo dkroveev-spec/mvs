@@ -40,7 +40,7 @@ import app.exteraless.plugins.PluginsController;
 /**
  * Разрешения установленного плагина: что он просил и что ему сейчас можно.
  *
- * Не перенос: у exteraGram exteraGram 12.9.0 модели разрешений нет вовсе, ссылаться
+ * Не перенос: у upstream upstream 12.9.0 модели разрешений нет вовсе, ссылаться
  * не на что. Экран собран соседом к {@link PluginsActivity} — тот же
  * UniversalRecyclerView, те же ячейки.
  *

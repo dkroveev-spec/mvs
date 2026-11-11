@@ -630,7 +630,7 @@ public class MessagesController extends BaseController implements NotificationCe
     public int dialogFiltersLimitDefault;
     public int dialogFiltersLimitPremium;
 
-    /** DuckDuckGram: DDGUnlimitedFolders снимает лимиты на число папок, тегов и лимит в них. */
+    /** mvs: DDGUnlimitedFolders снимает лимиты на число папок, тегов и лимит в них. */
     public boolean isFoldersUnlimited() {
         return com.duckduckgram.duckerer.config.DdgConfig.unlimitedFolders.Bool();
     }
@@ -1456,7 +1456,7 @@ public class MessagesController extends BaseController implements NotificationCe
         } else if (!(dialog1 instanceof TLRPC.TL_dialogFolder) && dialog2 instanceof TLRPC.TL_dialogFolder) {
             return 1;
         } else {
-            // DuckDuckGram: unreadMutesAbovePins. Проверка не своя — та же форковая
+            // mvs: unreadMutesAbovePins. Проверка не своя — та же форковая
             // isUnreadSortPriority, что и у SortByUnread (там она означает «есть
             // непрочитанные и чат не заглушен»). Отличие только в месте: у DDG она
             // срабатывает ДО проверки закреплённых, поэтому непрочитанный чат
@@ -1517,7 +1517,7 @@ public class MessagesController extends BaseController implements NotificationCe
         } else if (!(dialog1 instanceof TLRPC.TL_dialogFolder) && dialog2 instanceof TLRPC.TL_dialogFolder) {
             return 1;
         } else {
-            // DuckDuckGram: unreadMutesAbovePins — см. пояснение в dialogDateComparator:
+            // mvs: unreadMutesAbovePins — см. пояснение в dialogDateComparator:
             // та же форковая isUnreadSortPriority, но отдельным шагом до проверки
             // закреплённых, чтобы не обрывать штатную сортировку закреплённых.
             if (DdgConfig.unreadMutesAbovePins.Bool()) {
@@ -7010,7 +7010,7 @@ public class MessagesController extends BaseController implements NotificationCe
         }
         // user name override end
 
-        // DuckDuckGram: локальная подмена полей собственного профиля (номер и
+        // mvs: локальная подмена полей собственного профиля (номер и
         // @юзернейм, настройки DDGLocalPhone/DDGLocalUsername). После каждого
         // обновления пользователя с сервера переприменяем её и к новому объекту, и
         // к старому — иначе серверное значение перетёрло бы локальное, а старые
@@ -13017,7 +13017,7 @@ public class MessagesController extends BaseController implements NotificationCe
                         AndroidUtilities.runOnUIThread(onEmptyCallback);
                     }
                 } else if (getUserConfig().getCurrentUser() != null && getUserConfig().getCurrentUser().bot) {
-                    // DuckDuckGram: бот-аккаунт может получить ошибку на messages.getDialogs.
+                    // mvs: бот-аккаунт может получить ошибку на messages.getDialogs.
                     // Не оставляем список чатов в вечной загрузке.
                     AndroidUtilities.runOnUIThread(() -> {
                         loadingDialogs.put(folderId, false);
@@ -18357,7 +18357,7 @@ public class MessagesController extends BaseController implements NotificationCe
 
     // must be run from Utilities.stageQueue
     public void processUpdates(final TLRPC.Updates originalUpdates, boolean fromQueue) {
-        // exteraless plugins: on_updates_hook (CANCEL = контейнер не обрабатывается)
+        // upstream plugins: on_updates_hook (CANCEL = контейнер не обрабатывается)
         app.exteraless.plugins.HookResult hookResult = app.exteraless.plugins.PluginsController.getInstance().hasAnyUpdatesContainerHooks()
                 ? app.exteraless.plugins.PluginsController.getInstance()
                         .executeOnUpdatesHook(currentAccount, app.exteraless.plugins.PluginsController.hookName(originalUpdates), originalUpdates)
@@ -18915,7 +18915,7 @@ public class MessagesController extends BaseController implements NotificationCe
             }
             return true;
         }
-        // exteraless plugins: on_update_hook (CANCEL = апдейт выкидывается из обработки).
+        // upstream plugins: on_update_hook (CANCEL = апдейт выкидывается из обработки).
         // Список принадлежит вызывающему (res.other_updates, updates.updates) и в
         // некоторых ветках обрабатывается повторно, поэтому фильтруем в копию,
         // а не мутируем чужое.
@@ -20521,7 +20521,7 @@ public class MessagesController extends BaseController implements NotificationCe
                             currentUser.id = update.user_id;
                             currentUser.status = update.status;
                         }
-                        // DuckDuckGram: DDGSendOnlyOnline — собеседник мог выйти в сеть.
+                        // mvs: DDGSendOnlyOnline — собеседник мог выйти в сеть.
                         com.duckduckgram.duckerer.chat.DdgSendWhenOnline.INSTANCE.onUserStatusChanged(currentAccount, update.user_id);
                         TLRPC.User toDbUser = new TLRPC.TL_user();
                         toDbUser.id = update.user_id;

@@ -962,7 +962,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
         if (!SharedConfig.drawActionBarShadow) {
             return;
         }
-        // exteraGram 12.9.0, ActionBarLayout.java:2603-2615 — вместо градиентной тени
+        // upstream 12.9.0, ActionBarLayout.java:2603-2615 — вместо градиентной тени
         // ровно одна линия в 1 px цветом разделителя.
         final Paint forced = Theme.forcedDividerPaint;
         if (forced != null) {
@@ -1169,7 +1169,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
             canvas.restoreToCount(restoreCount2);
             return m3Result;
         }
-        // exteraGram 12.9.0, drawChild: на «пружинном маршруте» (открытие/закрытие фрагмента
+        // upstream 12.9.0, drawChild: на «пружинном маршруте» (открытие/закрытие фрагмента
         // без жеста предиктивного назад) уезжающий экран дополнительно притемняется.
         // Множитель гаснет по мере ухода фрагмента вправо. Заметно в тёмной теме.
         if (springRouteBackgroundDrawable != null && child == containerView) {
@@ -1274,9 +1274,9 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
                 }
             } else if (child == containerViewBack) {
                 float opacity = MathUtils.clamp(widthOffset / (float) width, 0, 0.8f);
-                // exteraGram 12.9.0, drawChild: (springAnimations ? 102 : 120) * opacity.
+                // upstream 12.9.0, drawChild: (springAnimations ? 102 : 120) * opacity.
                 // У нас при пружинах было 0x7a=122 — нижний экран затемнялся заметно сильнее.
-                // Режим crossfade — специфика NagramX, у exteraGram его нет, значение оставлено.
+                // Режим crossfade — специфика upstream, у upstream его нет, значение оставлено.
                 scrimPaint.setColor(Color.argb((int) ((USE_SPRING_ANIMATION ? USE_ACTIONBAR_CROSSFADE ? 0x29 : 102 : 120) * opacity), 0x00, 0x00, 0x00));
                 if (overrideWidthOffset != -1) {
                     canvas.drawRect(0, top, getWidth(), getHeight() * 1.5f, scrimPaint);
@@ -1650,7 +1650,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
     private float predictiveBackY;
     private boolean predictiveBackLeft;
 
-    // ---- Material 3 predictive back (порт exteraGram) ----
+    // ---- Material 3 predictive back (порт upstream) ----
     private final app.exteraless.utils.PredictiveBackAnimationHelper predictiveBackAnimation = new app.exteraless.utils.PredictiveBackAnimationHelper();
     private final RectF predictiveBackRect = new RectF();
     private final Rect predictiveBackTmpRect = new Rect();
@@ -1660,7 +1660,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
 
     /**
      * Подложка нижележащего фрагмента на время обычного (не жестового) пружинного перехода.
-     * Без неё уменьшенный экран открывает щель в цвет окна. Порт exteraGram:
+     * Без неё уменьшенный экран открывает щель в цвет окна. Порт upstream:
      * ActionBarLayout.springRouteBackgroundDrawable.
      */
     private Drawable springRouteBackgroundDrawable;
@@ -1911,10 +1911,10 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
                             .setStiffness(SPRING_STIFFNESS)
                             .setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY));
             if (velX != 0) {
-                // exteraGram 12.9.0, onTouchEvent/ACTION_UP: скорость переводится в ту же
+                // upstream 12.9.0, onTouchEvent/ACTION_UP: скорость переводится в ту же
                 // нормированную шкалу 0..1000, в которой живёт пружина. У нас было velX/15 —
                 // на экране 1080 px это в ~14 раз слабее, флик почти не докидывал экран.
-                // exteraGram задаёт стартовую скорость и в ветке отката тоже.
+                // upstream задаёт стартовую скорость и в ветке отката тоже.
                 currentSpringAnimation.setStartVelocity((velX / containerView.getMeasuredWidth()) * SPRING_MULTIPLIER);
             }
             currentSpringAnimation.addUpdateListener((animation, value, velocity) -> {
@@ -2208,7 +2208,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
             }
             if (!preview && !predictiveBackInProgress) {
                 // openExtera: фон нижележащего фрагмента, чтобы за уменьшенной карточкой
-                // не зияла щель в цвет окна (exteraGram: springRouteBackgroundDrawable)
+                // не зияла щель в цвет окна (upstream: springRouteBackgroundDrawable)
                 springRouteYRatio = 0f;
                 springRouteBackgroundDrawable =
                         app.exteraless.utils.PredictiveBackAnimationHelper.getTransitionBackground(
@@ -2265,7 +2265,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
                         containerView.setTranslationX((1.0f - interpolated) * widthNoPaddings);
                         containerViewBack.setTranslationX(-interpolated * 0.35f * widthNoPaddings);
                         setInnerTranslationX((1.0f - interpolated) * widthNoPaddings);
-                        // openExtera: открывающийся экран разжимается карточкой (exteraGram)
+                        // openExtera: открывающийся экран разжимается карточкой (upstream)
                         final float m3s = AndroidUtilities.lerp(0.85f, 1.0f, interpolated);
                         containerView.setScaleX(m3s);
                         containerView.setScaleY(m3s);
@@ -2290,7 +2290,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
                         containerViewBack.setTranslationX(interpolated * widthNoPaddings);
                         containerView.setTranslationX(-(1f - interpolated) * 0.35f * widthNoPaddings);
                         setInnerTranslationX(interpolated * widthNoPaddings);
-                        // openExtera: закрывающийся экран сжимается карточкой (exteraGram)
+                        // openExtera: закрывающийся экран сжимается карточкой (upstream)
                         final float m3s = AndroidUtilities.lerp(1.0f, 0.85f, interpolated);
                         containerViewBack.setScaleX(m3s);
                         containerViewBack.setScaleY(m3s);
@@ -4208,7 +4208,7 @@ public class ActionBarLayout extends FrameLayout implements INavigationLayout, F
             return false;
         }
         // Во время M3-жеста заголовок обязан ехать вместе с карточкой.
-        // Кроссфейд NagramX рисует общий ActionBar поверх всего в draw(), а сами
+        // Кроссфейд upstream рисует общий ActionBar поверх всего в draw(), а сами
         // фрагменты свой при этом не рисуют — и получалось, что экран уменьшался,
         // а шапка оставалась висеть на месте во всю ширину.
         if (m3BackTransition() || newBackTransitions()) {

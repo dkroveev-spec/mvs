@@ -775,7 +775,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         // Жест «назад» системы (Android 14+) обязан двигать экран на любом фрагменте.
         // Раньше эта регистрация висела на NaConfig.backAnimationStyle == PREDICTIVE,
         // а мы по умолчанию ставим SPRING (без него не видно пружинных переходов
-        // NagramX) — и системный жест не анимировал ничего вообще: SystemUI рисовал
+        // upstream) — и системный жест не анимировал ничего вообще: SystemUI рисовал
         // свою стрелку, приложение стояло на месте. Регистрируем всегда: M3-карточка
         // не зависит от стиля переходов, а переключателя у неё больше нет — он
         // менялся на лету, тогда как колбэк ставится один раз при создании активити,
@@ -1596,7 +1596,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
         return handleIntent(intent, isNew, restore, fromPassword, null, true, false);
     }
 
-    // exteraless plugins: обёртка маршрутизации интентов с before/after-хендлерами плагинов.
+    // upstream plugins: обёртка маршрутизации интентов с before/after-хендлерами плагинов.
     // before, вернувший true, глотает интент (оригинальная обработка не выполняется);
     // after зовётся всегда (finally) после оригинальной обработки.
     private boolean handleIntent(Intent intent, boolean isNew, boolean restore, boolean fromPassword, Browser.Progress progress, boolean rebuildFragments, boolean openedTelegram) {
@@ -2018,7 +2018,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                 } else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
                     Uri data = intent.getData();
 
-                    // exteraless plugins: файл плагина, открытый снаружи (тап в чате,
+                    // upstream plugins: файл плагина, открытый снаружи (тап в чате,
                     // файловый менеджер). Проверка по расширению, до разбора ссылок.
                     if (app.exteraless.plugins.PluginInstallHelper.handleViewIntent(this, data)) {
                         return true;
@@ -6953,7 +6953,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
     @Override
     protected void onPause() {
         // Пауза голосовых и кружков при сворачивании приложения.
-        // exteraGram зовёт это из didReceivedNotification по stopAllHeavyOperations(4096);
+        // upstream зовёт это из didReceivedNotification по stopAllHeavyOperations(4096);
         // у нас такой ветки нет, а onPause наступает ровно в тот же момент.
         MediaController.getInstance().pauseInBackgroundIfNeeded();
         super.onPause();

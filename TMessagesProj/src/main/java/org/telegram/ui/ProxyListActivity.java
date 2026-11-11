@@ -659,8 +659,8 @@ public class ProxyListActivity extends BaseFragment implements NotificationCente
     private void updateRows(boolean notify) {
         rowCount = 0;
         useProxyRow = rowCount++;
-        // Условия отключения показываем всегда: в exteraGram они на виду, а у нас
-        // раньше лежали в настройках NagramX, спрятанных по умолчанию.
+        // Условия отключения показываем всегда: в upstream они на виду, а у нас
+        // раньше лежали в настройках upstream, спрятанных по умолчанию.
         disableConditionsRow = rowCount++;
         if (useProxySettings && SharedConfig.currentProxy != null && SharedConfig.proxyList.size() > 1 && IS_PROXY_ROTATION_AVAILABLE) {
             rotationRow = rowCount++;

@@ -554,7 +554,7 @@ object NaConfig {
             1
         )
 
-    // NagramX
+    // upstream
     val enableSaveDeletedMessages =
         addConfig(
             "EnableSaveDeletedMessages",
@@ -1297,7 +1297,7 @@ object NaConfig {
         addConfig(
             "SwitchStyle",
             ConfigItem.configTypeInt,
-            2 // 0: default; 1: Modern; 2: MD3 — openExtera: MD3 по умолчанию, как в exteraGram
+            2 // 0: default; 1: Modern; 2: MD3 — openExtera: MD3 по умолчанию, как в upstream
         )
     val sliderStyle =
         addConfig(
@@ -1531,7 +1531,7 @@ object NaConfig {
     /**
      * Тон перевода DeepL: 0 — как есть, 1 — неформальный, 2 — формальный.
      *
-     * Перенос единственной части переводчиков exteraGram, которой у NagramX нет
+     * Перенос единственной части переводчиков upstream, которой у upstream нет
      * (12.9.0: TranslationFormality + DeepLTranslator.getFormality). Работает
      * только по своему ключу API: бесключевой путь у нас уходит в стороннюю
      * библиотеку app.nekogram.translator, в которую параметр не пробросить.

@@ -811,7 +811,7 @@ public class ArticleViewer extends IArticleViewer implements NotificationCenter.
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putInt("iv_font_size", SharedConfig.ivFontSize);
                         editor.commit();
-                        // DuckDuckGram: слайдер статей меняет базу, поэтому множитель
+                        // mvs: слайдер статей меняет базу, поэтому множитель
                         // DDG пересчитываем заново — иначе статья осталась бы прежней.
                         SharedConfig.applyDdgTextSizeScale();
                         pages[0].getAdapter().searchTextOffset.clear();

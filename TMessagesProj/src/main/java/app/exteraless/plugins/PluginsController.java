@@ -40,7 +40,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import app.exteraless.debug.PluginToggleTrace;
 
 /**
- * Реестр и фасад движка плагинов. Аналог PluginsController.java exteraGram (1842 строки),
+ * Реестр и фасад движка плагинов. Аналог PluginsController.java upstream (1842 строки),
  * упрощённо: без диалогов установки из чата, без pip, без автообновлений SDK.
  *
  * Обязанности:
@@ -87,7 +87,7 @@ public class PluginsController extends com.exteragram.messenger.plugins.PluginsC
      * через шим {@code com.exteragram.messenger.plugins.PluginsController.plugins},
      * и они читают её из своих потоков параллельно с пересканированием.
      * Порядок вставки здесь не нужен — список плагинов сортируется по имени в UI.
-     * У exteraGram это поле тоже ConcurrentHashMap.
+     * У upstream это поле тоже ConcurrentHashMap.
      */
     public final Map<String, Plugin> plugins = new ConcurrentHashMap<>();
 
@@ -174,7 +174,7 @@ public class PluginsController extends com.exteragram.messenger.plugins.PluginsC
     // ---------- флаги движка ----------
 
     /**
-     * Хранилище настроек движка. Имя поля и геттера совпадают с exteraGram:
+     * Хранилище настроек движка. Имя поля и геттера совпадают с upstream:
      * опубликованные плагины достают его рефлексией по имени
      * ({@code get_private_field(PluginsController.getInstance(), "preferences")}).
      */
@@ -282,7 +282,7 @@ public class PluginsController extends com.exteragram.messenger.plugins.PluginsC
 
     /**
      * Режим совместимости. ART Profile Saver со временем перекомпилирует методы
-     * и сбивает установленные хуки; exteraGram лечит это вызовом
+     * и сбивает установленные хуки; upstream лечит это вызовом
      * {@code XposedBridge.disableProfileSaver()} при инициализации движка.
      * Требует перезапуска — на живых хуках вызывать поздно.
      */
@@ -1315,7 +1315,7 @@ public class PluginsController extends com.exteragram.messenger.plugins.PluginsC
         app.exteraless.plugins.xposed.XposedHooks.removePluginUnhook(pluginId, unhook);
     }
 
-    /** Имя из SDK exteraGram; у нас перерисовка экрана и есть перезагрузка настроек. */
+    /** Имя из SDK upstream; у нас перерисовка экрана и есть перезагрузка настроек. */
     public void loadPluginSettings(String pluginId) {
         reloadSettingsScreen(pluginId);
     }
@@ -1380,7 +1380,7 @@ public class PluginsController extends com.exteragram.messenger.plugins.PluginsC
         return engineOf(pluginId).getSettingsJson(pluginId);
     }
 
-    // ---------- имена API exteraGram ----------
+    // ---------- имена API upstream ----------
 
     public void init() {
         if (PluginSinkGate.refuseFromPlugin("init", true)) {
@@ -1681,7 +1681,7 @@ public class PluginsController extends com.exteragram.messenger.plugins.PluginsC
     }
 
     /** Из UI: пользователь нажал элемент с on_click. Вьюха строки уезжает в плагин:
-     * exteraGram зовёт колбэк как {@code callback.call(view)}, и плагины на это
+     * upstream зовёт колбэк как {@code callback.call(view)}, и плагины на это
      * рассчитывают — привязывают к ней меню и всплывашки. */
     public void dispatchSettingClick(String pluginId, String callbackId, android.view.View view) {
         engineOf(pluginId).dispatchSettingClick(pluginId, callbackId, view);

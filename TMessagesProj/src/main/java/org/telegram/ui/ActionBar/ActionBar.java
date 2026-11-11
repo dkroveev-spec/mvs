@@ -2138,7 +2138,7 @@ public class ActionBar extends FrameLayout implements FactorAnimator.Target, The
         requestLayout();
     }
 
-    // NagramX: use folder name as title
+    // upstream: use folder name as title
     public void setTitleAnimatedX(CharSequence title, Drawable rightDrawable, boolean forward, long duration) {
         if (titleTextView[0] == null || title == null) {
             setTitle(title, rightDrawable);
@@ -2535,7 +2535,7 @@ public class ActionBar extends FrameLayout implements FactorAnimator.Target, The
         }
     }
 
-    // NekoX Changes
+    // upstream Changes
 
     private StaticLayout countLayout;
 
@@ -2786,13 +2786,13 @@ public class ActionBar extends FrameLayout implements FactorAnimator.Target, The
     }
 
     /**
-     * Центрировать ли заголовок. Порт {@code ActionBar.shouldCenterTitle()} exteraGram
+     * Центрировать ли заголовок. Порт {@code ActionBar.shouldCenterTitle()} upstream
      * (12.9.0, строка 629): либо экран попросил явно ({@link #centerTitle()}), либо
-     * включена настройка exteraGram.
+     * включена настройка upstream.
      *
      * Чаты сюда не попадают: там заголовок рисует ChatAvatarContainer, а не
      * titleTextView этого ActionBar. Отдельная центровка заголовка чата — фича
-     * NagramX ({@code NaConfig.centerActionBarTitle}), она живёт своей жизнью и
+     * upstream ({@code NaConfig.centerActionBarTitle}), она живёт своей жизнью и
      * этой настройкой не управляется.
      */
     private boolean isCentered() {
@@ -2805,7 +2805,7 @@ public class ActionBar extends FrameLayout implements FactorAnimator.Target, The
     private boolean forceDisableCenterTitle;
 
     /**
-     * Запретить центровку для конкретного ActionBar. У exteraGram так делают
+     * Запретить центровку для конкретного ActionBar. У upstream так делают
      * AudioPlayerAlert и BottomSheetWithRecyclerListView: там заголовок прижат
      * влево по макету, и центровка его ломает.
      */

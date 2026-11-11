@@ -154,7 +154,7 @@ public final class PluginServices {
         return registerFileHandler(pluginId, ext, whitelistJson, blacklistJson, hasIcon, null);
     }
 
-    // exteraless plugins: перегрузка с PyObject-колбэком — FilesController.register
+    // upstream plugins: перегрузка с PyObject-колбэком — FilesController.register
     // принимает on_click внутри FileInfo, а исходная 5-аргументная сигнатура его не несла.
     // Старая сигнатура сохранена и делегирует сюда с onClick == null.
     public static String registerFileHandler(String pluginId, String ext, String whitelistJson,

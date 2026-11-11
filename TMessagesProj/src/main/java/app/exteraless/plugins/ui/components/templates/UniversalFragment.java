@@ -11,7 +11,7 @@ import org.telegram.ui.Components.UniversalAdapter;
 import java.util.ArrayList;
 
 /**
- * Шим экрана-шаблона exteraGram: плагин отдаёт делегата и получает готовый
+ * Шим экрана-шаблона upstream: плагин отдаёт делегата и получает готовый
  * фрагмент со списком {@link UItem}.
  *
  * Абстрактный {@code org.telegram.ui.Components.UniversalFragment} наследовать

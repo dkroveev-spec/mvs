@@ -35,8 +35,8 @@ public class DrawerLayoutContainer extends FrameLayout {
     private boolean inLayout;
 
     /**
-     * Своя шторка exteraGram. null, пока выключена настройка navigationDrawer —
-     * тогда контейнер ведёт себя ровно как раньше (exteraGram:
+     * Своя шторка upstream. null, пока выключена настройка navigationDrawer —
+     * тогда контейнер ведёт себя ровно как раньше (upstream:
      * {@code org/telegram/ui/ActionBar/DrawerLayoutContainer.java:32,136,276}).
      */
     private DrawerContainer drawerContainer;

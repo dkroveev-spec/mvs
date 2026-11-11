@@ -21,7 +21,7 @@ import org.telegram.ui.Components.LayoutHelper;
 
 /**
  * Скролл со списком пунктов бокового меню.
- * exteraGram: {@code com/exteragram/messenger/drawer/DrawerMenuView.java} (161 строка).
+ * upstream: {@code com/exteragram/messenger/drawer/DrawerMenuView.java} (161 строка).
  *
  * Сверху — градиент затухания высотой 16dp, он рисуется только когда список прокручен.
  */
@@ -43,7 +43,7 @@ public class DrawerMenuView extends ScrollView {
         setVerticalScrollBarEnabled(false);
         container = new LinearLayout(context);
         container.setOrientation(LinearLayout.VERTICAL);
-        // DuckDuckGram: compactSidebar — плотнее вертикальные отступы списка; здесь
+        // mvs: compactSidebar — плотнее вертикальные отступы списка; здесь
         // первое применение, дальше их обновляет applySidebarMetrics().
         container.setPadding(0, AndroidUtilities.dp(DdgSidebarMetrics.listVerticalPadding()), 0,
                 AndroidUtilities.dp(DdgSidebarMetrics.listVerticalPadding()) + AndroidUtilities.navigationBarHeight);
@@ -52,7 +52,7 @@ public class DrawerMenuView extends ScrollView {
     }
 
     /**
-     * DuckDuckGram: compactSidebar — повторно применяет метрики к живому списку.
+     * mvs: compactSidebar — повторно применяет метрики к живому списку.
      *
      * Отступы заданы в конструкторе, а галочку можно переключить, пока шторка живёт.
      * Вызывается из {@code DrawerContainer.refreshContents()} перед каждой сборкой меню.
@@ -71,7 +71,7 @@ public class DrawerMenuView extends ScrollView {
     }
 
     /**
-     * exteraGram: {@code DrawerMenuView.rebuildMenu} — идёт по сохранённой раскладке,
+     * upstream: {@code DrawerMenuView.rebuildMenu} — идёт по сохранённой раскладке,
      * разделитель ставится «отложенно», поэтому висящие в начале и в конце схлопываются.
      */
     public void rebuildMenu(int currentAccount, BaseFragment fragment) {
@@ -125,7 +125,7 @@ public class DrawerMenuView extends ScrollView {
             }
             hasAnyItem = true;
         }
-        // exteraless plugins: пункты плагинов (DRAWER_MENU) в конце шторки.
+        // upstream plugins: пункты плагинов (DRAWER_MENU) в конце шторки.
         app.exteraless.plugins.menus.MenuInjector.appendDrawerItems(container, currentAccount, onItemClick);
     }
 
@@ -162,8 +162,8 @@ public class DrawerMenuView extends ScrollView {
     }
 
     private static LinearLayout.LayoutParams createDividerLayoutParams() {
-        // gravity 87 из exteraGram = Gravity.BOTTOM | Gravity.FILL_HORIZONTAL
-        // DuckDuckGram: compactSidebar — поля разделителя тоже уменьшаются, но
+        // gravity 87 из upstream = Gravity.BOTTOM | Gravity.FILL_HORIZONTAL
+        // mvs: compactSidebar — поля разделителя тоже уменьшаются, но
         // горизонтальные и вертикальные отдельно: при выключенной галочке они
         // должны остаться исходными (12 по бокам, 8 сверху/снизу).
         final int marginH = DdgSidebarMetrics.dividerMarginHorizontal();

@@ -60,7 +60,7 @@ public class RadialProgressView extends View implements Drawable.Callback {
     private boolean noProgress = true;
     private final Theme.ResourcesProvider resourcesProvider;
 
-    // Стиль 1 рисует LoadingIndicator из com.google.android.material, как у exteraGram;
+    // Стиль 1 рисует LoadingIndicator из com.google.android.material, как у upstream;
     // дуга с дорожкой и зазором (стили 2 и 3) считается вручную в M3CircularProgress.
     private int currentStyle = M3CircularProgress.STYLE_LEGACY;
     private int trackColor;
@@ -343,7 +343,7 @@ public class RadialProgressView extends View implements Drawable.Callback {
         if (currentStyle != M3CircularProgress.STYLE_WAVY || m3 == null) {
             return;
         }
-        // amplitudeRampProgressMin у exteraGram относится к MDC-спеку; в ручной отрисовке не участвует
+        // amplitudeRampProgressMin у upstream относится к MDC-спеку; в ручной отрисовке не участвует
         m3.setWavyValues(wavelength, amplitude, speed);
     }
 

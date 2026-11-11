@@ -7209,7 +7209,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
                 filterTabsView.resetTabId();
 
-                // NagramX: use folder name as title
+                // upstream: use folder name as title
                 if (dialogStoriesCell != null) {
                     dialogStoriesCell.setLogoTitle(actionBarTitleNax, true, animated && AppearanceConfig.folderNameAsTitle(), false);
                 }
@@ -14288,7 +14288,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
         }
 
-        // exteraless plugins: пункты плагинов (MAIN_MENU) в конце меню «⋮».
+        // upstream plugins: пункты плагинов (MAIN_MENU) в конце меню «⋮».
         app.exteraless.plugins.menus.MenuInjector.appendMainMenuItems(io, currentAccount, this);
 
         io.show();
@@ -14588,7 +14588,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private boolean shouldUseDrawerActionBarLayout() {
-        // communityId в exteraGram нет: у сообщества свой заголовок со стрелкой «назад», бургер там нельзя.
+        // communityId в upstream нет: у сообщества свой заголовок со стрелкой «назад», бургер там нельзя.
         return AppearanceConfig.navigationDrawer() && !onlySelect && initialDialogsType == DIALOGS_TYPE_DEFAULT
                 && folderId == 0 && communityId == 0 && searchString == null;
     }

@@ -35,7 +35,7 @@ import java.util.Map;
  *
  * Раньше такого пути не было вовсе — система показывала обычный выбор
  * приложения, и поставить плагин было неоткуда, кроме как через
- * «Установить из файла» в настройках. exteraGram объявляет intent-filter на
+ * «Установить из файла» в настройках. upstream объявляет intent-filter на
  * {@code .plugin} и разбирает интент в IntentsController; здесь то же самое,
  * только точка входа — {@code LaunchActivity.handleIntent}.
  */
@@ -100,7 +100,7 @@ public final class PluginInstallHelper {
      * {@code MarkdownUtils} регистрирует {@code .plugin} как исходник Python
      * ({@code addLanguage("python", "py", "pyw", "plugin")}), поэтому файл
      * плагина открывался в подсветке кода, и установить его было неоткуда.
-     * У exteraGram порядок такой же — {@code isPlugin} проверяется раньше
+     * У upstream порядок такой же — {@code isPlugin} проверяется раньше
      * {@code canPreviewDocument} и {@code MarkdownParser.isMarkdown}
      * (SharedMediaLayout.java:7999).
      *

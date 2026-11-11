@@ -334,7 +334,7 @@ public class EditTextBoldCursor extends EditTextEffects {
 
     @SuppressLint("PrivateApi")
     private void init() {
-        // DuckDuckGram: свой шрифт клиента — по умолчанию для полей ввода.
+        // mvs: свой шрифт клиента — по умолчанию для полей ввода.
         // Вызывающий может переопределить начертание через setTypeface.
         if (TypefaceHelper.hasCustomTypeface()) {
             setTypeface(TypefaceHelper.createTypeface(400, false));

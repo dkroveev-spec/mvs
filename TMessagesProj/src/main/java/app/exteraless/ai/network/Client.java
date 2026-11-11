@@ -348,8 +348,8 @@ public class Client {
                 .url(url)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Authorization", "Bearer " + service.getKey())
-                .addHeader("HTTP-Referer", "https://github.com/Duckerer/DuckDuckGram")
-                .addHeader("X-Title", "DuckDuckGram")
+                .addHeader("HTTP-Referer", "https://github.com/dkroveev-spec/mvs")
+                .addHeader("X-Title", "mvs")
                 .post(RequestBody.create(body.toString(), JSON))
                 .build();
     }

@@ -270,7 +270,7 @@ public class AndroidUtilities {
     public static final String TYPEFACE_ROBOTO_REGULAR = TYPEFACE_INTER;
     public static final String TYPEFACE_ROBOTO_ITALIC = TYPEFACE_RITALIC;
     public static final String TYPEFACE_ROBOTO_CONDENSED_BOLD = TYPEFACE_RCONDENSED_BOLD;
-    // Инициалы на аватарках. Перенос из exteraGram 12.9.0, AndroidUtilities.java:247.
+    // Инициалы на аватарках. Перенос из upstream 12.9.0, AndroidUtilities.java:247.
     public static final String TYPEFACE_NUNITO_EXTRABOLD = "fonts/nunito_extrabold.ttf";
 
     public static Typeface mediumTypeface;
@@ -2527,7 +2527,7 @@ public class AndroidUtilities {
                 if (TYPEFACE_RITALIC.equals(path)) {
                     return customFont ? TypefaceHelper.createTypeface(400, true) : inter(400, true);
                 }
-                // DuckDuckGram: свой файл шрифта важнее переключателя «системный шрифт».
+                // mvs: свой файл шрифта важнее переключателя «системный шрифт».
                 // Иначе при выключенном переключателе обычный текст брался из ассетов
                 // (createTypefaceFromAsset), а жирный — через bold()/createTypeface(int) —
                 // уже из своего файла, и интерфейс получался наполовину своим.
@@ -3810,7 +3810,7 @@ public class AndroidUtilities {
         }
         File storageDir = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            // Имя форка вместо зашитого «Nagram»: каталог видно в галерее и файловом менеджере.
+            // Имя форка вместо зашитого «upstream»: каталог видно в галерее и файловом менеджере.
             storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     LocaleController.getAppName());
             if (!storageDir.mkdirs()) {
@@ -4337,7 +4337,7 @@ public class AndroidUtilities {
             f = FileLoader.getInstance(UserConfig.selectedAccount).getPathToMessage(message.messageOwner);
         }
         if (f != null && f.exists()) {
-            // exteraless plugins: плагин может перехватить открытие файла по расширению.
+            // upstream plugins: плагин может перехватить открытие файла по расширению.
             if (app.exteraless.plugins.files.FilesControllerJava.dispatchOpenFile(f, fileName, document.mime_type, message, activity, parentFragment, UserConfig.selectedAccount)) {
                 return;
             }
@@ -4416,7 +4416,7 @@ public class AndroidUtilities {
 
     public static boolean openForView(File f, String fileName, String mimeType, final Activity activity, Theme.ResourcesProvider resourcesProvider, boolean restrict) {
         if (f != null && f.exists()) {
-            // exteraless plugins: плагин может перехватить открытие файла по расширению.
+            // upstream plugins: плагин может перехватить открытие файла по расширению.
             if (app.exteraless.plugins.files.FilesControllerJava.dispatchOpenFile(f, fileName, mimeType, null, activity, null, UserConfig.selectedAccount)) {
                 return true;
             }

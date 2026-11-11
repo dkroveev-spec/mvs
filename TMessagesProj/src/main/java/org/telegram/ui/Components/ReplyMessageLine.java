@@ -240,7 +240,7 @@ public class ReplyMessageLine {
     }
 
     // ---- openExtera: оформление блока ответа (ChatsConfig.replyColors / replyEmoji / replyBackground) ----
-    // Перенесено из exteraGram 12.9.0, ReplyMessageLine.check()/resolveCollectionColor().
+    // Перенесено из upstream 12.9.0, ReplyMessageLine.check()/resolveCollectionColor().
 
     private static boolean oeReplyColors() {
         app.exteraless.chats.ChatsConfig.ensureLoaded();

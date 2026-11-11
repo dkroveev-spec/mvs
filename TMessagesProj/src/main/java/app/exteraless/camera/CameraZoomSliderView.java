@@ -40,7 +40,7 @@ import java.util.Locale;
 
 /**
  * Ползунок зума камеры в духе системной камеры Pixel: перенос
- * {@code com.exteragram.messenger.camera.CameraZoomSliderView} из exteraGram 12.9.0.
+ * {@code com.exteragram.messenger.camera.CameraZoomSliderView} из upstream 12.9.0.
  *
  * У вида два состояния. Сжатое — ряд круглых делений («.5», «1», «2», «5»), выбранное
  * подсвечено кружком. Развёрнутое — линейка с засечками, подписями на опорных значениях

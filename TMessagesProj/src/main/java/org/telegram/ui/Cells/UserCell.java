@@ -252,7 +252,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
             mutualView.setVisibility(GONE);
             mutualView.setContentDescription(LocaleController.getString("MutualContact", R.string.MutualContact));
             mutualView.setOnClickListener(v -> {
-                // DuckDuckGram: вместо штатной подсказки открываем список взаимных.
+                // mvs: вместо штатной подсказки открываем список взаимных.
                 // Список этот адаптер форка уже умеет отдавать, но открывать его было
                 // нечем, поэтому пункт в меню взаимных не работал вовсе.
                 if (com.duckduckgram.duckerer.config.DdgConfig.mutualContacts.Bool()) {
@@ -695,7 +695,7 @@ public class UserCell extends FrameLayout implements NotificationCenter.Notifica
             }
             nameTextView.setText(name);
         }
-        // DuckDuckGram: значок поддержавшего. Вставляется слева от имени уже после
+        // mvs: значок поддержавшего. Вставляется слева от имени уже после
         // эмодзи и подсветки поиска, иначе поиск по строке вместе с уточкой
         // перестал бы находить людей.
         if (currentUser != null) {

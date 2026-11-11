@@ -2206,7 +2206,7 @@ public class FilterTabsView extends FrameLayout {
 
     }
 
-    // NekoX show all chats tab
+    // upstream show all chats tab
     public boolean showAllChatsTab = !NekoConfig.hideAllTab.Bool();
 
     public void toggleAllTabs(boolean show) {

@@ -9,7 +9,7 @@ import org.telegram.ui.Components.chat.layouts.ChatActivityFadeView;
 
 /**
  * Material 3 для шапки чата.
- * exteraGram: com/exteragram/messenger/utils/ui/ChatHeaderUiHelper.java (233 строки).
+ * upstream: com/exteragram/messenger/utils/ui/ChatHeaderUiHelper.java (233 строки).
  *
  * Перенесены только те методы, у которых в нашем дереве есть на что опереться;
  * ProfileTransitionState опущен — см. notes.
@@ -46,7 +46,7 @@ public final class ChatHeaderUiHelper {
     }
 
     /**
-     * Радиус аватарки в шапке. У exteraGram это ExteraConfig.getAvatarCorners
+     * Радиус аватарки в шапке. У upstream это ExteraConfig.getAvatarCorners
      * (ChatHeaderUiHelper.java:159-165) из отдельного среза «углы аватарок»; у нас его нет,
      * поэтому радиусы пропорциональны размеру. При 42dp значения совпадают с прежними
      * (21 / 16 / 11 — ChatAvatarContainer.java:1510, 1618, 1626).

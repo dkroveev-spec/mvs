@@ -2739,7 +2739,7 @@ public class FragmentContextView extends FrameLayout implements NotificationCent
                 final float right = getMeasuredWidth() + dpf2(1);
                 final float p = lerp(left, right, playingMessageObject.audioProgress);
                 final float bottom = getMeasuredHeight();
-                // DuckDuckGram: restyledPlayer. Штатно рисуется одна залитая полоса
+                // mvs: restyledPlayer. Штатно рисуется одна залитая полоса
                 // толщиной 2dp без подложки: прогресс виден только там, где он
                 // заполнен, и концы у полосы идут во всю ширину. С галочкой добавляется
                 // подложка из того же акцента с прозрачностью, поэтому вся шкала читается

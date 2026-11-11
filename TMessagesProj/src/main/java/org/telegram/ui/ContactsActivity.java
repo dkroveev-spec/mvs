@@ -153,7 +153,7 @@ public class ContactsActivity extends BaseFragment implements FactorAnimator.Tar
     private boolean searchWas;
     private boolean searching;
     private boolean onlyUsers;
-    /** DuckDuckGram: показывать только взаимные контакты. */
+    /** mvs: показывать только взаимные контакты. */
     private boolean onlyMutual;
     private boolean needPhonebook;
     public boolean hasMainTabs;
@@ -230,7 +230,7 @@ public class ContactsActivity extends BaseFragment implements FactorAnimator.Tar
         checkPermission = UserConfig.getInstance(currentAccount).syncContacts;
         if (arguments != null) {
             onlyUsers = arguments.getBoolean("onlyUsers", false);
-            // DuckDuckGram: список взаимных контактов. Адаптер форка уже умеет
+            // mvs: список взаимных контактов. Адаптер форка уже умеет
             // брать секции взаимных (onlyUsers == 2), но экрана для них не было:
             // сам список по кнопке «Мои контакты» там так и не открывался.
             onlyMutual = arguments.getBoolean("onlyMutual", false);

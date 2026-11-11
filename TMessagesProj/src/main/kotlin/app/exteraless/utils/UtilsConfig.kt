@@ -8,7 +8,7 @@ import tw.nekomimi.nekogram.config.ConfigItem
 import xyz.nextalone.nagram.NaConfig
 
 /**
- * Настройки перенесённых из exteraGram анимаций и жестов.
+ * Настройки перенесённых из upstream анимаций и жестов.
  *
  * Схема та же, что у [app.exteraless.OpenExteraConfig]. Ключи с префиксом OE.
  * Загрузка ленивая ([ensureLoaded]) — эти значения читаются из ActionBarLayout,
@@ -33,7 +33,7 @@ object UtilsConfig {
 
     /**
      * Чувствительность жеста «назад»: множитель прогресса. Хранится целым в процентах
-     * (100 = 1.0), потому что ConfigItem не умеет float. Диапазон exteraGram — 0..2,
+     * (100 = 1.0), потому что ConfigItem не умеет float. Диапазон upstream — 0..2,
      * при нуле жест вообще не двигает экран (ExteraConfig.predictiveBackIntensity,
      * FloatPref(1.0f)).
      */
@@ -65,8 +65,8 @@ object UtilsConfig {
     }
 
     /**
-     * В exteraGram пружинные переходы включены по умолчанию (springAnimations = true).
-     * У NagramX же BackAnimationStyle по умолчанию 0 (Classic), а весь пружинный путь
+     * В upstream пружинные переходы включены по умолчанию (springAnimations = true).
+     * У upstream же BackAnimationStyle по умолчанию 0 (Classic), а весь пружинный путь
      * в ActionBarLayout — включая перенесённый масштаб карточки — живёт под
      * USE_SPRING_ANIMATION == SPRING. Без этого перенос анимаций не виден вообще.
      *

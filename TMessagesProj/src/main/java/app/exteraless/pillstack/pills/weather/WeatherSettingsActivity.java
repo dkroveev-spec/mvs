@@ -59,7 +59,7 @@ import tw.nekomimi.nekogram.ui.cells.HeaderCell;
  * показывается статичное превью карты (тот же WebFile-рендер, что и в стоковом Telegram)
  * и подпись адреса; тап по превью открывает {@link LocationActivity}.
  *
- * Экран exteraGram построен на {@code BasePreferencesActivity}/{@code UItem}; у нас общий предок
+ * Экран upstream построен на {@code BasePreferencesActivity}/{@code UItem}; у нас общий предок
  * настроек — {@link BaseNekoSettingsActivity}, поэтому кастомные строки (превью и адрес)
  * вынесены в собственные типы вьюхолдеров (>= 100).
  */

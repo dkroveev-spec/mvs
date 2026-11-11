@@ -1161,7 +1161,7 @@ public class FilteredSearchView extends FrameLayout implements NotificationCente
                         }
                         return;
                     }
-                    // exteraless plugins: установить плагин, а не открывать его в просмотрщике.
+                    // upstream plugins: установить плагин, а не открывать его в просмотрщике.
                     if (app.exteraless.plugins.PluginInstallHelper.handleMessageTap(parentActivity, message)) {
                         return;
                     }

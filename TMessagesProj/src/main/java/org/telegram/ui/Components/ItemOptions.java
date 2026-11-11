@@ -437,7 +437,7 @@ public class ItemOptions {
     }
 
     /**
-     * Стиль пункта меню по настройке DuckDuckGram {@code menuStyle}.
+     * Стиль пункта меню по настройке mvs {@code menuStyle}.
      *
      * <p>Аналога в форках нет: ни в {@code NekoConfig}, ни в {@code CherrygramConfig}
      * такой настройки не нашлось, поэтому варианты свои. Смысл такой: обычный —
@@ -946,7 +946,7 @@ public class ItemOptions {
         if (view == null) {
             return this;
         }
-        // DuckDuckGram: menuStyle. Стиль применяется здесь, а не в каждом add*(): выше
+        // mvs: menuStyle. Стиль применяется здесь, а не в каждом add*(): выше
         // есть девять способов создать пункт — add с иконкой, add(ActionBarMenuSubItem),
         // addChecked, addBot, addChat, addAccount, add с подписью и другие — и в
         // ItemOptions они не пересекаются, общего у них только этот addView.

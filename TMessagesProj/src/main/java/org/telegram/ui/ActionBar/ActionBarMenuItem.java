@@ -1345,8 +1345,8 @@ public class ActionBarMenuItem extends FrameLayout {
     }
 
     /**
-     * Центрирование заголовка включается либо нашим ключом (порт exteraGram), либо
-     * флагом NagramX, который читает ActionBar.isCentered(). Проверка нужна только чтобы
+     * Центрирование заголовка включается либо нашим ключом (порт upstream), либо
+     * флагом upstream, который читает ActionBar.isCentered(). Проверка нужна только чтобы
      * не дёргать лишний requestLayout при выключенной фиче.
      * (там ключ один — ExteraConfig.getCenterTitle()).
      */

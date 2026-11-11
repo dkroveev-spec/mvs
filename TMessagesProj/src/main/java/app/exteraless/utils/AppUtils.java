@@ -5,7 +5,7 @@ import android.graphics.Point;
 import org.telegram.messenger.AndroidUtilities;
 
 /**
- * Мелкие утилиты, перенесённые из exteraGram
+ * Мелкие утилиты, перенесённые из upstream
  */
 public final class AppUtils {
 
@@ -16,7 +16,7 @@ public final class AppUtils {
      * Порог скорости флика для свайпа «назад» / переключения страниц.
      *
      * Апстрим везде использует 3500 px/s — это очень много, жест почти не срабатывает.
-     * exteraGram снижает порог и делает его зависящим от ориентации:
+     * upstream снижает порог и делает его зависящим от ориентации:
      * 1250 px/s в ландшафте, 850 px/s в портрете.
      */
     public static int getSwipeVelocity() {
@@ -26,7 +26,7 @@ public final class AppUtils {
 
     /**
      * Сторона видеокружка. Апстрим берёт значение из серверного конфига телеграма
-     * (`MessagesController.roundVideoSize`, дефолт 384); exteraGram этот конфиг
+     * (`MessagesController.roundVideoSize`, дефолт 384); upstream этот конфиг
      * игнорирует и всегда пишет 512
      *
      * Берём максимум из двух, чтобы серверное значение могло только повысить сторону,
@@ -41,7 +41,7 @@ public final class AppUtils {
     /**
      * Дописывает схему к ссылке из markdown-разметки {@code [текст](url)}.
      *
-     * NagramX кладёт в {@code URLSpanReplacement} то, что написал пользователь, как есть,
+     * upstream кладёт в {@code URLSpanReplacement} то, что написал пользователь, как есть,
      * поэтому {@code [текст](example.com)} даёт ссылку без схемы.
      */
     public static String ensureUrlHasHttps(String url) {

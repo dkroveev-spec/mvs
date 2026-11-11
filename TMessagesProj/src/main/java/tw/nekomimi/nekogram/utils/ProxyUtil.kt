@@ -65,7 +65,7 @@ object ProxyUtil {
     /**
      * Подходит ли текущая сеть под условия автоотключения прокси.
      *
-     * У NagramX условие было одно — VPN; exteraGram 12.9.2 держит маску из VPN,
+     * У upstream условие было одно — VPN; upstream 12.9.2 держит маску из VPN,
      * мобильного интернета и Wi-Fi, см. [OpenExteraConfig.proxyDisableConditions].
      */
     private fun shouldDisableProxyOn(capabilities: NetworkCapabilities): Boolean {

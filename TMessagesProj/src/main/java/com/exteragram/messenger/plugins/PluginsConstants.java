@@ -1,7 +1,7 @@
 package com.exteragram.messenger.plugins;
 
 /**
- * Шим строковых констант exteraGram. Значения — те же, что в
+ * Шим строковых констант upstream. Значения — те же, что в
  * {@code com.exteragram.messenger.plugins.PluginsConstants} 12.9.0, а не наши
  * внутренние: плагин сравнивает их с тем, что приходит из SDK.
  */

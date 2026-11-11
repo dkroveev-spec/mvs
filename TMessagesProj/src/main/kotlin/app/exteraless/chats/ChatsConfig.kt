@@ -8,9 +8,9 @@ import tw.nekomimi.nekogram.config.ConfigItem
 import xyz.nextalone.nagram.NaConfig
 
 /**
- * Настройки экрана «Chats», перенесённые из exteraGram.
+ * Настройки экрана «Chats», перенесённые из upstream.
  *
- * Здесь только то, чего в NagramX нет: остальное экран берёт из [tw.nekomimi.nekogram.NekoConfig]
+ * Здесь только то, чего в upstream нет: остальное экран берёт из [tw.nekomimi.nekogram.NekoConfig]
  * и [xyz.nextalone.nagram.NaConfig], чтобы настройка не задваивалась.
  *
  * Схема повторяет [app.exteraless.OpenExteraConfig]: те же SharedPreferences, тот же [ConfigItem],
@@ -95,7 +95,7 @@ object ChatsConfig {
      * Чем снимать круглые видеосообщения: 0 — системная (Camera1/Camera2 по решению
      * приложения), 1 — Camera2, 2 — CameraX ([app.exteraless.camera.CameraXSession]).
      *
-     * exteraGram держит здесь enum CameraType и по умолчанию ставит CameraX на быстрых
+     * upstream держит здесь enum CameraType и по умолчанию ставит CameraX на быстрых
      * устройствах. У нас по умолчанию 0: движок CameraX новый, и менять им камеру
      * всем сразу — без спроса — неправильно.
      */
@@ -130,13 +130,13 @@ object ChatsConfig {
     // ---- Фото ----
 
     /**
-     * Тёплость вспышки при записи кружка, проценты (50 = 0.5, как FloatPref(0.5f) exteraGram).
+     * Тёплость вспышки при записи кружка, проценты (50 = 0.5, как FloatPref(0.5f) upstream).
      * ConfigItem не умеет float, поэтому целое.
      */
     @JvmField
     val flashWarmth = addConfig("OEChatsFlashWarmth", ConfigItem.configTypeInt, 50)
 
-    /** Яркость вспышки при записи кружка, проценты (100 = 1.0, FloatPref(1.0f) exteraGram). */
+    /** Яркость вспышки при записи кружка, проценты (100 = 1.0, FloatPref(1.0f) upstream). */
     @JvmField
     val flashIntensity = addConfig("OEChatsFlashIntensity", ConfigItem.configTypeInt, 100)
 
@@ -161,7 +161,7 @@ object ChatsConfig {
     val inlineMathCurrency = addConfig("OEChatsInlineMathCurrency", ConfigItem.configTypeBool, true)
 
     /**
-     * Отправлять фото в высоком качестве по умолчанию. Дефолт true, как в exteraGram.
+     * Отправлять фото в высоком качестве по умолчанию. Дефолт true, как в upstream.
      * При включённом бейдж на превью инвертируется: помечается не «HD», а «SD» —
      * то есть те кадры, которые уйдут в обычном качестве.
      */

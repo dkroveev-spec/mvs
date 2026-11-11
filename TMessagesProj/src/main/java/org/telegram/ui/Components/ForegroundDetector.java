@@ -40,7 +40,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     private static ForegroundDetector Instance = null;
 
     /**
-     * DuckDuckGram: privacyScreen — окна, на которых FLAG_SECURE поставил именно он.
+     * mvs: privacyScreen — окна, на которых FLAG_SECURE поставил именно он.
      *
      * Слабая карта, чтобы не держать активити после их смерти: колбэки приходят в
      * главном потоке, но синхронизация всё равно не мешает.
@@ -127,19 +127,19 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     @Override
     public void onActivityResumed(Activity activity) {
-        // DuckDuckGram: privacyScreen — флаг снимается при возврате в приложение,
+        // mvs: privacyScreen — флаг снимается при возврате в приложение,
         // иначе скриншоты внутри чата были бы запрещены всё время.
         applyPrivacyScreen(activity, false);
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-        // DuckDuckGram: privacyScreen — см. applyPrivacyScreen.
+        // mvs: privacyScreen — см. applyPrivacyScreen.
         applyPrivacyScreen(activity, true);
     }
 
     /**
-     * DuckDuckGram: privacyScreen («размывать превью приложения в списке задач»).
+     * mvs: privacyScreen («размывать превью приложения в списке задач»).
      *
      * Клиентского способа именно размыть снимок нет: система снимает окно сама, и
      * повлиять на содержимое кадра, не закрыв окно, нельзя. Делается ближайшее —
@@ -168,7 +168,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         }
         final boolean enabled = DdgConfig.privacyScreen.Bool();
         try {
-            // DuckDuckGram: privacyScreen. На Android 13+ есть штатный способ убрать
+            // mvs: privacyScreen. На Android 13+ есть штатный способ убрать
             // кадр приложения из списка задач — setRecentsScreenshotEnabled(false) —
             // он не запрещает скриншоты внутри приложения.
             if (Build.VERSION.SDK_INT >= 33) {

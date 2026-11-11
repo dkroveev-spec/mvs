@@ -9,10 +9,10 @@ import java.nio.charset.StandardCharsets;
 /**
  * Обёртка бэкапа настроек в невидимые символы Unicode.
  *
- * Побайтовый порт com/exteragram/messenger/backup/InvisibleEncryptor.java из exteraGram 12.9.0:
+ * Побайтовый порт com/exteragram/messenger/backup/InvisibleEncryptor.java из upstream 12.9.0:
  * каждый байт UTF-8 пишется в системе счисления по основанию 11 алфавитом из невидимых
  * символов, байты разделяются U+2000, вся строка начинается с U+2001 U+2002. Формат обязан
- * совпадать до символа — иначе exteraGram не прочитает наш файл, а мы не прочитаем его.
+ * совпадать до символа — иначе upstream не прочитает наш файл, а мы не прочитаем его.
  */
 public final class InvisibleEncryptor {
 
@@ -23,7 +23,7 @@ public final class InvisibleEncryptor {
     private static final int BASE = 11;
 
     /**
-     * У exteraGram в классе символов нет разделителя U+2000: на Android он проходит по {@code \s},
+     * У upstream в классе символов нет разделителя U+2000: на Android он проходит по {@code \s},
      * потому что регулярки там ICU-шные. Мы добавляем его явно — тот же смысл, но без зависимости
      * от реализации регулярок.
      */

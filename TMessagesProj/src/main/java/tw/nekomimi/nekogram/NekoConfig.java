@@ -88,7 +88,7 @@ public class NekoConfig {
     public static ConfigItem ignoreBlocked = addConfig("IgnoreBlocked", configTypeBool, false);
     public static ConfigItem tabletMode = addConfig("TabletMode", configTypeInt, 0);
 
-    // Дефолт выровнен с exteraGram: ExteraConfig.useSystemFonts = BooleanPref(true).
+    // Дефолт выровнен с upstream: ExteraConfig.useSystemFonts = BooleanPref(true).
     // Маппинг ассетов на системные семейства у TypefaceHelper.createTypeface практически
     // совпадает с их FontUtils.getSystemTypeface, расходился только дефолт.
     public static ConfigItem typeface = addConfig("TypefaceUseDefault", configTypeBool, true);
@@ -128,9 +128,9 @@ public class NekoConfig {
     public static ConfigItem showIdAndDc = addConfig("ShowIdAndDc", configTypeBool, true);
 
     public static ConfigItem cachePath = addConfig("cache_path", configTypeString, "");
-    // Имя форка, а не «Nagram»: значение видно в настройках («Save Path») и в пути
+    // Имя форка, а не «upstream»: значение видно в настройках («Save Path») и в пути
     // Downloads/<папка>, куда уходят сохранённые файлы.
-    public static ConfigItem customSavePath = addConfig("customSavePath", configTypeString, "DuckDuckGram");
+    public static ConfigItem customSavePath = addConfig("customSavePath", configTypeString, "mvs");
 
     public static ConfigItem translationProvider = addConfig("translationProvider", configTypeInt, 1);
     public static ConfigItem translateToLang = addConfig("TransToLang", configTypeString, ""); // "" -> translate to current language (MessageTrans.kt & Translator.kt)
@@ -150,8 +150,8 @@ public class NekoConfig {
     public static ConfigItem mediaPreview = addConfig("MediaPreview", configTypeBool, true);
 
     public static ConfigItem disableVibration = addConfig("DisableVibration", configTypeBool, false);
-    // Дефолт выровнен с exteraGram: ExteraConfig.pauseOnMinimizeVideo = BooleanPref(true).
-    // Механизм у NagramX рабочий, расходился только дефолт.
+    // Дефолт выровнен с upstream: ExteraConfig.pauseOnMinimizeVideo = BooleanPref(true).
+    // Механизм у upstream рабочий, расходился только дефолт.
     public static ConfigItem autoPauseVideo = addConfig("AutoPauseVideo", configTypeBool, true);
     public static ConfigItem disableProximityEvents = addConfig("DisableProximityEvents", configTypeBool, false);
 

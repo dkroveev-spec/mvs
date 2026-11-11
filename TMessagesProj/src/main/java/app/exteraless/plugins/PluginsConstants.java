@@ -1,8 +1,8 @@
 package app.exteraless.plugins;
 
 /**
- * Константы движка плагинов exteraless.
- * Аналог com.exteragram.messenger.plugins.PluginsConstants из exteraGram 12.9.0,
+ * Константы движка плагинов upstream.
+ * Аналог com.exteragram.messenger.plugins.PluginsConstants из upstream 12.9.0,
  * но со своими ключами (совместимость по протоколу не требуется — свой SDK).
  */
 public final class PluginsConstants {
@@ -10,7 +10,7 @@ public final class PluginsConstants {
     private PluginsConstants() {
     }
 
-    /** Свой SharedPreferences-файл движка (как у exteraGram — ApplicationLoader читает свой prefs). */
+    /** Свой SharedPreferences-файл движка (как у upstream — ApplicationLoader читает свой prefs). */
     public static final String PREFS_NAME = "exteraless_plugins";
 
     /** Мастер-тумблер движка. */
@@ -57,13 +57,13 @@ public final class PluginsConstants {
     /** Per-plugin настройки: отдельный prefs-файл plugin_settings_<id>, значения — JSON. */
     public static final String SETTINGS_PREFS_PREFIX = "plugin_settings_";
 
-    /** Расширения файлов плагинов. .plugin — как у exteraGram, .py — для удобства dev-сценария. */
+    /** Расширения файлов плагинов. .plugin — как у upstream, .py — для удобства dev-сценария. */
     public static final String PLUGIN_EXT = ".plugin";
     public static final String PLUGIN_EXT_PY = ".py";
     public static final String PLUGIN_EXT_ELYX = ".elyx";
     public static final String PLUGIN_EXT_EAF = ".eaf";
 
-    /** Версия нашего Python SDK. Своя линейка, к 1.4.5.0 из exteraGram отношения не имеет. */
+    /** Версия нашего Python SDK. Своя линейка, к 1.4.5.0 из upstream отношения не имеет. */
     /**
      * Версия SDK, о которой мы заявляем плагинам.
      *
@@ -72,7 +72,7 @@ public final class PluginsConstants {
      * ограничение стоит у 72 — при прежнем значении "1.0.0" ни один из них не
      * ставился вообще.
      *
-     * 1.4.5.3 — версия SDK exteraGram 12.9.2 (assets/plugins_pysdk/v.txt), по
+     * 1.4.5.3 — версия SDK upstream 12.9.2 (assets/plugins_pysdk/v.txt), по
      * документации которой и написан наш Python-SDK. Заявлять её честно:
      * поверхность имён и семантика соответствуют, отсутствующее покрыто
      * явными исключениями, а не молчаливыми заглушками.
@@ -100,7 +100,7 @@ public final class PluginsConstants {
     /** Расширение для передачи Java-плагина (переименовывается в {@code <id>.jar}). */
     public static final String PLUGIN_EXT_JPLUGIN = ".jplugin";
 
-    /** События приложения (строки протокола, как у exteraGram). */
+    /** События приложения (строки протокола, как у upstream). */
     public static final String EVENT_APP_START = "app_start";
     public static final String EVENT_APP_STOP = "app_stop";
     public static final String EVENT_APP_PAUSE = "app_pause";

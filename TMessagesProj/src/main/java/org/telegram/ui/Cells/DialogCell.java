@@ -182,7 +182,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     public int messagePaddingStart = 72;
 
     /**
-     * DuckDuckGram: какое значение DdgConfig.hideAvatarsInLastApplied уже применено к
+     * mvs: какое значение DdgConfig.hideAvatarsInLastApplied уже применено к
      * геометрии этой ячейки. Поле нужно потому, что buildLayout() умеет выйти раньше
      * пересчёта, если данные не менялись: без сравнения переключатель выглядел бы
      * «включился, но ничего не сдвинулось» до следующего обновления списка.
@@ -190,7 +190,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     private boolean hideAvatarsLastApplied;
 
     /**
-     * DuckDuckGram: streamerMode. Какое значение режима уже применено к этой ячейке.
+     * mvs: streamerMode. Какое значение режима уже применено к этой ячейке.
      * Зачем это поле, то же, что и у hideAvatarsLastApplied: список чатов не
      * перерисовывается сам по себе, и без сравнения переключатель режима выглядел бы
      * как «включился, а в списке то же самое». Инициализация текущим значением нужна,
@@ -198,7 +198,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
      */
     private boolean streamerModeLastApplied = DdgConfig.streamerMode.Bool();
 
-    /** DuckDuckGram: highlightAllChats. Отдельная краска, чтобы не трогать общие краски темы. */
+    /** mvs: highlightAllChats. Отдельная краска, чтобы не трогать общие краски темы. */
     private final Paint ddgUnreadHighlightPaint = new Paint();
     public int heightDefault = 70;
     public int heightThreeLines = 76;
@@ -780,7 +780,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
 
     /**
      * openExtera: подставляет перед именем отправителя его мини-аватарку.
-     * Перенесено из exteraGram 12.9.0 (DialogCell.addSenderAvatar).
+     * Перенесено из upstream 12.9.0 (DialogCell.addSenderAvatar).
      */
     private CharSequence addSenderAvatar(CharSequence name, MessageObject messageObject) {
         if (!app.exteraless.appearance.AppearanceConfig.senderMiniAvatars() || messageObject == null || TextUtils.isEmpty(name)) {
@@ -1336,7 +1336,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
         if (isTransitionSupport) {
             return;
         }
-        // DuckDuckGram: hideAvatarsInList. Сначала выясняем, что переключатель поменялся,
+        // mvs: hideAvatarsInList. Сначала выясняем, что переключатель поменялся,
         // и только потом решаем, можно ли выйти раньше пересчёта геометрии.
         boolean hideAvatarsChanged = hideAvatarsLastApplied != DdgConfig.hideAvatarsInList.Bool();
         if (hideAvatarsChanged) {
@@ -1347,7 +1347,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             messagePaddingStart = hideAvatarsLastApplied ? 14 : 72;
             avatarStart = hideAvatarsLastApplied ? 0 : 11;
         }
-        // DuckDuckGram: streamerMode. Проверка стоит снаружи isDialogCell, потому что
+        // mvs: streamerMode. Проверка стоит снаружи isDialogCell, потому что
         // строка топика выставляет этот флаг в ноль, а подмена текста ему всё равно
         // нужна: иначе топик в форуме продолжил бы показывать последнее сообщение.
         boolean streamerModeChanged = streamerModeLastApplied != DdgConfig.streamerMode.Bool();
@@ -1685,7 +1685,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 messageString = formatTopicsNames();
                 String restrictionReason = message != null ? MessagesController.getInstance(message.currentAccount).getRestrictionReason(message.messageOwner.restriction_reason) : null;
                 buttonString = message != null ? getMessageStringFormatted(messageFormatType, restrictionReason, messageNameString, true) : "";
-                // DuckDuckGram: streamerMode. У строки форума раскладка особая: список
+                // mvs: streamerMode. У строки форума раскладка особая: список
                 // топиков уходит в messageString, а текст последнего сообщения — в
                 // buttonString (вопреки названию это не кнопка), и рисуется именно он.
                 // Подмены только messageString, как у обычной строки, тут было бы
@@ -2882,7 +2882,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                     }
                 }
             }
-            // DuckDuckGram: streamerMode. Ветка стоит первой, потому что ниже в этом
+            // mvs: streamerMode. Ветка стоит первой, потому что ниже в этом
             // же методе из messageString собирается всё: текст сообщения, подпись к
             // медиа, сервисное событие, черновик, имя папки. Подменять нужно всё сразу,
             // иначе осталась бы ветка, где переписка всё-таки видна. Имя чата, время и
@@ -3929,7 +3929,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
         if (!isTopic && (getMeasuredWidth() != 0 || getMeasuredHeight() != 0)) {
             rebuildLayout = true;
         }
-        // DuckDuckGram: streamerMode. Строка топика попадает в update() так же, как
+        // mvs: streamerMode. Строка топика попадает в update() так же, как
         // обычная, но флаг выше её по условию не трогает — а подмена текста ей нужна.
         // Признак берём здесь, само значение обновит buildLayout(): выставлять его
         // заранее нельзя, иначе buildLayout() сочтёт, что пересчёт уже был.
@@ -4252,7 +4252,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             canvas.drawRoundRect(rect, cornersRadius, cornersRadius, Theme.dialogs_tabletSeletedPaint);
         }
 
-        // DuckDuckGram: highlightAllChats. Полупрозрачная заливка всей строки непрочитанного
+        // mvs: highlightAllChats. Полупрозрачная заливка всей строки непрочитанного
         // чата. Рисуем здесь, до имени, превью и времени: заливка позже легла бы поверх
         // текста. Цвет берём тот же, что и у штатной подложки закреплённого чата
         // (key_chats_pinnedOverlay), поэтому он остаётся темой-совместимым.
@@ -5016,7 +5016,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
         }
 
         if (avatarImage.getVisible()) {
-            // DuckDuckGram: hideAvatarsInList — вместе с аватаром уходит и бейдж сторис,
+            // mvs: hideAvatarsInList — вместе с аватаром уходит и бейдж сторис,
             // иначе на его месте осталась бы висящая метка без картинки.
             if (!hideAvatarsLastApplied && drawAvatarOverlays(canvas)) {
                 needInvalidate = true;
@@ -5927,7 +5927,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
         if (message == null) {
             return;
         }
-        // DuckDuckGram: streamerMode добавляется к той же галочке, потому что это ровно тот же
+        // mvs: streamerMode добавляется к той же галочке, потому что это ровно тот же
         // случай: миниатюра фото или кадра видео — содержимое сообщения, и на демонстрации
         // экрана ей самое место. Механизм (не заполнять thumbImage) уже отлажен.
         if (!NekoConfig.mediaPreview.Bool() || DdgConfig.streamerMode.Bool()) {

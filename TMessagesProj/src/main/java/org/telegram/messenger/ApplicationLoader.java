@@ -296,7 +296,7 @@ public class ApplicationLoader extends Application implements CameraXConfig.Prov
         app.exteraless.glyph.GlyphConfig.init();
         app.exteraless.glyph.GlyphController.getInstance().init();
         com.duckduckgram.duckerer.config.DdgConfig.init();
-        // DuckDuckGram: локальная подмена полей собственного профиля. Применяется
+        // mvs: локальная подмена полей собственного профиля. Применяется
         // сразу после загрузки конфигов, чтобы уже первый экран настроек показал
         // локальные значения, а не настоящие до первого обновления с сервера.
         com.duckduckgram.duckerer.profile.DdgProfileOverride.init();
@@ -308,10 +308,10 @@ public class ApplicationLoader extends Application implements CameraXConfig.Prov
             org.telegram.ui.ActionBar.Theme.reloadMonetThemes();
         }
         app.exteraless.plugins.PluginsController.getInstance().init(applicationContext);
-        // DuckDuckGram: Java-плагины (.jar/.jplugin) грузятся отдельно от
+        // mvs: Java-плагины (.jar/.jplugin) грузятся отдельно от
         // Python-движка форка — свой каталог, свои настройки, свои разрешения.
         app.exteraless.plugins.JavaPluginsController.getInstance().init(applicationContext);
-        // DuckDuckGram: прогреваем кэш бейджей поддержавших сразу на старте. Без этого
+        // mvs: прогреваем кэш бейджей поддержавших сразу на старте. Без этого
         // на свежей установке значок не появлялся бы, пока пользователь не откроет
         // экран списка доноров (только он вызывал загрузку donors.json). refresh() шлёт
         // условный запрос с сохранённым ETag: если список не менялся, тело не скачивается.
@@ -442,7 +442,7 @@ public class ApplicationLoader extends Application implements CameraXConfig.Prov
 
         applicationHandler = new Handler(applicationContext.getMainLooper());
 
-        org.osmdroid.config.Configuration.getInstance().setUserAgentValue("DuckDuckGram/" + BuildConfig.VERSION_NAME + " (+https://github.com/Duckerer/DuckDuckGram)");
+        org.osmdroid.config.Configuration.getInstance().setUserAgentValue("mvs/" + BuildConfig.VERSION_NAME + " (+https://github.com/dkroveev-spec/mvs)");
         final File osmdroidBasePath = new File(ApplicationLoader.applicationContext.getCacheDir(), "osmdroid");
         org.osmdroid.config.Configuration.getInstance().setOsmdroidBasePath(osmdroidBasePath);
         org.osmdroid.config.Configuration.getInstance().setOsmdroidTileCache(new File(osmdroidBasePath, "tiles"));

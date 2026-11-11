@@ -48,7 +48,7 @@ public class UItem extends AdapterWithDiffUtils.Item implements Cloneable {
     public int spanCount = MAX_SPAN_COUNT;
     public int parentSpanCount;
 
-    /** Модель строки настроек плагина, если строку собрал плагин через SDK exteraGram. */
+    /** Модель строки настроек плагина, если строку собрал плагин через SDK upstream. */
     public app.exteraless.plugins.models.SettingItem settingItem;
 
     public boolean include;

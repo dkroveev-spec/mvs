@@ -28,7 +28,7 @@ import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
 
 /**
- * Корневой экран «DuckDuckGram Preferences» — вход из главных настроек.
+ * Корневой экран «mvs Preferences» — вход из главных настроек.
  *
  * Устроен как {@link app.exteraless.settings.OpenExteraSettingsActivity}: прозрачная
  * шапка, логотип, список категорий. Каждая категория — экран {@link DdgCategoryActivity}.
@@ -223,10 +223,10 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
                 }
             }
         } else if (position == channelRow) {
-            getMessagesController().openByUserName("DuckDuckGram", this, 1);
+            getMessagesController().openByUserName("mvs", this, 1);
         } else if (position == sourceRow) {
             org.telegram.messenger.browser.Browser.openUrl(getParentActivity(),
-                    "https://github.com/Duckerer/DuckDuckGram");
+                    "https://github.com/dkroveev-spec/mvs");
         }
     }
 
@@ -275,7 +275,7 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
                         cell.setTextAndIcon(getString(category.titleRes), category.iconRes, true);
                     } else if (position == channelRow) {
                         cell.setTextAndValueAndIcon(getString(R.string.DDGChannel),
-                                "@DuckDuckGram", R.drawable.msg_channel, true);
+                                "@mvs", R.drawable.msg_channel, true);
                     } else if (position == sourceRow) {
                         cell.setTextAndValueAndIcon(getString(R.string.DDGSourceCode),
                                 "GitHub", R.drawable.msg_language, false);

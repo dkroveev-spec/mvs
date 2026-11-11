@@ -7785,7 +7785,7 @@ public class AlertsCreator {
         }
         int currentAccount = fragment.getCurrentAccount();
 
-        // DuckDuckGram: skipUndoTimer (удаление без подтверждения) реализован в конце метода,
+        // mvs: skipUndoTimer (удаление без подтверждения) реализован в конце метода,
         // после builder.create() — там, где уже собран сам deleteAction. Раньше он стоял здесь
         // и вызывал onDelete, но onDelete — это уборка UI (скрыть панель выделения, погасить
         // подложку), а само удаление MessagesController.deleteMessages лежит внутри deleteAction.
@@ -8437,7 +8437,7 @@ public class AlertsCreator {
         });
         AlertDialog dialog = builder.create();
 
-        // DuckDuckGram: skipUndoTimer — пропускаем диалог подтверждения и сразу выполняем то же
+        // mvs: skipUndoTimer — пропускаем диалог подтверждения и сразу выполняем то же
         // действие, что и его кнопка «Удалить». Важно, что запускается именно deleteAction, а не
         // onDelete: onDelete — это только уборка интерфейса, а удаление, галка «удалить у всех»,
         // AyuGram-хуки и режим mode живут внутри deleteAction.

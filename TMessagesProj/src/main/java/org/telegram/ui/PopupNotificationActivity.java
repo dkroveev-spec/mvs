@@ -876,7 +876,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
         }
         ViewGroup view;
         MessageObject messageObject = popupMessages.get(num);
-        // DuckDuckGram: streamerMode. Плавающая плашка внутри приложения видна на экране
+        // mvs: streamerMode. Плавающая плашка внутри приложения видна на экране
         // ровно так же, как системное уведомление, поэтому в режиме стримера она
         // показывает только заглушку: ветки с фото, гео и голосом пропускаются, иначе
         // на демонстрацию попал бы кадр медиа или подпись к нему. Имя чата в шапке
@@ -1021,7 +1021,7 @@ public class PopupNotificationActivity extends Activity implements NotificationC
             }
             TextView messageText = view.findViewWithTag(301);
             messageText.setTextSize(TypedValue.COMPLEX_UNIT_SP, SharedConfig.getDdgFontSize());
-            // DuckDuckGram: streamerMode. Сюда попадают и обычные текстовые сообщения,
+            // mvs: streamerMode. Сюда попадают и обычные текстовые сообщения,
             // и всё, что раньше ушло в ветки выше. Подмена одна на оба случая.
             messageText.setText(streamerMode
                     ? LocaleController.getString(R.string.DDGMessageHidden)

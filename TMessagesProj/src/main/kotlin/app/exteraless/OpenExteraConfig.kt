@@ -8,10 +8,10 @@ import app.exteraless.proxy.ProxyDisableCondition
 import tw.nekomimi.nekogram.config.ConfigItem
 
 /**
- * Настройки фич, перенесённых из exteraGram.
+ * Настройки фич, перенесённых из upstream.
  *
  * Повторяет схему [xyz.nextalone.nagram.NaConfig]: те же SharedPreferences, тот же [ConfigItem],
- * но собственный список — чтобы порт не конфликтовал с апстримом NagramX при мерджах.
+ * но собственный список — чтобы порт не конфликтовал с апстримом upstream при мерджах.
  * Ключи с префиксом OE, чтобы не столкнуться с существующими.
  */
 object OpenExteraConfig {
@@ -45,7 +45,7 @@ object OpenExteraConfig {
     // ---- Эмодзи ----
 
     /**
-     * Загружать список эмодзи-паков из канала метаданных NagramX.
+     * Загружать список эмодзи-паков из канала метаданных upstream.
      *
      * Свой канал метаданных у нас не заведён, а паки живут в чужом, поэтому
      * по умолчанию выключено: без спроса клиент в чужой канал не ходит.
@@ -69,7 +69,7 @@ object OpenExteraConfig {
     /**
      * Маска условий, при которых прокси выключается сам: [ProxyDisableCondition.flag].
      *
-     * У NagramX на этом месте был булев `DisableProxyWhenVpnEnabled`; его значение
+     * У upstream на этом месте был булев `DisableProxyWhenVpnEnabled`; его значение
      * переносится в бит VPN в [migrateProxyConditions].
      */
     @JvmField

@@ -1507,12 +1507,12 @@ public class LocaleController {
         try {
             return ApplicationLoader.applicationContext.getString(R.string.NagramX);
         } catch (Exception ignore) {
-            return "DuckDuckGram";
+            return "mvs";
         }
     }
 
     private String getStringInternal(String key, String fallback, int fallbackRes, int res) {
-        // exteraGram 12.9.0, LocaleController.java:2301 — перехват ДО обращения к localeValues.
+        // upstream 12.9.0, LocaleController.java:2301 — перехват ДО обращения к localeValues.
         // Иначе на любом облачном языке (русский — облачный) ключ AppName подтягивается
         // из языкового пакета телеграма и форк снова называется «Telegram» во всех диалогах,
         // где заголовок берут как getString(R.string.AppName).

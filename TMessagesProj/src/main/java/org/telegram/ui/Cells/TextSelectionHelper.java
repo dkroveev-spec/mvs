@@ -1598,7 +1598,7 @@ public abstract class TextSelectionHelper<Cell extends TextSelectionHelper.Selec
                 if (pasteItem != null) {
                     pasteItem.setVisible(canPaste() && clipboardHasContent());
                 }
-                // NekoX: Merge 8.5.0, remove due to removing LanguageDetector
+                // upstream: Merge 8.5.0, remove due to removing LanguageDetector
                 MenuItem addToFilterItem = menu.findItem(ADD_TO_FILTER);
                 if (addToFilterItem != null) {
                     addToFilterItem.setVisible(canShowAddToFilter());

@@ -1466,7 +1466,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
     /**
      * openExtera: показывать результаты опроса до голосования
-     * (ChatsConfig.showResultsBeforeVoting). Перенесено из exteraGram 12.9.0,
+     * (ChatsConfig.showResultsBeforeVoting). Перенесено из upstream 12.9.0,
      * ChatMessageCell.isPollResultsPreviewEnabled().
      */
     private static boolean isPollResultsPreviewEnabled(MessageObject messageObject, TLRPC.TL_messageMediaPoll media) {
@@ -1796,7 +1796,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
     public StaticLayout timeLayout;
     public int timeWidth;
     public int timeTextWidth;
-    /** DuckDuckGram: сколько повторных копий свернуто в этот пузырь (0 = нет серии). */
+    /** mvs: сколько повторных копий свернуто в этот пузырь (0 = нет серии). */
     public int collapsedCount;
     public int timeX;
     public int signWidth;
@@ -2117,7 +2117,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         float y = imageReceiver.getImageY2();
         float circleRadius = radius - AndroidUtilities.dp(2.25f);
         // У круглой аватарки точка сидит на радиусе от угла картинки, у
-        // квадратной так она наползала бы на саму картинку — exteraGram уводит её
+        // квадратной так она наползала бы на саму картинку — upstream уводит её
         // по диагонали (ExteraConfig.getOnlineDotOffset). При круглых
         // аватарках (значение по умолчанию) выражение даёт прежний radius.
         float offset = app.exteraless.appearance.AppearanceConfig.onlineDotOffset(radius, radius);
@@ -5295,7 +5295,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     } else if (
                         sideButtonVisible &&
                         drawSideButton != 0 &&
-                        // DuckDuckGram: quickShareMedia. Слот кнопки в этом случае
+                        // mvs: quickShareMedia. Слот кнопки в этом случае
                         // остаётся в разметке (см. drawSideButton), но поделиться
                         // из него уже нечем, поэтому и тап по нему ничего не делает.
                         !(drawSideButton == 1 && !DdgConfig.quickShareMedia.Bool()) &&
@@ -18963,7 +18963,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
         final int editedDate = edited && rawEditedDate == 0 && currentMessageObject.isEditing() ? ConnectionsManager.getInstance(currentAccount).getCurrentTime() : rawEditedDate;
         if (currentMessageObject.isWelcomeMessage()) {
             timeString = ""; // Long.toString(currentMessageObject.getId());
-        // DuckDuckGram: скрытие времени в сообщениях (DdgConfig.hideMessageTime).
+        // mvs: скрытие времени в сообщениях (DdgConfig.hideMessageTime).
         // Пустая строка убирает и сам текст подписи, и зарезервированную под него
         // ширину пузыря, а галочки прочтения (drawStatusDrawable) рисуются отдельно
         // и потому остаются на месте — как и просил пользователь («только время»).
@@ -22503,7 +22503,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                 drawCommentButton(canvas, 1f);
             }
         } else if (drawSideButton == 1 && !DdgConfig.quickShareMedia.Bool()) {
-            // DuckDuckGram: quickShareMedia выключена: счётчик координат уже посчитан,
+            // mvs: quickShareMedia выключена: счётчик координат уже посчитан,
             // но ни фон, ни иконка «поделиться» в него не рисуются.
             //
             // Слот намеренно остаётся: от него зависят sideStartX/sideStartY, а по ним

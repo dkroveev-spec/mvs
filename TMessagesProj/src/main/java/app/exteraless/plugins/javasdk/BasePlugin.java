@@ -456,7 +456,7 @@ public abstract class BasePlugin {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(20000);
             connection.setRequestMethod(method);
-            connection.setRequestProperty("User-Agent", "DuckDuckGram-JavaPlugin/" + pluginVersion);
+            connection.setRequestProperty("User-Agent", "mvs-JavaPlugin/" + pluginVersion);
             if (headers != null) {
                 for (Map.Entry<String, String> entry : headers.entrySet()) {
                     connection.setRequestProperty(entry.getKey(), entry.getValue());

@@ -40,7 +40,7 @@ public class PreviewBackgroundDrawable extends Drawable {
         radius = AndroidUtilities.dp(cornerRadiusDp);
     }
 
-    /** Контур наружу отдан затем же, зачем у exteraGram: превью подкрашивают его вручную. */
+    /** Контур наружу отдан затем же, зачем у upstream: превью подкрашивают его вручную. */
     public Paint getStrokePaint() {
         return strokePaint;
     }

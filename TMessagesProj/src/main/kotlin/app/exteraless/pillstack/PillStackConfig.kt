@@ -7,11 +7,11 @@ import tw.nekomimi.nekogram.NekoConfig
 import tw.nekomimi.nekogram.config.ConfigItem
 
 /**
- * Настройки подсистемы Pill Stack, перенесённой из exteraGram.
+ * Настройки подсистемы Pill Stack, перенесённой из upstream.
  *
  * Схема повторяет [app.exteraless.OpenExteraConfig]: те же SharedPreferences, тот же [ConfigItem],
  * но отдельный список и собственный префикс ключей (OEPill), чтобы не пересекаться ни с
- * апстримом NagramX, ни с остальными настройками порта.
+ * апстримом upstream, ни с остальными настройками порта.
  */
 object PillStackConfig {
 
@@ -165,7 +165,7 @@ object PillStackConfig {
      *
      * Возвращается сам список, а не копия: плагины каталога дописывают в него свой id
      * и следом зовут [savePillsLayout] — так устроен эталон
-     * (`PillStackConfig.getActivePills()` в exteraGram 12.9.0 отдаёт поле).
+     * (`PillStackConfig.getActivePills()` в upstream 12.9.0 отдаёт поле).
      */
     @JvmStatic
     fun getActivePills(): ArrayList<Int> = activePills

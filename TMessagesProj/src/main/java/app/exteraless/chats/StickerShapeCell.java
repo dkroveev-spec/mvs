@@ -27,7 +27,7 @@ import org.telegram.ui.Components.ScaleStateListAnimator;
 
 /**
  * Плитки выбора формы стикеров: Default / Rounded / Message.
- * Порт компонента exteraGram, значение хранится в {@link ChatsConfig#stickerShape}.
+ * Порт компонента upstream, значение хранится в {@link ChatsConfig#stickerShape}.
  */
 public class StickerShapeCell extends LinearLayout {
 

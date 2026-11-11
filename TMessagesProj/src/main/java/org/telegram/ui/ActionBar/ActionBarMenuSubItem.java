@@ -207,7 +207,7 @@ public class ActionBarMenuSubItem extends FrameLayout {
         textView.setLines(2);
         if (changeSize) {
             textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
-            // DuckDuckGram: menuStyle. Стиль пункта применяется в ItemOptions.addView, то
+            // mvs: menuStyle. Стиль пункта применяется в ItemOptions.addView, то
             // есть до makeMultiline(), а тот зовёт setMultiline() уже после. Здесь
             // textView.setTextSize(14) затирал размер, установленный настройкой меню.
             // Поэтому свой размер ставим в самое последнее — тогда порядок вызовов
@@ -221,7 +221,7 @@ public class ActionBarMenuSubItem extends FrameLayout {
     }
 
     /**
-     * DuckDuckGram: menuStyle — размер текста в ненулевом режиме, если стиль задан.
+     * mvs: menuStyle — размер текста в ненулевом режиме, если стиль задан.
      *
      * <p>Отдельный метод, потому что размер надо уметь применить позже, чем стиль:
      * {@code ItemOptions.applyDdgMenuStyle} вызывается при добавлении пункта, а
@@ -235,7 +235,7 @@ public class ActionBarMenuSubItem extends FrameLayout {
         }
     }
 
-    /** DuckDuckGram: menuStyle — спрятать правую иконку в режиме «списком». */
+    /** mvs: menuStyle — спрятать правую иконку в режиме «списком». */
     public void hideDdgRightIcon() {
         if (rightIcon != null) {
             rightIcon.setVisibility(View.GONE);
@@ -456,7 +456,7 @@ public class ActionBarMenuSubItem extends FrameLayout {
 
     public void updateBackground() {
         setBackground(Theme.createRadSelectorDrawable(selectorColor, top ? selectorRad : 0, bottom ? selectorRad : 0));
-        // exteraGram: «вдавливание» пункта меню при нажатии (exteraGram — UIUtil.applyScaleStateListAnimator(this, ..., 0.04f, 1.5f))
+        // upstream: «вдавливание» пункта меню при нажатии (upstream — UIUtil.applyScaleStateListAnimator(this, ..., 0.04f, 1.5f))
         app.exteraless.utils.UIUtil.applyScaleStateListAnimator(this, 0.04f, 1.5f);
     }
 

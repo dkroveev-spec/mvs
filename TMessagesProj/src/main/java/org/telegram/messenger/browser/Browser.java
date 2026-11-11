@@ -290,7 +290,7 @@ public class Browser {
         openUrl(context, uri, allowCustom, tryTelegraph, false, inCaseLoading, null, false, true, false);
     }
 
-    // exteraless plugins: обёртка с before/after-хендлерами плагинов (from_intent=false).
+    // upstream plugins: обёртка с before/after-хендлерами плагинов (from_intent=false).
     // Все публичные openUrl(...) сходятся сюда; внутренние tg://-ссылки дополнительно
     // пройдут через диспетч LaunchActivity.handleIntent (там from_intent=true).
     public static void openUrl(final Context context, Uri uri, boolean _allowCustom, boolean tryTelegraph, boolean forceNotInternalForApps, Progress inCaseLoading, String browser, boolean allowIntent, boolean allowInAppBrowser, boolean forceRequest) {
@@ -458,7 +458,7 @@ public class Browser {
                     }
                 } else if (DdgConfig.builtInBrowser.Bool() && uri != null
                         && ("http".equalsIgnoreCase(uri.getScheme()) || "https".equalsIgnoreCase(uri.getScheme()))) {
-                    // DuckDuckGram: builtInBrowser — открываем ссылку встроенным браузером,
+                    // mvs: builtInBrowser — открываем ссылку встроенным браузером,
                     // не предлагая внешнее приложение. Проверка схемы обязательна: для
                     // intent:// и tg:// встроенный браузер неприменим, и без неё такие ссылки
                     // просто перестали бы открываться вовсе.

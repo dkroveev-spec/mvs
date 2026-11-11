@@ -165,7 +165,7 @@ public class WeatherPill extends BasePill implements PillStackEvents.Listener {
     }
 
     /**
-     * Карта «эмодзи погоды → вектор». Восстановлена из smali exteraGram: jadx не осилил
+     * Карта «эмодзи погоды → вектор». Восстановлена из smali upstream: jadx не осилил
      * {@code WeatherPill.getWeatherIconRes} (:66), тело осталось пустым switch'ом.
      *
      * Сравнение точное, без вариационного селектора U+FE0F — {@code Weather.State.getEmoji()}

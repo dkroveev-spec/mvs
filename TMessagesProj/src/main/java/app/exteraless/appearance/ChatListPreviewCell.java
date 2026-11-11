@@ -244,7 +244,7 @@ public class ChatListPreviewCell extends FrameLayout {
         if (!needDivider) {
             return;
         }
-        // Отступ, как у остальных ячеек экрана: у exteraGram линия во всю ширину,
+        // Отступ, как у остальных ячеек экрана: у upstream линия во всю ширину,
         // но там нет карточек-секций, внутри которых линия упирается в скругление.
         canvas.drawLine(LocaleController.isRTL ? 0 : AndroidUtilities.dp(21), getMeasuredHeight() - 1,
                 getMeasuredWidth() - (LocaleController.isRTL ? AndroidUtilities.dp(21) : 0), getMeasuredHeight() - 1,

@@ -189,7 +189,7 @@ public class DdgAppearanceActivity extends DdgCategoryActivity {
         SharedConfig.applyDdgTextSizeScale();
         Theme.createCommonMessageResources();
         rebuildRows();
-        // DuckDuckGram: смена шрифта не перекрашивает уже созданные TextView/SimpleTextView
+        // mvs: смена шрифта не перекрашивает уже созданные TextView/SimpleTextView
         // (они запоминают Typeface в конструкторе), поэтому честно сообщаем, что для
         // применения нужен перезапуск приложения.
         if (getParentActivity() != null) {

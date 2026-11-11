@@ -486,7 +486,7 @@ public abstract class BottomSheetWithRecyclerListView extends BottomSheet {
                 }
             };
             actionBar.setBackgroundColor(getThemedColor(Theme.key_dialogBackground));
-            // exteraGram: здесь заголовок прижат влево по макету, центровка его ломает.
+            // upstream: здесь заголовок прижат влево по макету, центровка его ломает.
             actionBar.setForceDisableCenterTitle(true);
             actionBar.setTitleColor(getThemedColor(Theme.key_windowBackgroundWhiteBlackText));
             actionBar.setItemsBackgroundColor(getThemedColor(Theme.key_actionBarActionModeDefaultSelector), false);

@@ -39,13 +39,13 @@ public class DrawerMenuItemView extends FrameLayout {
     public DrawerMenuItemView(Context context) {
         super(context);
         setWillNotDraw(false);
-        // DuckDuckGram: compactSidebar. Размеры вёрстки читаются из DdgSidebarMetrics:
+        // mvs: compactSidebar. Размеры вёрстки читаются из DdgSidebarMetrics:
         // при выключенной галочке возвращаются штатные 48/24/20/68/15, поведение
         // побайтово прежнее.
         setLayoutParams(new FrameLayout.LayoutParams(LayoutHelper.MATCH_PARENT,
                 AndroidUtilities.dp(DdgSidebarMetrics.itemHeight())));
         setBackground(createSelectorDrawable());
-        // exteraGram зовёт UIUtil.applyScaleStateListAnimator(this, 16f, false, false, 2, 0.04f, 1.5f);
+        // upstream зовёт UIUtil.applyScaleStateListAnimator(this, 16f, false, false, 2, 0.04f, 1.5f);
         // у нас перенесена короткая форма — масштаб 0.04 и tension 1.5 те же.
         UIUtil.applyScaleStateListAnimator(this, 0.04f, 1.5f);
 
@@ -109,7 +109,7 @@ public class DrawerMenuItemView extends FrameLayout {
     }
 
     private static Drawable createSelectorDrawable() {
-        // DuckDuckGram: compactSidebar — скругление фона пункта тоже компактнее.
+        // mvs: compactSidebar — скругление фона пункта тоже компактнее.
         final int radius = DdgSidebarMetrics.selectorRadius();
         return Theme.createRadSelectorDrawable(Theme.getColor(COLOR_KEY_SELECTOR), radius, radius);
     }

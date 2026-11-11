@@ -11,9 +11,9 @@ import tw.nekomimi.nekogram.config.ConfigItem
 import xyz.nextalone.nagram.NaConfig
 
 /**
- * Настройки экрана «Appearance», перенесённые из exteraGram.
+ * Настройки экрана «Appearance», перенесённые из upstream.
  *
- * Здесь живут ТОЛЬКО те настройки, аналогов которых нет в NagramX
+ * Здесь живут ТОЛЬКО те настройки, аналогов которых нет в upstream
  * ([xyz.nextalone.nagram.NaConfig] / [tw.nekomimi.nekogram.NekoConfig]).
  * Всё остальное экран берёт из существующих конфигов, чтобы не плодить дубли.
  *
@@ -65,7 +65,7 @@ object AppearanceConfig {
     val senderMiniAvatars =
         addConfig("OEAppearanceSenderMiniAvatars", ConfigItem.configTypeBool, true)
 
-    /** Прятать эмодзи-статус рядом с заголовком шапки. Дефолт false, как в exteraGram. */
+    /** Прятать эмодзи-статус рядом с заголовком шапки. Дефолт false, как в upstream. */
     @JvmField
     val hideActionBarStatus =
         addConfig("OEAppearanceHideActionBarStatus", ConfigItem.configTypeBool, false)
@@ -96,10 +96,10 @@ object AppearanceConfig {
         else -> ""
     }
 
-    // ---- Только UI: аналогов в NagramX нет, визуальный эффект пока не подключён ----
+    // ---- Только UI: аналогов в upstream нет, визуальный эффект пока не подключён ----
 
     /**
-     * Квадратная («squircle») плавающая кнопка вместо круглой. Дефолт true, как в exteraGram —
+     * Квадратная («squircle») плавающая кнопка вместо круглой. Дефолт true, как в upstream —
      * одно из самых заметных отличий экстеры из коробки.
      * Радиус считается как ceil(size * 16 / 56) dp, то есть 16 dp при кнопке 56 dp.
      */
@@ -117,7 +117,7 @@ object AppearanceConfig {
     fun fabCornerRadius(size: Int): Int =
         if (squareFab()) Math.ceil((size * 16) / 56.0).toInt() else size / 2
 
-    /** Заголовок ActionBar по центру. Дефолт false, как в exteraGram (BooleanPref(0)). */
+    /** Заголовок ActionBar по центру. Дефолт false, как в upstream (BooleanPref(0)). */
     private val centerTitle = addConfig("OEAppearanceCenterTitle", ConfigItem.configTypeBool, false)
 
     @JvmStatic
@@ -132,7 +132,7 @@ object AppearanceConfig {
         NaConfig.centerActionBarTitleType.setConfigInt(if (value) 1 else 0)
     }
 
-    /** «Gooey»-анимация аватарки при оттягивании шапки профиля. Дефолт true, как в exteraGram. */
+    /** «Gooey»-анимация аватарки при оттягивании шапки профиля. Дефолт true, как в upstream. */
     @JvmField
     val gooeyAvatarAnimation =
         addConfig("OEAppearanceGooeyAvatarAnimation", ConfigItem.configTypeBool, true)
@@ -147,11 +147,11 @@ object AppearanceConfig {
      * Индивидуальные темы и обои в чатах.
      *
      * Выключено — приложение не применяет тему и обои, выставленные для
-     * конкретного диалога, и везде остаётся общая тема. exteraGram гейтит этим
+     * конкретного диалога, и везде остаётся общая тема. upstream гейтит этим
      * ключом две точки: ChatActivity.setupChatTheme (12.9.0:12501) и
      * ChatThemeController.getDialogWallpaper (12.9.0:950).
      *
-     * По умолчанию включено — как в exteraGram: иначе обновление приложения
+     * По умолчанию включено — как в upstream: иначе обновление приложения
      * молча погасило бы у всех уже настроенные темы чатов.
      */
     @JvmField
@@ -190,7 +190,7 @@ object AppearanceConfig {
             }
         })
 
-    /** Стеклянное меню сообщения. Дефолт true, как в exteraGram (BooleanPref(1)). */
+    /** Стеклянное меню сообщения. Дефолт true, как в upstream (BooleanPref(1)). */
     @JvmField
     val glassMessageMenu =
         addConfig("OEAppearanceGlassMessageMenu", ConfigItem.configTypeBool, true)
@@ -208,19 +208,19 @@ object AppearanceConfig {
     }
 
     // ---- Material Design 3 ----
-    // switchStyle и sliderStyle уже есть у NagramX (NaConfig, дефолт 2 = MD3) — не дублируем.
+    // switchStyle и sliderStyle уже есть у upstream (NaConfig, дефолт 2 = MD3) — не дублируем.
 
-    /** M3-индикаторы загрузки. Дефолт true, как в exteraGram. */
+    /** M3-индикаторы загрузки. Дефолт true, как в upstream. */
     @JvmField
     val newLoadingStyle =
         addConfig("OEAppearanceNewLoadingStyle", ConfigItem.configTypeBool, true)
 
-    /** M3-шапка чата. Дефолт false, как в exteraGram. */
+    /** M3-шапка чата. Дефолт false, как в upstream. */
     @JvmField
     val newChatHeaderStyle =
         addConfig("OEAppearanceNewChatHeaderStyle", ConfigItem.configTypeBool, false)
 
-    /** M3-нижняя панель вкладок. Дефолт false, как в exteraGram. */
+    /** M3-нижняя панель вкладок. Дефолт false, как в upstream. */
     @JvmField
     val newNavigationBarStyle =
         addConfig("OEAppearanceNewNavigationBarStyle", ConfigItem.configTypeBool, false)
@@ -345,12 +345,12 @@ object AppearanceConfig {
 
     // ---- Боковое меню ----
 
-    /** Своя шторка бокового меню вместо стоковой. Дефолт false, как в exteraGram. */
+    /** Своя шторка бокового меню вместо стоковой. Дефолт false, как в upstream. */
     @JvmField
     val navigationDrawer =
         addConfig("OEAppearanceNavigationDrawer", ConfigItem.configTypeBool, false)
 
-    /** Иммерсивная анимация открытия шторки. Дефолт false, как в exteraGram. */
+    /** Иммерсивная анимация открытия шторки. Дефолт false, как в upstream. */
     @JvmField
     val immersiveDrawerAnimation =
         addConfig("OEAppearanceImmersiveDrawer", ConfigItem.configTypeBool, false)
@@ -364,7 +364,7 @@ object AppearanceConfig {
 
     /**
      * Показывать ленту нижней вкладкой — на месте вкладки «Контакты».
-     * Дефолт false, как в exteraGram (BooleanPref(0)).
+     * Дефолт false, как в upstream (BooleanPref(0)).
      */
     @JvmField
     val showFeedTab = addConfig("OEAppearanceShowFeedTab", ConfigItem.configTypeBool, false)
@@ -452,7 +452,7 @@ object AppearanceConfig {
     /**
      * Квадратность аватарки: 0 — круг, 1 — квадрат.
      *
-     * Обратная величина к [avatarCorners] и ровно то, что exteraGram зовёт
+     * Обратная величина к [avatarCorners] и ровно то, что upstream зовёт
      * `getAvatarSquareness()`. Нужна там, где геометрия зависит от формы —
      * например, онлайн-точку на квадратной аватарке надо уводить в угол,
      * иначе она наползает на картинку.
@@ -489,7 +489,7 @@ object AppearanceConfig {
      * Выносить ли заголовки секций из карточки — с учётом стиля разделителя.
      *
      * В режиме «Сегменты» каждая строка сама по себе карточка, и заголовок
-     * внутри неё выглядел бы чужеродно, поэтому exteraGram включает вынос
+     * внутри неё выглядел бы чужеродно, поэтому upstream включает вынос
      * принудительно (ExteraConfig.getSectionsSeparatedHeaders: SEGMENTS || pref).
      */
     @JvmStatic
@@ -522,7 +522,7 @@ object AppearanceConfig {
     private var dividerHiddenCache: Boolean? = null
 
     /**
-     * Гасить ли `key_divider` целиком. У exteraGram прозрачный цвет отдаётся во всех режимах,
+     * Гасить ли `key_divider` целиком. У upstream прозрачный цвет отдаётся во всех режимах,
      * кроме [DIVIDER_LINE] — поэтому стоковые `drawLine(..., Theme.dividerPaint)`
      * перестают рисовать без правки самих ячеек
      */
@@ -678,7 +678,7 @@ object AppearanceConfig {
         }
     }
 
-    private val LEGACY_DEFAULT_TITLES = setOf("Nagram X", "exteraless")
+    private val LEGACY_DEFAULT_TITLES = setOf("upstream", "upstream")
 
     private fun migrateLegacyTitleName() {
         if (NaConfig.customTitle.String() !in LEGACY_DEFAULT_TITLES) return

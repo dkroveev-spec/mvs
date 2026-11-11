@@ -17,7 +17,7 @@ import org.telegram.ui.ActionBar.Theme;
 /**
  * Скруглённый фон пилюли курса: вертикальный градиент из двух цветов.
  *
- * Поверх градиента exteraGram (crypto/utils/ColoredBackground) кладёт обводку в
+ * Поверх градиента upstream (crypto/utils/ColoredBackground) кладёт обводку в
  * толщину волоса — светлую сверху, гаснущую к середине и чуть заметную снизу.
  * Она рисуется только в тёмной теме и не в Monet: на светлом фоне и на обоях
  * системной палитры её попросту не видно, а пилюля от неё грязнится.
@@ -28,13 +28,13 @@ public class ColoredBackground extends Drawable {
     private final Paint strokePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF rectF = new RectF();
 
-    /** Цвета по умолчанию — BLUE_LIGHT exteraGram: с ними идёт пилюля TON. */
+    /** Цвета по умолчанию — BLUE_LIGHT upstream: с ними идёт пилюля TON. */
     public ColoredBackground() {
         this(0xFF1BA4ED, 0xFF1488E1);
     }
 
     public ColoredBackground(int colorTop, int colorBottom) {
-        // Высота градиента у exteraGram фиксированная — dp(28), высота самой пилюли,
+        // Высота градиента у upstream фиксированная — dp(28), высота самой пилюли,
         // а не bounds: при загрузке пилюля короче, и градиент не должен ехать.
         paint.setShader(new LinearGradient(0, 0, 0, AndroidUtilities.dp(28),
                 new int[]{colorTop, colorBottom}, new float[]{0f, 1f}, Shader.TileMode.CLAMP));

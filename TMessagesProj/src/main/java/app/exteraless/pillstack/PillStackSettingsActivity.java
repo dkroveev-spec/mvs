@@ -130,7 +130,7 @@ public class PillStackSettingsActivity extends BaseNekoSettingsActivity {
         hiddenInfoRow = addRow();
 
         if (activePills.contains(PillType.WEATHER.id)) {
-            // сами настройки погоды живут на отдельном экране (как в exteraGram)
+            // сами настройки погоды живут на отдельном экране (как в upstream)
             weatherRow = addRow("weather");
             weatherDividerRow = addRow();
         } else {

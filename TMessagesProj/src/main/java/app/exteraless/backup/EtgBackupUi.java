@@ -26,7 +26,7 @@ import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.FileUtil;
 import tw.nekomimi.nekogram.utils.ShareUtil;
 
-/** Диалоги импорта и экспорта настроек exteraGram: экран настроек и тап по файлу в чате. */
+/** Диалоги импорта и экспорта настроек upstream: экран настроек и тап по файлу в чате. */
 public final class EtgBackupUi {
 
     private EtgBackupUi() {

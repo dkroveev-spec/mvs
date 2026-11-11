@@ -19,7 +19,7 @@ import org.telegram.messenger.FileLog;
 /**
  * Форма иконки приложения — та же, что у лаунчера.
  *
- * Перенос exteraGram 12.9.0:preferences/utils/IconShapeHelper.java. Логотип в
+ * Перенос upstream 12.9.0:preferences/utils/IconShapeHelper.java. Логотип в
  * шапке настроек обрезается по маске системы: на Pixel он круг, на других
  * прошивках — сквиркл, капля или прямоугольник со скруглением. Смысл в том,
  * чтобы логотип в приложении выглядел так же, как на рабочем столе.
@@ -48,7 +48,7 @@ public final class IconShapeHelper {
      *
      * @param cornerRadius радиус для прямоугольных масок, dp. У прямоугольной
      *                     маски системы углы острые, а логотипу это не идёт —
-     *                     exteraGram в этом случае рисует скруглённый прямоугольник
+     *                     upstream в этом случае рисует скруглённый прямоугольник
      *                     сам, а не тянет системный путь.
      */
     public static Path getFinalIconShapePath(float width, float height, float cornerRadius) {

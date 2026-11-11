@@ -125,7 +125,7 @@ public final class GeneralHelper {
 
     /**
      * Сброс всех настроек openExtera к значениям по умолчанию — так обещает диалог
-     * OEGeneralResetSettingsInfo. Настройки NagramX, кроме перечисленных ниже, не трогаются.
+     * OEGeneralResetSettingsInfo. Настройки upstream, кроме перечисленных ниже, не трогаются.
      */
     public static void resetSettings() {
         OpenExteraConfig.reset();

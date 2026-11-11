@@ -38,7 +38,7 @@ public class LauncherIconController {
     }
 
     public enum LauncherIcon {
-        // DuckDuckGram идёт первым: это основная иконка клиента, она же включена
+        // mvs идёт первым: это основная иконка клиента, она же включена
         // в манифесте, поэтому в переключателе стоит первой и выбрана по умолчанию.
         DUCKDUCKGRAM("DuckDuckGramIcon", R.drawable.duckduckgram_icon_background,
                 R.drawable.duckduckgram_icon_foreground, R.string.AppIconDuckDuckGram),

@@ -3,7 +3,7 @@ package com.exteragram.messenger.plugins;
 import java.util.List;
 
 /**
- * Основание модели плагина под именем exteraGram.
+ * Основание модели плагина под именем upstream.
  *
  * Существует ради dex-модулей: они получают объект плагина рефлексией и
  * проверяют его тип через `isAssignableFrom`, поэтому наш `Plugin` обязан

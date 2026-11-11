@@ -192,7 +192,7 @@ public class InstantCameraView extends InstantCameraViewBase implements Notifica
     private TextureView textureView;
     private BackupImageView textureOverlayView;
     /**
-     * Чем снимаем кружок. exteraGram держит здесь трёхпозиционный CameraType
+     * Чем снимаем кружок. upstream держит здесь трёхпозиционный CameraType
      * (InstantCameraView.java:1235); у нас системный вариант остаётся за
      * SharedConfig, как было, а два других выбираются явно в настройках.
      */
@@ -1353,7 +1353,7 @@ public class InstantCameraView extends InstantCameraViewBase implements Notifica
             }
         }
         isFrontface = !isFrontface;
-        // exteraGram 12.9.0, InstantCameraView.java:2597-2600: «запоминать последнюю камеру»
+        // upstream 12.9.0, InstantCameraView.java:2597-2600: «запоминать последнюю камеру»
         // дописывает выбор в ту же настройку, из которой камера берётся при старте записи
         // (см. :801 выше). Режим «спрашивать» (2) не трогаем — запоминать в нём нечего.
         app.exteraless.chats.ChatsConfig.ensureLoaded();
@@ -2433,7 +2433,7 @@ public class InstantCameraView extends InstantCameraViewBase implements Notifica
         private static final int IFRAME_INTERVAL = 1;
 
         /**
-         * Реальная частота кадров для энкодера. Перенос из exteraGram 12.9.0,
+         * Реальная частота кадров для энкодера. Перенос из upstream 12.9.0,
          * InstantCameraView.java:2429: 60 отдаётся только если драйвер подтвердил
          * расширенный диапазон, иначе кадры снимутся в 60, а запишутся как 30.
          */
@@ -4166,8 +4166,8 @@ public class InstantCameraView extends InstantCameraViewBase implements Notifica
     ValueAnimator finishZoomTransition;
 
     // ---- Зум кнопками громкости при записи кружка ----
-    // Перенос из exteraGram 12.9.0, InstantCameraView.java:3012-3022 (onKeyDown)
-    // и :1421-1508 (adjustZoom). Настройки у exteraGram нет, фича захардкожена.
+    // Перенос из upstream 12.9.0, InstantCameraView.java:3012-3022 (onKeyDown)
+    // и :1421-1508 (adjustZoom). Настройки у upstream нет, фича захардкожена.
 
     private ValueAnimator volumeZoomAnimator;
 
@@ -4262,7 +4262,7 @@ public class InstantCameraView extends InstantCameraViewBase implements Notifica
 
     public void finishZoom() {
         zoomSlider.endPinchZoomGesture();
-        // exteraGram 12.9.0, InstantCameraView.java:2856-2860 — при staticZoom зум остаётся
+        // upstream 12.9.0, InstantCameraView.java:2856-2860 — при staticZoom зум остаётся
         // там, где его оставили пальцы, и не анимируется обратно.
         if (finishZoomTransition != null || app.exteraless.chats.ChatsConfig.staticZoom.Bool()) {
             return;

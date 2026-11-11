@@ -364,7 +364,7 @@ public class MessageObject {
     private float generatedWithDensity;
     private float generatedWithFontSize;
     private boolean generatedWithWideChannelPosts;
-    // DuckDuckGram: интерлиньяж тоже влияет на высоту раскладки, поэтому смена настройки
+    // mvs: интерлиньяж тоже влияет на высоту раскладки, поэтому смена настройки
     // должна заставлять пересобирать её — по аналогии с размером шрифта выше.
     private float generatedWithLineSpacingAdd;
     public boolean wasJustSent;
@@ -732,9 +732,9 @@ public class MessageObject {
      * openExtera: реакции скрыты для типа чата, которому принадлежит сообщение
      * (ChatsConfig.hideReactionsInChannels / InGroups / InPrivate).
      *
-     * В exteraGram (exteraGram 12.9.0) разбивка по типам живёт только в
+     * В upstream (upstream 12.9.0) разбивка по типам живёт только в
      * ChatActivity.disabledReactions() и гасит панель реакций; отрисовку реакций
-     * в ячейке гасим здесь — сделано по смыслу, с exteraGram не сверено.
+     * в ячейке гасим здесь — сделано по смыслу, с upstream не сверено.
      * Результат кэшируется: тип чата у сообщения не меняется.
      */
     private int oeChatKind; // 0 — не считали, 1 — личка, 2 — канал, 3 — группа
@@ -3976,7 +3976,7 @@ public class MessageObject {
     }
 
     private boolean allowsBigEmoji() {
-        // DuckDuckGram: DdgConfig.disableBigEmoji — вторая галочка на ту же возможность.
+        // mvs: DdgConfig.disableBigEmoji — вторая галочка на ту же возможность.
         // SharedConfig.allowBigEmoji читается ровно здесь, поэтому гасим обе в одной строке:
         // так переключатель из настроек DDG действует ровно на ту же отрисовку, что и штатный
         // «Большие эмодзи» из настроек Nekogram, без второй точки ветвления.
@@ -7851,7 +7851,7 @@ public class MessageObject {
             newCaptionTranslated = true;
             text = messageText != null ? messageText.toString() : messageOwner.translatedText.text;
         } else if (messageOwner.translated) {
-            // NekoX Translate
+            // upstream Translate
             newCaptionSummarized = false;
             newCaptionTranslated = false;
             text = messageOwner.translatedMessage;
@@ -7876,7 +7876,7 @@ public class MessageObject {
         } else if (messageOwner.translatedText != null && translated) {
             entities = MessageHelper.getEntitiesForText(this, text, false);
         } else if (messageOwner.translated) {
-            // NekoX Translate
+            // upstream Translate
             entities = MessageHelper.getEntitiesForText(this, text, summarized);
         }
         if (!isMediaEmpty() && !(getMedia(messageOwner) instanceof TLRPC.TL_messageMediaGame) && !TextUtils.isEmpty(text)) {
@@ -8866,7 +8866,7 @@ public class MessageObject {
     }
 
     public static StaticLayout makeStaticLayout(CharSequence text_, TextPaint paint, int width, float lineSpacingMult, float lineSpacingAdd, boolean dontIncludePad, Layout.Alignment alignment) {
-        // DuckDuckGram: межстрочный интервал. Сюда приходят раскладки тела сообщения
+        // mvs: межстрочный интервал. Сюда приходят раскладки тела сообщения
         // (generateLayout), статей и подписей — то есть всё, что рисуется через
         // MessageObject.
         //

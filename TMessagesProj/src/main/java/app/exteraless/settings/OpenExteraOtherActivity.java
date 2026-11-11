@@ -56,7 +56,7 @@ import tw.nekomimi.nekogram.utils.AlertUtil;
 import tw.nekomimi.nekogram.utils.AndroidUtil;
 
 /**
- * Экран «Other» раздела openExtera — повторяет Other из exteraGram
+ * Экран «Other» раздела openExtera — повторяет Other из upstream
  * (секция Google + управление настройками).
  */
 public class OpenExteraOtherActivity extends BaseNekoSettingsActivity {
@@ -123,7 +123,7 @@ public class OpenExteraOtherActivity extends BaseNekoSettingsActivity {
         // Секции Google (Analytics + Crashlytics) здесь больше нет. Отправлять
         // было нечего: shouldEnableCrashlytics требует applicationId
         // «nu.gpu.nagram», а у нас com.duckduckgram.duckerer — переключатель стоял
-        // мёртвым. На его месте вход в настройки NagramX, выключенный по
+        // мёртвым. На его месте вход в настройки upstream, выключенный по
         // умолчанию.
         googleHeaderRow = addRow("googleHeader");
         crashReportsRow = addRow("crashReports");
@@ -368,7 +368,7 @@ public class OpenExteraOtherActivity extends BaseNekoSettingsActivity {
                     getNotificationCenter().postNotificationName(NotificationCenter.mainUserInfoChanged);
                     getNotificationCenter().postNotificationName(NotificationCenter.dialogFiltersUpdated);
                     getNotificationCenter().postNotificationName(NotificationCenter.dialogsNeedReload, true);
-                    // У exteraGram бюллетень именно «ошибочный» (красный) — это предупреждение, а не успех.
+                    // У upstream бюллетень именно «ошибочный» (красный) — это предупреждение, а не успех.
                     BulletinFactory.of(OpenExteraOtherActivity.this)
                             .createErrorBulletin(getString(R.string.OEGeneralResetSettingsDone))
                             .show();
@@ -435,7 +435,7 @@ public class OpenExteraOtherActivity extends BaseNekoSettingsActivity {
         AlertDialog progressDialog = new AlertDialog(getParentActivity(), AlertDialog.ALERT_TYPE_SPINNER);
         progressDialog.setCanCancel(false);
         progressDialog.show();
-        // Пауза exteraGram перед запросом: спиннер успевает появиться, а не мигнуть.
+        // Пауза upstream перед запросом: спиннер успевает появиться, а не мигнуть.
         AndroidUtilities.runOnUIThread(() -> {
             TL_account.deleteAccount req = new TL_account.deleteAccount();
             req.reason = "openExtera";

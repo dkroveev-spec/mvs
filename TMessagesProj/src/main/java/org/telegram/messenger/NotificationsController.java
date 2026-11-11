@@ -1907,7 +1907,7 @@ public class NotificationsController extends BaseController implements Notificat
         if (shouldHideNotificationContentForPasscode()) {
             return LocaleController.getString(R.string.NotificationHiddenMessage);
         }
-        // DuckDuckGram: streamerMode. Короткая строка уходит в поле быстрого ответа
+        // mvs: streamerMode. Короткая строка уходит в поле быстрого ответа
         // прямо в уведомлении, то есть тоже на экран — её тоже нужно закрыть.
         if (DdgConfig.streamerMode.Bool()) {
             return LocaleController.getString(R.string.DDGMessageHidden);
@@ -2600,7 +2600,7 @@ public class NotificationsController extends BaseController implements Notificat
         if (shouldHideNotificationContentForPasscode()) {
             return LocaleController.getString(R.string.YouHaveNewMessage);
         }
-        // DuckDuckGram: streamerMode. Метод общий для всех уведомлений о сообщениях —
+        // mvs: streamerMode. Метод общий для всех уведомлений о сообщениях —
         // и обычного, и сводного (inboxStyle), — поэтому одна проверка здесь закрывает
         // оба случая. Строка та же, что и в списке чатов, чтобы «заглушка» была узнаваема.
         if (DdgConfig.streamerMode.Bool()) {
@@ -4486,7 +4486,7 @@ public class NotificationsController extends BaseController implements Notificat
                 TLRPC.TL_message msg = new TLRPC.TL_message();
                 msg.date = (int) (System.currentTimeMillis() / 1000L);
                 int storiesCount = 0;
-                // DuckDuckGram: streamerMode. Уведомление о сторис по умолчанию собирает
+                // mvs: streamerMode. Уведомление о сторис по умолчанию собирает
                 // имена авторов и коллаж их аватаров, а флаг hidden ниже как раз приводит
                 // его к безличному виду («N историй» и без картинок). Включаем этот же
                 // путь: иначе имена и лица попали бы на демонстрацию экрана.
@@ -4784,7 +4784,7 @@ public class NotificationsController extends BaseController implements Notificat
                         intent.putExtra("userId", userId);
                     }
                 }
-                // DuckDuckGram: streamerMode. Крупная иконка уведомления — это либо
+                // mvs: streamerMode. Крупная иконка уведомления — это либо
                 // аватар собеседника, либо кадр медиа, и обе картинки не должны светиться
                 // во время демонстрации. Аватар не подставляется только на Android < 28,
                 // но условие одинаковое — иначе пришлось бы дублировать ветку ниже.
@@ -5338,7 +5338,7 @@ public class NotificationsController extends BaseController implements Notificat
                 }
                 photoPath = null;
             }
-            // DuckDuckGram: streamerMode. Здесь собираются уведомления-«разговоры»
+            // mvs: streamerMode. Здесь собираются уведомления-«разговоры»
             // (Conversation section), текст в них приходит из getShortStringForMessage,
             // который уже закрыт, а вот аватар в Person остаётся — гасим его здесь.
             if (DdgConfig.streamerMode.Bool()) {
@@ -5431,7 +5431,7 @@ public class NotificationsController extends BaseController implements Notificat
                 conversationName = String.format("%1$s (%2$d)", name, n);
             }
 
-            // DuckDuckGram: streamerMode. «От вас» — это аватар владельца аккаунта, и
+            // mvs: streamerMode. «От вас» — это аватар владельца аккаунта, и
             // в уведомлении-разговоре он самый крупный. Он не переписка, но на стриме
             // показывает, чей это аккаунт. Кэш personCache при этом читать нельзя:
             // в нём мог остаться Person из уведомления, собранного до включения
@@ -6040,7 +6040,7 @@ public class NotificationsController extends BaseController implements Notificat
 
     private Pair<Integer, Boolean> parseStoryPushes(ArrayList<String> names, ArrayList<Object> avatars) {
         int storiesCount = 0;
-        // DuckDuckGram: streamerMode. Метод общий для обоих мест, где собирается
+        // mvs: streamerMode. Метод общий для обоих мест, где собирается
         // уведомление о сторис, поэтому режим включается здесь: при hidden ниже
         // очищаются аватары, а вызывающий код берёт безличные строки вместо имён.
         boolean hidden = DdgConfig.streamerMode.Bool();

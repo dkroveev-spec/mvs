@@ -637,7 +637,7 @@ public class ChatActivity extends BaseFragment implements
     private ActionBarMenuItem.Item feeItemGap;
     private ActionBarMenuItem.Item feeItemText;
     private ChatNotificationsPopupWrapper chatNotificationsPopupWrapper;
-    // exteraless plugins: подменю CHAT_ACTION_MENU в меню «⋮».
+    // upstream plugins: подменю CHAT_ACTION_MENU в меню «⋮».
     private app.exteraless.plugins.menus.MenuInjector.SwipeBackMenu pluginsMenu;
     // private ChatActivitySideControlsButtonsLayout topButtonsLayout;
     private ChatActivitySideControlsButtonsLayout sideControlsButtonsLayout;
@@ -1862,7 +1862,7 @@ public class ChatActivity extends BaseFragment implements
     private final static int scheduled = 63;
     private final static int edit_quick_reply = 64;
 
-    private ActionBarMenuItem actionModeOtherItem; // NekoX
+    private ActionBarMenuItem actionModeOtherItem; // upstream
 
     private final static int copy_business_link = 65;
     private final static int share_business_link = 66;
@@ -2361,7 +2361,7 @@ public class ChatActivity extends BaseFragment implements
             }
         }
 
-        // NekoX
+        // upstream
         @Override
         public void beforeMessageSend(CharSequence message, boolean notify, int scheduleDate, long payStars) {
             ChatActivity.this.beforeMessageSend(notify, scheduleDate, true, payStars);
@@ -3212,7 +3212,7 @@ public class ChatActivity extends BaseFragment implements
         // na: unread count
         getNotificationCenter().addObserver(this, NotificationCenter.dialogsUnreadCounterChanged);
 
-        // exteraless plugins: реестр пунктов меняется, когда плагин включают/выключают.
+        // upstream plugins: реестр пунктов меняется, когда плагин включают/выключают.
         NotificationCenter.getGlobalInstance().addObserver(this, NotificationCenter.pluginMenuItemsUpdated);
 
         if (chatMode != MODE_SCHEDULED) {
@@ -5155,7 +5155,7 @@ public class ChatActivity extends BaseFragment implements
             headerItem.lazilyAddSubItem(888, R.drawable.menu_download_round, "Dump Canvas");
         }
 
-        // exteraless plugins: подменю CHAT_ACTION_MENU в конце меню «⋮».
+        // upstream plugins: подменю CHAT_ACTION_MENU в конце меню «⋮».
         // Место общее для всех веток выше — headerItem здесь уже собран целиком.
         if (headerItem != null) {
             java.util.Map<String, Object> pluginMenuContext = new java.util.HashMap<>();
@@ -7989,7 +7989,7 @@ public class ChatActivity extends BaseFragment implements
                 Object parent = mentionContainer.getAdapter().getItemParent(position);
                 String query = MessageObject.findAnimatedEmojiEmoticon(document);
                 AlertsCreator.ensurePaidMessageConfirmation(currentAccount, getDialogId(), 1, price -> {
-                    // DuckDuckGram: confirmSend. Это отправка стикера долгим тапом
+                    // mvs: confirmSend. Это отправка стикера долгим тапом
                     // (recent stickers), отдельный путь от onStickerSelected, поэтому
                     // подтверждение нужно и здесь — иначе тап по «часто
                     // используемым» отправлял бы стикер мимо галочки.
@@ -11890,7 +11890,7 @@ public class ChatActivity extends BaseFragment implements
             item.addSubItem(text_underline, stringBuilder);
         }
         item.addSubItem(text_link, LocaleController.getString(R.string.CreateLink));
-        item.addSubItem(text_mention, LocaleController.getString(R.string.CreateMention)); // NekoX
+        item.addSubItem(text_mention, LocaleController.getString(R.string.CreateMention)); // upstream
         if (currentEncryptedChat == null) {
             item.addSubItem(text_date, LocaleController.getString(R.string.FormattedDate));
         }
@@ -12638,7 +12638,7 @@ public class ChatActivity extends BaseFragment implements
             builder.show();
         });
 
-        // NekoX: long press pinned list button
+        // upstream: long press pinned list button
         pinnedListButton.setOnLongClickListener(v -> {
             if (getParentActivity() == null) {
                 return false;
@@ -15169,7 +15169,7 @@ public class ChatActivity extends BaseFragment implements
 
     @Override
     public void didSelectPhotos(ArrayList<SendMessagesHelper.SendingMediaInfo> photos, boolean notify, int scheduleDate, int scheduleRepeatPeriod, long payStars) {
-        // DuckDuckGram: confirmSend. Отдельно от общего showConfirmAlert, потому что
+        // mvs: confirmSend. Отдельно от общего showConfirmAlert, потому что
         // фото и видео идут мимо поля ввода: здесь нужен свой диалог с превью.
         // Метод переименован в didSelectPhotosInternal, чтобы разделить «показали
         // диалог» и «отправили», иначе подтверждение пришлось бы ставить вокруг
@@ -21756,7 +21756,7 @@ public class ChatActivity extends BaseFragment implements
                     } else {
                         File f = new File(videoPath);
                         if (!f.canRead()) {
-                            // When the video file is located in a protected directory, and NekoX doesn't have the access permission to this directory, i.e. EACCES (Permission denied),
+                            // When the video file is located in a protected directory, and upstream doesn't have the access permission to this directory, i.e. EACCES (Permission denied),
                             //    copy it to the private temp directory
                             FileLog.e("Failed to read input file " + videoPath + ", copy to private directory");
                             try {
@@ -21944,7 +21944,7 @@ public class ChatActivity extends BaseFragment implements
     @Override
     public void didReceivedNotification(int id, int account, final Object... args) {
         if (id == NotificationCenter.pluginMenuItemsUpdated) {
-            // exteraless plugins: пересобрать подменю CHAT_ACTION_MENU.
+            // upstream plugins: пересобрать подменю CHAT_ACTION_MENU.
             if (pluginsMenu != null) {
                 pluginsMenu.refresh();
             }
@@ -25917,7 +25917,7 @@ public class ChatActivity extends BaseFragment implements
                     avatarContainer.updateSubtitle();
                 }
             } else if (id == NotificationCenter.dialogsUnreadCounterChanged) {
-                if (actionBar != null) { // NekoX
+                if (actionBar != null) { // upstream
                     actionBar.unreadBadgeSetCount(getMessagesStorage().getMainUnreadCount());
                 }
             }
@@ -33124,7 +33124,7 @@ public class ChatActivity extends BaseFragment implements
             shadowDrawable.getPadding(backgroundPaddings);
             popupLayout.setBackgroundColor(getThemedColor(Theme.key_actionBarDefaultSubmenuBackground));
             // openExtera: матовое стекло под меню сообщения.
-            // Гейт тот же, что в exteraGram: настройка + доступный блюр.
+            // Гейт тот же, что в upstream: настройка + доступный блюр.
             // Флаг выключен или блюр недоступен -> ниже ничего не меняется, popup остаётся прежним.
             final boolean glassMenu = GlassMenuHelper.isEnabled(currentAccount, themeDelegate);
             if (glassMenu) {
@@ -35516,7 +35516,7 @@ public class ChatActivity extends BaseFragment implements
         if (selectedObject == null || getParentActivity() == null) {
             return;
         }
-        // exteraless plugins: id пунктов плагинов живут в своём диапазоне (MenuInjector).
+        // upstream plugins: id пунктов плагинов живут в своём диапазоне (MenuInjector).
         if (option == oebtn_ask_ai) {
             MessageObject target = selectedObject;
             String content = getMessageContent(target);
@@ -37937,7 +37937,7 @@ public class ChatActivity extends BaseFragment implements
 
     /**
      * openExtera: реакции отключены для этого типа чата.
-     * Перенесено из exteraGram 12.9.0, ChatActivity.disabledReactions().
+     * Перенесено из upstream 12.9.0, ChatActivity.disabledReactions().
      */
     public boolean disabledReactions() {
         app.exteraless.chats.ChatsConfig.ensureLoaded();
@@ -41909,7 +41909,7 @@ messageCell.setShowTopic(true);
             if (chatMode == MODE_SAVED || chatMode == MODE_SUGGESTIONS || threadMessageId == 0 && !UserObject.isReplyUser(currentUser) || threadMessageObject != null && threadMessageObject.getRepliesCount() < 10) {
                 searchItem.setVisibility(View.GONE);
             }
-            // NekoX: hide viewInChat Item when searching
+            // upstream: hide viewInChat Item when searching
             if (viewInChatItem != null)
                 viewInChatItem.setVisibility(View.VISIBLE);
             if (translateItem != null)
@@ -42493,7 +42493,7 @@ messageCell.setShowTopic(true);
                 return;
             }
 
-            // DuckDuckGram: quickShareMedia. Страховка к гейту в ChatMessageCell: там
+            // mvs: quickShareMedia. Страховка к гейту в ChatMessageCell: там
             // выключенная галочка оставляет слот на месте ради кнопки AI-саммари, так
             // что сам жест удержания с пузыря формально остаётся достижимым. Здесь он
             // отсекается явно.
@@ -42522,7 +42522,7 @@ messageCell.setShowTopic(true);
                 return;
             }
 
-            // DuckDuckGram: quickShareMedia. Галочку могли выключить, пока оверлей уже
+            // mvs: quickShareMedia. Галочку могли выключить, пока оверлей уже
             // был открыт (смена настроек на лету). Отпускание пальца не должно в этом
             // случае отправлять сообщение: close с null отменяет жест, как и обычный
             // тап мимо списка чатов.
@@ -44668,9 +44668,9 @@ messageCell.setShowTopic(true);
                         }
                     };
 
-                    // exteraless plugins: файл плагина ставится, а не открывается
+                    // upstream plugins: файл плагина ставится, а не открывается
                     // в подсветке кода (.plugin зарегистрирован как Python
-                    // в MarkdownUtils). Проверка идёт до просмотрщиков, как у exteraGram.
+                    // в MarkdownUtils). Проверка идёт до просмотрщиков, как у upstream.
                     if (app.exteraless.plugins.PluginInstallHelper.handleMessageTap(getParentActivity(), message)) {
                         return;
                     }
@@ -45031,9 +45031,9 @@ messageCell.setShowTopic(true);
                 } else if (message.getDocumentName().toLowerCase().endsWith(app.exteraless.backup.EtgBackup.EXTENSION)) {
                     app.exteraless.backup.EtgBackupUi.confirmImport(ChatActivity.this, locFile);
                 } else {
-                    // exteraless plugins: файл плагина ставится, а не открывается
+                    // upstream plugins: файл плагина ставится, а не открывается
                     // в подсветке кода (.plugin зарегистрирован как Python
-                    // в MarkdownUtils). Проверка идёт до просмотрщиков, как у exteraGram.
+                    // в MarkdownUtils). Проверка идёт до просмотрщиков, как у upstream.
                     if (app.exteraless.plugins.PluginInstallHelper.handleMessageTap(getParentActivity(), message)) {
                         return;
                     }
@@ -47226,7 +47226,7 @@ messageCell.setShowTopic(true);
         }
 
         private void setupChatTheme(EmojiThemes chatTheme, TLRPC.WallPaper wallPaper, boolean withAnimation, boolean createNewResources) {
-            // Перенос exteraGram 12.9.0:ChatActivity:12501: при выключенных
+            // Перенос upstream 12.9.0:ChatActivity:12501: при выключенных
             // индивидуальных темах чат остаётся в общей теме приложения.
             if (!AppearanceConfig.customThemes()) return;
             if (parentThemeDelegate != null) return;
@@ -47885,7 +47885,7 @@ messageCell.setShowTopic(true);
         return groupedMessagesMap.get(id);
     }
 
-     // ---- DuckDuckGram: сворачивание подряд идущих одинаковых сообщений ----
+     // ---- mvs: сворачивание подряд идущих одинаковых сообщений ----
      // В messages index 0 — самое НОВОЕ сообщение, больший индекс — старее.
      // Серия «одинаковых» считается по соседству: message[i] повтор message[i-1]
      // (предыдущего, более нового), если отправитель, текст и раскладка совпадают.
@@ -50849,7 +50849,7 @@ messageCell.setShowTopic(true);
                         icons.add(NaConfig.INSTANCE.getShowNoQuoteForward().Bool() ? R.drawable.msg_forward : R.drawable.msg_forward_noquote);
                     }
                 }
-                // --- NagramX Start ---
+                // --- upstream Start ---
                 if (chatMode != MODE_SCHEDULED) {
                     if (chatMode != MODE_WELCOME_MESSAGES && !selectedObject.needDrawBluredPreview() && !selectedObject.isLiveLocation() && selectedObject.type != 16) {
                         if (!noforwards && NaConfig.INSTANCE.getShowNoQuoteForward().Bool()) {
@@ -50965,7 +50965,7 @@ messageCell.setShowTopic(true);
                     options.add(OPTION_STATISTICS);
                     icons.add(R.drawable.msg_stats);
                 }
-                // --- NagramX End ---
+                // --- upstream End ---
                 if (allowUnpin) {
                     items.add(LocaleController.getString(R.string.UnpinMessage));
                     options.add(OPTION_UNPIN);
@@ -51233,7 +51233,7 @@ messageCell.setShowTopic(true);
             options.add(oebtn_ask_ai);
             icons.add(R.drawable.msg_discussion);
         }
-        // exteraless plugins: пункты плагинов в конце контекстного меню сообщения.
+        // upstream plugins: пункты плагинов в конце контекстного меню сообщения.
         app.exteraless.plugins.menus.MenuInjector.fillMessageMenu(this, message, currentChat, currentUser, currentEncryptedChat, dialog_id, currentAccount, icons, items, options);
         // ddg java plugins: пункты плагинов к файлу.
         if (isFeedSearch()) {

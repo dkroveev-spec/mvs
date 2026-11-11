@@ -44,7 +44,7 @@ import xyz.nextalone.nagram.NaConfig;
 
 public final class GitHubUpdater {
 
-    private static final String REPO = "Duckerer/DuckDuckGram";
+    private static final String REPO = "Duckerer/mvs";
     public static final String RELEASES_URL = "https://github.com/" + REPO + "/releases";
     private static final String API = "https://api.github.com/repos/" + REPO;
     private static final long AUTO_INTERVAL = TimeUnit.HOURS.toMillis(6);
@@ -104,8 +104,8 @@ public final class GitHubUpdater {
     }
 
     public static void check(boolean force) {
-        // DuckDuckGram: автоматические напоминания об обновлении отключены —
-        // форк не публикует релизы в апстрим-репозитории exteraless.
+        // mvs: автоматические напоминания об обновлении отключены —
+        // форк не публикует релизы в апстрим-репозитории upstream.
         if (!force) {
             return;
         }
@@ -188,7 +188,7 @@ public final class GitHubUpdater {
     private static JSONObject getJson(String url) throws Exception {
         Request request = new Request.Builder().url(url)
                 .header("Accept", "application/vnd.github+json")
-                .header("User-Agent", "DuckDuckGram")
+                .header("User-Agent", "mvs")
                 .build();
         try (Response response = client().newCall(request).execute()) {
             ResponseBody body = response.body();
@@ -384,7 +384,7 @@ public final class GitHubUpdater {
         }
         File target = new File(dir, release.apkName.replaceAll("[^A-Za-z0-9._-]", "_"));
         Call call = client().newCall(new Request.Builder().url(release.apkUrl)
-                .header("User-Agent", "DuckDuckGram").build());
+                .header("User-Agent", "mvs").build());
         download = call;
         new Thread(() -> {
             boolean ok = false;

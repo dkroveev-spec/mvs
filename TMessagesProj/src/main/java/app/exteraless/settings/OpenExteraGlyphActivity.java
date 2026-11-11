@@ -20,7 +20,7 @@ import tw.nekomimi.nekogram.settings.BaseNekoSettingsActivity;
 import tw.nekomimi.nekogram.ui.cells.HeaderCell;
 
 /**
- * Экран «Nothing Glyph» раздела exteraless: подсветка задней панели Nothing Phone
+ * Экран «Nothing Glyph» раздела upstream: подсветка задней панели Nothing Phone
  * на события клиента. На устройствах других вендоров переключатели видны, но
  * контроллер не инициализируется — превью об этом честно сообщает.
  */

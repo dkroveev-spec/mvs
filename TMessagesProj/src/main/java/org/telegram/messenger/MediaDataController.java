@@ -5451,7 +5451,7 @@ public class MediaDataController extends BaseController {
                     clearTopPeers();
                     loading = false;
                 } else if (error != null) {
-                    // DuckDuckGram: бот-аккаунт не может вызывать contacts.getTopPeers
+                    // mvs: бот-аккаунт не может вызывать contacts.getTopPeers
                     // (BOT_METHOD_INVALID). Без сброса флага загрузка зависает навсегда.
                     loading = false;
                 }
@@ -9613,7 +9613,7 @@ public class MediaDataController extends BaseController {
 
     public void generateEmojiPreviewThemes(final ArrayList<TLRPC.TL_theme> emojiPreviewThemes, int currentAccount) {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("emojithemes_config_" + currentAccount, Context.MODE_PRIVATE);
-        // DuckDuckGram: merge incoming themes with the ones already cached, so a
+        // mvs: merge incoming themes with the ones already cached, so a
         // partial/empty response from one source (account.getThemes vs
         // account.getChatThemes) can't wipe the full list coming from the other.
         final HashMap<Long, TLRPC.TL_theme> mergedMap = new HashMap<>();

@@ -38,7 +38,7 @@ import xyz.nextalone.nagram.NaConfig;
  * Шим {@code com.exteragram.messenger.ExteraConfig} — статика, к которой
  * обращаются плагины оформления.
  *
- * У exteraGram это поля, а не геттеры, но поле не может читать живое значение
+ * У upstream это поля, а не геттеры, но поле не может читать живое значение
  * настройки, поэтому здесь методы. Chaquopy различает вызов и чтение атрибута,
  * так что плагин, написанный под поле, получил бы объект метода вместо значения;
  * форму выравнивает обёртка {@code extera_utils.class_aliases._FieldShapedClass},
@@ -52,7 +52,7 @@ import xyz.nextalone.nagram.NaConfig;
  */
 public final class ExteraConfig {
 
-    /** Значения совпадают с exteraGram: 0 — стоковые, 1 — Solar, 2 — Remix. */
+    /** Значения совпадают с upstream: 0 — стоковые, 1 — Solar, 2 — Remix. */
     public static final int ICON_PACK_DEFAULT = BaseIconPacks.BASE_DEFAULT;
     public static final int ICON_PACK_SOLAR = BaseIconPacks.BASE_SOLAR;
     public static final int ICON_PACK_REMIX = BaseIconPacks.BASE_REMIX;
@@ -1788,7 +1788,7 @@ public final class ExteraConfig {
     }
 
     /**
-     * Радиус скругления аватарки для стороны {@code size} в dp — как у exteraGram,
+     * Радиус скругления аватарки для стороны {@code size} в dp — как у upstream,
      * где эта перегрузка сама переводит результат в пиксели. Наш AppearanceConfig
      * считает от пикселей, поэтому перевод делается здесь.
      */

@@ -674,7 +674,7 @@ public class StoriesUtilities {
     private static final RectF forumRect = new RectF();
 
     /**
-     * Радиус кольца сторис. exteraGram рисует кольцо по форме аватарки, а не всегда кругом
+     * Радиус кольца сторис. upstream рисует кольцо по форме аватарки, а не всегда кругом
      * (StoriesUtilities.java:805-819). Форумы с дефолтным слайдером сохраняют прежний dp(18).
      */
     private static float storyRingCorners(RectF outlineRect, AvatarStoryParams params, boolean isForum) {
