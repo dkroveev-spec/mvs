@@ -67,7 +67,34 @@ public class DdgSecurityActivity extends DdgCategoryActivity {
                 () -> presentFragment(app.exteraless.plugins.ui.PluginsActivity.javaInstance())));
         rows.add(Row.info(R.string.DDGSecurityPluginsInfo));
 
+        rows.add(Row.header(R.string.DDGBuildHeader));
+        rows.add(Row.value(R.string.DDGBuildVersion, this::buildVersion));
+        rows.add(Row.value(R.string.DDGBuildAbi, DdgSecurityActivity::abi));
+        rows.add(Row.value(R.string.DDGBuildSystem, DdgSecurityActivity::system));
+
         return rows;
+    }
+
+    private String buildVersion() {
+        StringBuilder sb = new StringBuilder(org.telegram.messenger.BuildVars.BUILD_VERSION_STRING);
+        try {
+            PackageInfo info = ApplicationLoader.applicationContext.getPackageManager()
+                    .getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
+            if (info != null) {
+                sb.append(" (").append(info.versionCode).append(')');
+            }
+        } catch (Throwable ignore) {
+        }
+        return sb.toString();
+    }
+
+    private static String abi() {
+        String[] abis = android.os.Build.SUPPORTED_ABIS;
+        return abis == null || abis.length == 0 ? "—" : abis[0];
+    }
+
+    private static String system() {
+        return "Android " + android.os.Build.VERSION.RELEASE + " · API " + android.os.Build.VERSION.SDK_INT;
     }
 
     private void openReleases() {

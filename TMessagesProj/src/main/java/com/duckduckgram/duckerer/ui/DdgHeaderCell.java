@@ -29,6 +29,7 @@ import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.R;
 import org.telegram.ui.ActionBar.AlertDialog;
 import org.telegram.ui.ActionBar.Theme;
+import org.telegram.ui.ActionBar.ThemeColors;
 import org.telegram.ui.Components.LayoutHelper;
 
 import app.exteraless.icons.IconPacksConfig;
@@ -47,11 +48,11 @@ import app.exteraless.icons.IconShapeHelper;
  */
 public class DdgHeaderCell extends LinearLayout {
 
-    /** Бумага и терракота Ink. */
+    /** Бумага Ink. Акцент приходит из темы: его выбирают в настройках. */
     private static final int PAPER = 0xFFF5F1E8;
-    private static final int ACCENT = 0xFFD9552F;
 
     private Path shapePath;
+    private int iconSize = 46;
     private ObjectAnimator pulse;
 
     private static int dp(int value) {
@@ -60,7 +61,7 @@ public class DdgHeaderCell extends LinearLayout {
 
     private Path shapePath() {
         if (shapePath == null) {
-            shapePath = IconShapeHelper.getFinalIconShapePath(46, 46, 13);
+            shapePath = IconShapeHelper.getFinalIconShapePath(iconSize, iconSize, 13);
         }
         return shapePath;
     }
@@ -73,6 +74,10 @@ public class DdgHeaderCell extends LinearLayout {
         setPadding(dp(16), dp(8), dp(16), dp(8));
 
         final boolean dark = Theme.getActiveTheme() != null && Theme.getActiveTheme().isDark();
+        final int accent = ThemeColors.inkAccentColor();
+        // Компактность и неподвижность — переключатели из «Оформления».
+        final boolean compact = com.duckduckgram.duckerer.config.DdgConfig.plateCompact.Bool();
+        final boolean quiet = com.duckduckgram.duckerer.config.DdgConfig.quietMotion.Bool();
         final int cardColor = dark ? 0xFF1D1C19 : 0xFF151412;
         final int muted = 0xB3F0EBE1;
 
@@ -85,10 +90,11 @@ public class DdgHeaderCell extends LinearLayout {
             shape.setStroke(dp(1), 0xFF3A3730);
         }
         card.setBackground(new RippleDrawable(ColorStateList.valueOf(0x1FF5F1E8), shape, null));
-        card.setPadding(dp(18), dp(18), dp(18), dp(14));
+        card.setPadding(dp(compact ? 14 : 18), dp(compact ? 14 : 18),
+                dp(compact ? 14 : 18), dp(compact ? 10 : 14));
         card.setOnClickListener(v -> showAbout());
         card.setOnLongClickListener(this::toggleIconShape);
-        card.setOnTouchListener((v, event) -> {
+        if (!quiet) card.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 v.animate().scaleX(0.985f).scaleY(0.985f).setDuration(90).start();
             } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
@@ -115,7 +121,8 @@ public class DdgHeaderCell extends LinearLayout {
         logo.setScaleType(ImageView.ScaleType.CENTER_CROP);
         logo.setBackgroundColor(cardColor);
         logo.setImageResource(R.drawable.duckduckgram_icon);
-        head.addView(logo, new LinearLayout.LayoutParams(dp(46), dp(46)));
+        iconSize = compact ? 38 : 46;
+        head.addView(logo, new LinearLayout.LayoutParams(dp(iconSize), dp(iconSize)));
 
         LinearLayout text = new LinearLayout(context);
         text.setOrientation(VERTICAL);
@@ -128,7 +135,7 @@ public class DdgHeaderCell extends LinearLayout {
         String mark = LocaleController.getString(R.string.DDGWordmark);
         SpannableString wordmark = new SpannableString(mark);
         if (mark.endsWith(".")) {
-            wordmark.setSpan(new ForegroundColorSpan(ACCENT),
+            wordmark.setSpan(new ForegroundColorSpan(accent),
                     mark.length() - 1, mark.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         TextView title = new TextView(context);
@@ -141,16 +148,18 @@ public class DdgHeaderCell extends LinearLayout {
         text.addView(title, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        TextView tagline = new TextView(context);
-        tagline.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-        tagline.setTextColor(muted);
-        tagline.setText(LocaleController.getString(R.string.DuckDuckGramPreferencesInfo));
-        tagline.setMaxLines(2);
-        tagline.setLineSpacing(dp(2), 1f);
-        LinearLayout.LayoutParams taglineParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        taglineParams.topMargin = dp(4);
-        text.addView(tagline, taglineParams);
+        if (!compact) {
+            TextView tagline = new TextView(context);
+            tagline.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
+            tagline.setTextColor(muted);
+            tagline.setText(LocaleController.getString(R.string.DuckDuckGramPreferencesInfo));
+            tagline.setMaxLines(2);
+            tagline.setLineSpacing(dp(2), 1f);
+            LinearLayout.LayoutParams taglineParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            taglineParams.topMargin = dp(4);
+            text.addView(tagline, taglineParams);
+        }
 
         View divider = new View(context);
         divider.setBackgroundColor(0x26F5F1E8);
@@ -184,7 +193,7 @@ public class DdgHeaderCell extends LinearLayout {
         dot = new View(context);
         GradientDrawable dotShape = new GradientDrawable();
         dotShape.setShape(GradientDrawable.OVAL);
-        dotShape.setColor(ACCENT);
+        dotShape.setColor(accent);
         dot.setBackground(dotShape);
         LinearLayout.LayoutParams dotParams = new LinearLayout.LayoutParams(dp(6), dp(6));
         dotParams.rightMargin = dp(6);
@@ -192,7 +201,7 @@ public class DdgHeaderCell extends LinearLayout {
 
         TextView edition = new TextView(context);
         edition.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-        edition.setTextColor(ACCENT);
+        edition.setTextColor(accent);
         edition.setLetterSpacing(0.14f);
         edition.setText(LocaleController.getString(R.string.DDGInkEdition));
         editionRow.addView(edition, new LinearLayout.LayoutParams(
@@ -202,6 +211,12 @@ public class DdgHeaderCell extends LinearLayout {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        final boolean quiet = com.duckduckgram.duckerer.config.DdgConfig.quietMotion.Bool();
+        if (quiet) {
+            setAlpha(1f);
+            setTranslationY(0f);
+            return;
+        }
         setAlpha(0f);
         setTranslationY(dp(10));
         animate().alpha(1f).translationY(0f).setDuration(320).start();

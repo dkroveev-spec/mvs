@@ -69,6 +69,18 @@ public class DdgAppearanceActivity extends DdgCategoryActivity {
     protected List<Row> buildRows() {
         List<Row> rows = new ArrayList<>();
 
+        rows.add(Row.custom(DdgInkPreviewCell.TYPE));
+
+        rows.add(Row.header(R.string.DDGInkSection));
+        rows.add(Row.radioValues(R.string.DDGInkAccent, DdgConfig.inkAccent,
+                new int[]{R.string.DDGAccentTerracotta, R.string.DDGAccentOchre,
+                        R.string.DDGAccentSage, R.string.DDGAccentIndigo, R.string.DDGAccentBordeaux},
+                new int[]{0, 1, 2, 3, 4}));
+        rows.add(Row.info(R.string.DDGInkAccentInfo));
+        rows.add(Row.toggle(R.string.DDGCapsHeaders, R.string.DDGCapsHeadersInfo, DdgConfig.capsHeaders));
+        rows.add(Row.toggle(R.string.DDGQuietMotion, R.string.DDGQuietMotionInfo, DdgConfig.quietMotion));
+        rows.add(Row.toggle(R.string.DDGPlateCompact, R.string.DDGPlateCompactInfo, DdgConfig.plateCompact));
+
         rows.add(Row.header(R.string.DDGCategoryTypography));
         rows.add(Row.radioValues(R.string.DDGTextSize, DdgConfig.textSizeScale,
                 new int[]{R.string.DDGScale80, R.string.DDGScale90, R.string.DDGScale100,
@@ -103,6 +115,14 @@ public class DdgAppearanceActivity extends DdgCategoryActivity {
         }
 
         return rows;
+    }
+
+    @Override
+    protected android.view.View onCreateCustomViewHolder(android.view.ViewGroup parent, int viewType) {
+        if (viewType == DdgInkPreviewCell.TYPE) {
+            return new DdgInkPreviewCell(parent.getContext());
+        }
+        return null;
     }
 
     private void pickFontFile() {
@@ -244,6 +264,18 @@ public class DdgAppearanceActivity extends DdgCategoryActivity {
             Theme.createCommonMessageResources();
         } else if (row.config == DdgConfig.lineSpacing) {
             SharedConfig.applyDdgLineSpacing();
+        } else if (row.config == DdgConfig.inkAccent) {
+            // Акцент живёт в палитре: пересобираем текущую тему, иначе новый
+            // цвет подхватил бы только этот экран.
+            org.telegram.ui.ActionBar.Theme.ThemeInfo activeTheme = org.telegram.ui.ActionBar.Theme.getActiveTheme();
+            if (activeTheme != null) {
+                boolean isNight = org.telegram.ui.ActionBar.Theme.isCurrentThemeNight();
+                org.telegram.ui.ActionBar.Theme.applyTheme(activeTheme, isNight);
+                org.telegram.messenger.NotificationCenter.getGlobalInstance().postNotificationName(
+                        org.telegram.messenger.NotificationCenter.needSetDayNightTheme,
+                        activeTheme, isNight, null, -1);
+            }
+            rebuildRows();
         }
         super.onRadioChanged(row, value);
     }

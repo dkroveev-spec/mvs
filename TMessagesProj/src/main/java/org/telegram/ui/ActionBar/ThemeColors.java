@@ -1753,6 +1753,60 @@ public class ThemeColors {
         return colorKeysMap.get(currentKey);
     }
 
+    /** Пять акцентов Ink: насыщенный для светлой темы, мягкий для тёмной. */
+    private static final int[] INK_ACCENT = {
+            0xFFD9552F, 0xFFB9821F, 0xFF5F7A5B, 0xFF3F5C8A, 0xFF8C3A46
+    };
+    private static final int[] INK_ACCENT_DARK = {
+            0xFFFF7450, 0xFFE0A63C, 0xFF93AE8C, 0xFF7F9CD0, 0xFFD07A86
+    };
+    private static final int[] INK_ACCENT_SOFT = {
+            0xFFF4DACF, 0xFFF1E3C4, 0xFFE2E8DA, 0xFFDDE4F0, 0xFFEFD9DC
+    };
+    private static final int[] INK_ACCENT_SOFT_DARK = {
+            0xFF3A2119, 0xFF3A2C15, 0xFF232B1F, 0xFF1D2532, 0xFF30202A
+    };
+    private static final int[] INK_ACCENT_TEXT = {
+            0xFFB8431F, 0xFF96660F, 0xFF47603F, 0xFF33496E, 0xFF6E2A34
+    };
+    private static final int[] INK_ACCENT_TEXT_DARK = {
+            0xFFFF9A7A, 0xFFF0C070, 0xFFBAD2B4, 0xFFA8C0EA, 0xFFE8A8B2
+    };
+
+    /** Индекс выбранного акцента. Мусор в настройке не должен ломать тему. */
+    public static int inkAccentIndex() {
+        try {
+            int index = com.duckduckgram.duckerer.config.DdgConfig.inkAccent.Int();
+            return index < 0 || index >= INK_ACCENT.length ? 0 : index;
+        } catch (Throwable ignore) {
+            return 0;
+        }
+    }
+
+    private static int clampAccent(int index) {
+        return index < 0 || index >= INK_ACCENT.length ? 0 : index;
+    }
+
+    private static int inkAccentColor(int index, boolean dark) {
+        int i = clampAccent(index);
+        return dark ? INK_ACCENT_DARK[i] : INK_ACCENT[i];
+    }
+
+    private static int inkAccentSoft(int index, boolean dark) {
+        int i = clampAccent(index);
+        return dark ? INK_ACCENT_SOFT_DARK[i] : INK_ACCENT_SOFT[i];
+    }
+
+    private static int inkAccentText(int index, boolean dark) {
+        int i = clampAccent(index);
+        return dark ? INK_ACCENT_TEXT_DARK[i] : INK_ACCENT_TEXT[i];
+    }
+
+    /** Текущий акцент для наших собственных ячеек и плашки. */
+    public static int inkAccentColor() {
+        return inkAccentColor(inkAccentIndex(), Theme.isCurrentThemeNight());
+    }
+
     /**
      * mvs Ink palette. Applied after the theme file so every built-in theme reads as Ink.
      */
@@ -1768,9 +1822,10 @@ public class ThemeColors {
         final int muted = dark ? 0xFFA59F94 : 0xFF5A564E;
         final int mutedDim = dark ? 0xFF7A7469 : 0xFF8A8478;
         final int hair = dark ? 0xFF2C2B28 : 0xFFDCD5C7;
-        final int accent = dark ? 0xFFFF7450 : 0xFFD9552F;
-        final int accentSoft = dark ? 0xFF3A2119 : 0xFFF4DACF;
-        final int accentInk = dark ? 0xFFFF9A7A : 0xFFB8431F;
+        // Акцент выбирается в настройках: из него собирается вся палитра.
+        final int accent = inkAccentColor(inkAccentIndex(), dark);
+        final int accentSoft = inkAccentSoft(inkAccentIndex(), dark);
+        final int accentInk = inkAccentText(inkAccentIndex(), dark);
         final int sage = dark ? 0xFF9DB58A : 0xFF6F7F5C;
         final int sageText = dark ? 0xFFB9CFA6 : 0xFF4C5E42;
         final int danger = dark ? 0xFFFF7450 : 0xFFB8431F;
@@ -1778,7 +1833,7 @@ public class ThemeColors {
         final int onInk = dark ? 0xFF131312 : 0xFFF5F1E8;
         final int onSage = dark ? 0xFF131312 : 0xFFF5F1E8;
         final int listSelector = dark ? 0x14F0EBE1 : 0x12151412;
-        final int accentAlpha = dark ? 0x33FF7450 : 0x33D9552F;
+        final int accentAlpha = (accent & 0x00FFFFFF) | 0x33000000;
         final int outBubble = dark ? 0xFFF0EBE1 : 0xFF151412;
         final int outSelected = dark ? 0xFFE4DDD1 : 0xFF24211D;
         final int outText = dark ? 0xFF131312 : 0xFFF5F1E8;

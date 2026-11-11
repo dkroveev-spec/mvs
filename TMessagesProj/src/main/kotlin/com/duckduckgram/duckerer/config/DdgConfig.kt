@@ -450,6 +450,24 @@ object DdgConfig {
     @JvmField
     val typingGhost = addConfig("DDGTypingGhost", ConfigItem.configTypeBool, false)
 
+    // ---- Ink ----
+
+    /** Акцент Ink: 0 терракота, 1 охра, 2 шалфей, 3 индиго, 4 бордо. */
+    @JvmField
+    val inkAccent = addConfig("DDGInkAccent", ConfigItem.configTypeInt, 0)
+
+    /** Спокойные анимации: без всплытия, пульса и сжатия при нажатии. */
+    @JvmField
+    val quietMotion = addConfig("DDGQuietMotion", ConfigItem.configTypeBool, false)
+
+    /** Заголовки разделов капсами с разрядкой. */
+    @JvmField
+    val capsHeaders = addConfig("DDGCapsHeaders", ConfigItem.configTypeBool, true)
+
+    /** Компактная плашка mvs: без девиза и с меньшим знаком. */
+    @JvmField
+    val plateCompact = addConfig("DDGPlateCompact", ConfigItem.configTypeBool, false)
+
     // ---- Monet ----
 
     /** Свой акцентный цвет Monet, ARGB. */

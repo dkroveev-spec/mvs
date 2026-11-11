@@ -333,6 +333,26 @@
     <string name="DeletedMarkCross">Cross</string>
     <string name="DeletedMarkEyeCrossed">Eye Crossed</string>
     <string name="DisableAds">Disable Ads</string>
+    <!-- Ink: акцент и движение -->
+    <string name="DDGInkSection">Чернила</string>
+    <string name="DDGInkAccent">Акцент</string>
+    <string name="DDGInkAccentInfo">Один цвет на весь интерфейс: кнопки, ссылки, плашка и искра.</string>
+    <string name="DDGAccentTerracotta">Терракота</string>
+    <string name="DDGAccentOchre">Охра</string>
+    <string name="DDGAccentSage">Шалфей</string>
+    <string name="DDGAccentIndigo">Индиго</string>
+    <string name="DDGAccentBordeaux">Бордо</string>
+    <string name="DDGCapsHeaders">Заголовки капсами</string>
+    <string name="DDGCapsHeadersInfo">Мелкие прописные с разрядкой в шапках разделов.</string>
+    <string name="DDGQuietMotion">Спокойные анимации</string>
+    <string name="DDGQuietMotionInfo">Экраны и плашка появляются без движения и пульса.</string>
+    <string name="DDGPlateCompact">Компактная плашка</string>
+    <string name="DDGPlateCompactInfo">Знак меньше, девиз скрыт — шапка настроек занимает меньше места.</string>
+    <string name="DDGBuildHeader">Сборка</string>
+    <string name="DDGBuildVersion">Версия</string>
+    <string name="DDGBuildAbi">Архитектура</string>
+    <string name="DDGBuildSystem">Система</string>
+
     <!-- Quiet -->
     <string name="DDGQuietHeader">Тишина</string>
     <string name="DDGTypingGhost">Скрыть «печатает…»</string>

@@ -132,7 +132,7 @@ public class DdgSettingsActivity extends BaseNekoSettingsActivity {
     @Override
     public View createView(Context context) {
         View view = super.createView(context);
-        if (listView != null) {
+        if (listView != null && !com.duckduckgram.duckerer.config.DdgConfig.quietMotion.Bool()) {
             listView.setAlpha(0f);
             listView.setTranslationY(AndroidUtilities.dp(12));
             listView.animate().alpha(1f).translationY(0f).setDuration(240).start();
